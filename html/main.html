@@ -13,8 +13,8 @@
         <section id="hero" class="main-hero" aria-label="이번 주 추천 콘텐츠">
           <p class="hero-label">이번 주의 Pick!</p>
           <div class="hero-copy">
-            <h1 id="heroTitle" class="sr-only">이번 주 추천 콘텐츠</h1>
-            <p id="heroDescription" class="sr-only"></p>
+            <h1 id="heroTitle">이번 주 추천 콘텐츠</h1>
+            <p id="heroDescription"></p>
             <div class="hero-actions">
               <a id="heroPlay" class="hero-button" href="play.html">▶ <span>지금 보기</span></a>
               <button id="heroWish" class="hero-button" type="button">＋ <span>찜하기</span></button>
@@ -26,18 +26,25 @@
         </section>
 
         <section class="main-section top-ten-section">
-          <h2>TOP 10 시리즈</h2>
+          <h2>챔버스 TOP 10</h2>
+          <p class="section-description">지금 가장 많이 보는 작품</p>
           <div id="topTenList" class="rank-row" aria-live="polite"></div>
         </section>
 
         <section class="main-section continue-section">
           <h2>이어볼까요?</h2>
+          <p class="section-description">최근 시청한 작품을 이어서 감상해보세요</p>
           <div id="continueList" class="continue-row" aria-live="polite"></div>
         </section>
 
-        <a class="vote-banner" href="vote.html" aria-label="최애 캐릭터 투표하기">
-          <img src="../images/main/banner.png" alt="내 최애를 골라줘! 캐릭터 투표">
-        </a>
+        <section id="continueBannerSlider" class="vote-banner" aria-label="추천 작품 배너">
+          <div class="banner-slider__track">
+            <a class="banner-slider__slide" href="play.html?id=50"><img src="../images/main/banner-01-01.png" alt="카드캡터 체리 다시 보러가기"></a>
+            <a class="banner-slider__slide" href="play.html?id=33"><img src="../images/main/banner-01-02.png" alt="디지몬 어드벤처 다시 보러가기"></a>
+            <a class="banner-slider__slide" href="play.html?id=25"><img src="../images/main/banner-01-03.png" alt="원피스 다시 보러가기"></a>
+          </div>
+          <span class="banner-slider__dots" aria-hidden="true"><i class="is-active"></i><i></i><i></i></span>
+        </section>
 
         <section class="main-section genre-section">
           <h2>장르 탐색</h2>
@@ -53,13 +60,15 @@
             <button type="button" data-genre="공포">공포</button>
           </div>
           <div id="genreRows" class="genre-rows" aria-live="polite"></div>
+          <a class="genre-vote-banner" href="vote.html" aria-label="최애 캐릭터 투표하기">
+            <img src="../images/main/banner.png" alt="내 최애를 골라줘! 캐릭터 투표">
+          </a>
         </section>
 
-        <section id="episodeBanner" class="episode-banner">
-          <h2>이번 주 신규 에피소드</h2>
-          <div class="slider-dots" aria-label="신규 에피소드 3개 중 1번째">
-            <span class="is-active"></span><span></span><span></span>
-          </div>
+        <section class="new-episode-section" aria-labelledby="newEpisodeTitle">
+          <h2 id="newEpisodeTitle">이번 주 신규 에피소드</h2>
+          <p>새롭게 업데이트된 에피소드를 만나보세요!</p>
+          <div id="newEpisodeList" class="new-episode-row" aria-live="polite"></div>
         </section>
 
         <section class="main-section movie-section">

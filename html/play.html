@@ -14,6 +14,7 @@
           <a class="back" href="main.html">‹</a>
           <img class="brand" src="../images/common/logo.png" alt="CHAMVERSE">
         </header>
+        <button id="playBackButton" class="play-back-button" type="button" aria-label="이전 페이지로 돌아가기">×</button>
         <section id="playHero" class="banner-play">
           <div>
             <h1 id="playTitle">작품 제목</h1>
@@ -27,16 +28,16 @@
             <button id="wishButton" class="secondary-btn">♡　찜하기</button>
           </div>
           <div class="feature-actions">
-            <button data-action="download">
-              <b>⇩</b>
-              다운로드
+            <button id="downloadAction" data-action="download" type="button">
+              <img id="downloadActionIcon" class="feature-icon" src="../images/play/icon-11.png" alt="">
+              <span id="downloadActionLabel">다운로드</span>
             </button>
-            <button data-action="share">
-              <b>⌯</b>
-              공유
+            <button data-action="share" type="button">
+              <img class="feature-icon" src="../images/play/icon-10.png" alt="">
+              <span>공유</span>
             </button>
             <button data-action="rating">
-              <b>☆</b>
+              <b id="ratingScore">평점</b>
               평가
             </button>
           </div>
