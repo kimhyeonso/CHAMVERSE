@@ -61,7 +61,7 @@
     );
 
     setTimeout(() => {
-      location.href = 'main.html';
+      location.href = 'index.html';
     }, 450);
   }
 

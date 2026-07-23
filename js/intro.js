@@ -1,5 +1,12 @@
 (function initializeChamverseIntro() {
+  const INTRO_LOGIN_HANDOFF_KEY =
+    'chamverse:intro-login-handoff';
+
+  const INTRO_INDEX_HANDOFF_KEY =
+    'chamverse:intro-index-handoff';
+
   const page = document.body;
+
   const canvas = document.querySelector(
     '.signal-noise'
   );
@@ -19,7 +26,7 @@
 
   /*
    * intro.html?preview=1로 접속하면
-   * 애니메이션 종료 후 다른 페이지로 이동하지 않습니다.
+   * 애니메이션이 끝난 뒤 다른 페이지로 이동하지 않습니다.
    */
   const isPreview =
     new URLSearchParams(location.search)
@@ -73,7 +80,7 @@
 
     return isLoggedIn
       ? page.dataset.memberDestination
-        || 'myPage.html'
+        || 'index.html'
       : page.dataset.guestDestination
         || 'login.html';
   }
@@ -86,16 +93,46 @@
     timers.length = 0;
   }
 
+  function rememberNextPageHandoff(destination) {
+    try {
+      const targetUrl = new URL(
+        destination,
+        location.href
+      );
+
+      const pathname =
+        targetUrl.pathname.toLowerCase();
+
+      if (pathname.endsWith('/login.html')) {
+        sessionStorage.setItem(
+          INTRO_LOGIN_HANDOFF_KEY,
+          'ready'
+        );
+      }
+
+      if (pathname.endsWith('/index.html')) {
+        sessionStorage.setItem(
+          INTRO_INDEX_HANDOFF_KEY,
+          'ready'
+        );
+      }
+    } catch {
+      /* 저장 공간을 사용할 수 없어도 이동은 계속합니다. */
+    }
+  }
+
   function navigateNext(immediate = false) {
     if (navigationStarted) return;
 
     navigationStarted = true;
+
     clearTimers();
     stopStatic();
 
     page.classList.add(
       'is-tv-on',
       'is-logo-coloring',
+      'is-logo-fading',
       'is-paper-wash'
     );
 
@@ -114,6 +151,8 @@
     }
 
     const destination = nextDestination();
+
+    rememberNextPageHandoff(destination);
 
     if (immediate) {
       location.replace(destination);
@@ -145,7 +184,7 @@
 
     let running = true;
     let frameRequest = 0;
-    let previousFrame = 0;
+    let previousFrame = -999;
 
     function resizeCanvas() {
       const width = Math.min(
@@ -175,7 +214,7 @@
       );
     }
 
-    function paintStatic(time) {
+    function paintStatic(time = 999) {
       if (!running) return;
 
       if (time - previousFrame < 48) {
@@ -315,12 +354,18 @@
       }
     );
 
-    frameRequest =
-      requestAnimationFrame(paintStatic);
+    /*
+     * 첫 프레임을 즉시 한 번 그립니다.
+     * 이게 있어야 노이즈 전에 보라색/빈 화면이 먼저 뜨지 않습니다.
+     */
+    paintStatic(999);
 
     return () => {
       running = false;
-      cancelAnimationFrame(frameRequest);
+
+      cancelAnimationFrame(
+        frameRequest
+      );
 
       window.removeEventListener(
         'resize',
@@ -330,18 +375,26 @@
   }
 
   /*
-   * 로고 PNG의 투명 영역을 분석해 실제 글자와
-   * 별·장식 조각을 자동으로 분리합니다.
+   * 로고 PNG의 투명 영역을 분석해 글자·별·장식과
+   * 로고 아래쪽의 빨간 곡선을 자동으로 분리합니다.
    */
   async function prepareLogoPieces() {
     const sourceImage = document.querySelector(
       '.logo-image--color'
     );
 
+    const whiteImage = document.querySelector(
+      '.logo-image--white'
+    );
+
     const pieceContainer =
       document.querySelector('.logo-letters');
 
-    if (!sourceImage || !pieceContainer) {
+    if (
+      !sourceImage
+      || !whiteImage
+      || !pieceContainer
+    ) {
       return;
     }
 
@@ -421,10 +474,7 @@
         ];
       }
 
-      function addNeighbor(
-        index,
-        tail
-      ) {
+      function addNeighbor(index, tail) {
         if (
           index < 0
           || index >= totalPixels
@@ -467,6 +517,7 @@
 
         while (head < tail) {
           const current = queue[head];
+
           head += 1;
 
           const x =
@@ -586,6 +637,24 @@
         });
       }
 
+      const underlineComponent = components
+        .filter((component) => {
+          const aspect =
+            component.width
+            / component.height;
+
+          return (
+            component.area > 42
+            && aspect > 3.1
+            && component.y
+              > sampleHeight * 0.54
+          );
+        })
+        .sort((left, right) => (
+          right.width - left.width
+          || right.area - left.area
+        ))[0];
+
       const candidates = components
         .filter((component) => {
           const aspect =
@@ -611,9 +680,12 @@
           || left.y - right.y
         ));
 
-      if (candidates.length < 7) {
+      if (
+        candidates.length < 7
+        || !underlineComponent
+      ) {
         throw new Error(
-          '로고 글자 조각을 충분히 찾지 못했습니다.'
+          '로고 글자와 곡선 조각을 충분히 찾지 못했습니다.'
         );
       }
 
@@ -651,94 +723,240 @@
 
       pieceContainer.replaceChildren();
 
-      candidates.forEach(
-        (component, index) => {
-          const padding = 3;
+      candidates.forEach((component, index) => {
+        const padding = 3;
 
-          const cropX = Math.max(
-            0,
-            component.x - padding
+        const cropX = Math.max(
+          0,
+          component.x - padding
+        );
+
+        const cropY = Math.max(
+          0,
+          component.y - padding
+        );
+
+        const cropWidth = Math.min(
+          sampleWidth - cropX,
+          component.width + padding * 2
+        );
+
+        const cropHeight = Math.min(
+          sampleHeight - cropY,
+          component.height + padding * 2
+        );
+
+        const pieceCanvas =
+          document.createElement('canvas');
+
+        pieceCanvas.width = cropWidth;
+        pieceCanvas.height = cropHeight;
+
+        const pieceContext =
+          pieceCanvas.getContext('2d');
+
+        if (!pieceContext) return;
+
+        pieceContext.putImageData(
+          workContext.getImageData(
+            cropX,
+            cropY,
+            cropWidth,
+            cropHeight
+          ),
+          0,
+          0
+        );
+
+        const piece =
+          document.createElement('img');
+
+        piece.className = 'logo-piece';
+        piece.alt = '';
+        piece.draggable = false;
+        piece.decoding = 'async';
+
+        piece.src =
+          pieceCanvas.toDataURL(
+            'image/png'
           );
 
-          const cropY = Math.max(
-            0,
-            component.y - padding
-          );
+        piece.style.left =
+          `${cropX / sampleWidth * 100}%`;
 
-          const cropWidth = Math.min(
-            sampleWidth - cropX,
-            component.width + padding * 2
-          );
+        piece.style.top =
+          `${cropY / sampleHeight * 100}%`;
 
-          const cropHeight = Math.min(
-            sampleHeight - cropY,
-            component.height + padding * 2
-          );
+        piece.style.width =
+          `${cropWidth / sampleWidth * 100}%`;
 
-          const pieceCanvas =
-            document.createElement('canvas');
+        piece.style.setProperty(
+          '--delay',
+          `${delays[index % delays.length]}ms`
+        );
 
-          pieceCanvas.width = cropWidth;
-          pieceCanvas.height = cropHeight;
+        piece.style.setProperty(
+          '--jump',
+          `${jumps[index % jumps.length]}px`
+        );
 
-          const pieceContext =
-            pieceCanvas.getContext('2d');
+        piece.style.setProperty(
+          '--tilt',
+          `${index % 2 === 0
+            ? -3 - index % 3
+            : 3 + index % 3}deg`
+        );
 
-          if (!pieceContext) return;
+        pieceContainer.append(piece);
+      });
 
-          pieceContext.putImageData(
-            workContext.getImageData(
-              cropX,
-              cropY,
-              cropWidth,
-              cropHeight
-            ),
-            0,
-            0
-          );
+      document
+        .querySelector('.logo-curve')
+        ?.remove();
 
-          const piece =
-            document.createElement('img');
+      const curvePadding = 5;
 
-          piece.className = 'logo-piece';
-          piece.alt = '';
-          piece.draggable = false;
-          piece.decoding = 'async';
-
-          piece.src =
-            pieceCanvas.toDataURL(
-              'image/png'
-            );
-
-          piece.style.left =
-            `${cropX / sampleWidth * 100}%`;
-
-          piece.style.top =
-            `${cropY / sampleHeight * 100}%`;
-
-          piece.style.width =
-            `${cropWidth / sampleWidth * 100}%`;
-
-          piece.style.setProperty(
-            '--delay',
-            `${delays[index % delays.length]}ms`
-          );
-
-          piece.style.setProperty(
-            '--jump',
-            `${jumps[index % jumps.length]}px`
-          );
-
-          piece.style.setProperty(
-            '--tilt',
-            `${index % 2 === 0
-              ? -3 - index % 3
-              : 3 + index % 3}deg`
-          );
-
-          pieceContainer.append(piece);
-        }
+      const curveX = Math.max(
+        0,
+        underlineComponent.x - curvePadding
       );
+
+      const curveY = Math.max(
+        0,
+        underlineComponent.y - curvePadding
+      );
+
+      const curveWidth = Math.min(
+        sampleWidth - curveX,
+        underlineComponent.width
+          + curvePadding * 2
+      );
+
+      const curveHeight = Math.min(
+        sampleHeight - curveY,
+        underlineComponent.height
+          + curvePadding * 2
+      );
+
+      const curveCanvas =
+        document.createElement('canvas');
+
+      curveCanvas.width = curveWidth;
+      curveCanvas.height = curveHeight;
+
+      const curveContext =
+        curveCanvas.getContext('2d');
+
+      if (!curveContext) {
+        throw new Error(
+          '로고 곡선을 분리할 수 없습니다.'
+        );
+      }
+
+      curveContext.putImageData(
+        workContext.getImageData(
+          curveX,
+          curveY,
+          curveWidth,
+          curveHeight
+        ),
+        0,
+        0
+      );
+
+      const curveContainer =
+        document.createElement('div');
+
+      curveContainer.className =
+        'logo-curve';
+
+      const curvePiece =
+        document.createElement('img');
+
+      curvePiece.className =
+        'logo-curve-piece';
+
+      curvePiece.alt = '';
+      curvePiece.draggable = false;
+      curvePiece.decoding = 'async';
+
+      curvePiece.src =
+        curveCanvas.toDataURL(
+          'image/png'
+        );
+
+      curvePiece.style.left =
+        `${curveX / sampleWidth * 100}%`;
+
+      curvePiece.style.top =
+        `${curveY / sampleHeight * 100}%`;
+
+      curvePiece.style.width =
+        `${curveWidth / sampleWidth * 100}%`;
+
+      curveContainer.append(
+        curvePiece
+      );
+
+      pieceContainer.insertAdjacentElement(
+        'afterend',
+        curveContainer
+      );
+
+      const baseLogoCanvas =
+        document.createElement('canvas');
+
+      baseLogoCanvas.width =
+        sampleWidth;
+
+      baseLogoCanvas.height =
+        sampleHeight;
+
+      const baseLogoContext =
+        baseLogoCanvas.getContext('2d');
+
+      if (!baseLogoContext) {
+        throw new Error(
+          '곡선 없는 로고를 만들 수 없습니다.'
+        );
+      }
+
+      baseLogoContext.drawImage(
+        sourceImage,
+        0,
+        0,
+        sampleWidth,
+        sampleHeight
+      );
+
+      baseLogoContext.clearRect(
+        curveX,
+        curveY,
+        curveWidth,
+        curveHeight
+      );
+
+      const baseLogoUrl =
+        baseLogoCanvas.toDataURL(
+          'image/png'
+        );
+
+      sourceImage.src = baseLogoUrl;
+      whiteImage.src = baseLogoUrl;
+
+      await Promise.all([
+        sourceImage
+          .decode()
+          .catch(() => {}),
+
+        whiteImage
+          .decode()
+          .catch(() => {}),
+
+        curvePiece
+          .decode()
+          .catch(() => {})
+      ]);
 
       page.classList.add(
         'logo-pieces-ready'
@@ -758,12 +976,20 @@
   function playFullIntro() {
     stopStatic = createStaticRenderer();
 
-    requestAnimationFrame(() => {
-      page.classList.add('is-playing');
-    });
+    page.classList.add(
+      'is-playing'
+    );
+
+    /*
+     * 로고 조각 준비는 기다리지 않습니다.
+     * 기다리면 그 사이에 검은/보라 대기 화면이 먼저 보입니다.
+     */
+    prepareLogoPieces();
 
     schedule(() => {
-      page.classList.add('is-tv-on');
+      page.classList.add(
+        'is-tv-on'
+      );
 
       updateStatus(
         '챔버스 로고의 불을 켜고 있습니다.'
@@ -781,6 +1007,16 @@
     }, 2540);
 
     schedule(() => {
+      page.classList.add(
+        'is-logo-fading'
+      );
+
+      updateStatus(
+        '로고를 정리하고 있습니다.'
+      );
+    }, 3920);
+
+    schedule(() => {
       stopStatic();
 
       page.classList.add(
@@ -790,7 +1026,7 @@
       updateStatus(
         '다음 화면을 준비하고 있습니다.'
       );
-    }, 4040);
+    }, 4320);
 
     schedule(() => {
       navigateNext();
@@ -802,12 +1038,15 @@
       'is-playing',
       'is-tv-on',
       'is-logo-coloring',
+      'is-logo-fading',
       'is-paper-wash'
     );
 
     updateStatus(
       '다음 화면을 준비하고 있습니다.'
     );
+
+    prepareLogoPieces();
 
     schedule(() => {
       navigateNext();
@@ -832,11 +1071,9 @@
     }
   );
 
-  prepareLogoPieces().finally(() => {
-    if (prefersReducedMotion) {
-      playReducedIntro();
-    } else {
-      playFullIntro();
-    }
-  });
+  if (prefersReducedMotion) {
+    playReducedIntro();
+  } else {
+    playFullIntro();
+  }
 }());

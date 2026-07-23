@@ -2,11 +2,15 @@
 
 :root {
   color-scheme: dark;
-  --intro-cream: #fff8ef;
-  --intro-cream-deep: #ffefe0;
-  --intro-dark: #121219;
+  --intro-cream: #fffbf5;
+  --intro-cream-deep: #fff4e9;
+  --intro-dark: #07070a;
   --intro-logo-width: clamp(310px, 54vw, 760px);
   --intro-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@view-transition {
+  navigation: auto;
 }
 
 * {
@@ -40,7 +44,14 @@ button {
 }
 
 .intro-page {
-  background: var(--intro-dark);
+  background-color: var(--intro-dark);
+  transition:
+    background-color 760ms var(--intro-ease);
+}
+
+.intro-page.is-paper-wash,
+.intro-page.is-exiting {
+  background-color: var(--intro-cream);
 }
 
 .intro-stage {
@@ -50,17 +61,23 @@ button {
   height: 100svh;
   min-height: 520px;
   overflow: hidden;
-  background:
-    radial-gradient(
-      circle at 50% 46%,
-      #34343d 0,
-      #202027 34%,
-      #121219 76%
-    );
+  background: #07070a;
   opacity: 1;
   transition:
     opacity 420ms ease,
     filter 420ms ease;
+}
+
+.intro-stage::after {
+  position: absolute;
+  z-index: 11;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background: var(--intro-cream);
+  opacity: 0;
+  transition:
+    opacity 520ms ease;
 }
 
 /* 아날로그 TV 노이즈 */
@@ -82,87 +99,100 @@ button {
   z-index: 2;
   width: 100%;
   height: 100%;
-  opacity: 0.66;
+  opacity: 0.82;
   mix-blend-mode: screen;
   image-rendering: pixelated;
-  transform: scale(1.035);
-  filter: contrast(1.28) brightness(0.84);
+  transform: scale(1.045);
+  filter: contrast(1.25) brightness(0.86);
   transition:
-    opacity 720ms ease,
-    filter 720ms ease,
-    transform 720ms var(--intro-ease);
+    opacity 520ms ease,
+    filter 520ms ease,
+    transform 520ms var(--intro-ease);
 }
 
 .color-static {
   z-index: 3;
-  opacity: 0.7;
+  opacity: 0;
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(255, 65, 101, 0.16) 0 2px,
-      rgba(70, 202, 255, 0.1) 2px 4px,
-      rgba(255, 225, 74, 0.08) 4px 7px,
-      transparent 7px 11px
+      rgba(255, 65, 101, 0.12) 0 2px,
+      rgba(70, 202, 255, 0.08) 2px 4px,
+      rgba(255, 225, 74, 0.06) 4px 7px,
+      transparent 7px 12px
     ),
     repeating-linear-gradient(
       90deg,
-      transparent 0 7%,
-      rgba(89, 122, 255, 0.1) 7% 11%,
-      transparent 11% 24%,
-      rgba(255, 78, 126, 0.09) 24% 29%,
-      transparent 29% 46%
+      transparent 0 9%,
+      rgba(89, 122, 255, 0.08) 9% 12%,
+      transparent 12% 28%,
+      rgba(255, 78, 126, 0.07) 28% 32%,
+      transparent 32% 48%
     );
   background-size:
-    100% 120px,
-    230% 100%;
+    100% 150px,
+    240% 100%;
   mix-blend-mode: screen;
   animation:
-    color-signal-shift 480ms steps(3, end)
+    color-signal-shift 720ms steps(3, end)
     infinite;
   transition:
-    opacity 620ms ease,
-    filter 620ms ease;
+    opacity 220ms ease,
+    filter 520ms ease;
+}
+
+.intro-page.is-playing .color-static {
+  opacity: 0.58;
 }
 
 .scanlines {
   z-index: 4;
-  opacity: 0.62;
+  opacity: 0;
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.07) 0,
-      rgba(255, 255, 255, 0.07) 1px,
-      rgba(0, 0, 0, 0.13) 1px,
-      rgba(0, 0, 0, 0.13) 3px
+      rgba(255, 255, 255, 0.055) 0,
+      rgba(255, 255, 255, 0.055) 1px,
+      rgba(0, 0, 0, 0.12) 1px,
+      rgba(0, 0, 0, 0.12) 4px
     );
   mix-blend-mode: overlay;
   animation:
-    scanline-drift 260ms steps(2, end)
+    scanline-drift 420ms steps(2, end)
     infinite;
-  transition: opacity 620ms ease;
+  transition:
+    opacity 220ms ease;
+}
+
+.intro-page.is-playing .scanlines {
+  opacity: 0.54;
 }
 
 .tracking-lines {
   z-index: 5;
-  opacity: 0.74;
+  opacity: 0;
   background:
     linear-gradient(
       to bottom,
       transparent 0 12%,
-      rgba(255, 255, 255, 0.18) 12.3%,
+      rgba(255, 255, 255, 0.14) 12.3%,
       transparent 13% 38%,
-      rgba(123, 230, 255, 0.15) 38.2%,
+      rgba(123, 230, 255, 0.11) 38.2%,
       transparent 39% 69%,
-      rgba(255, 106, 151, 0.12) 69.2%,
+      rgba(255, 106, 151, 0.1) 69.2%,
       transparent 70%
     );
-  background-size: 100% 180%;
+  background-size: 100% 190%;
   filter: blur(0.4px);
   animation:
-    tracking-roll 1.3s linear infinite;
+    tracking-roll 1.8s linear infinite;
   transition:
-    opacity 620ms ease,
-    filter 620ms ease;
+    opacity 220ms ease,
+    filter 520ms ease;
+}
+
+.intro-page.is-playing .tracking-lines {
+  opacity: 0.62;
 }
 
 .screen-vignette {
@@ -177,13 +207,14 @@ button {
   box-shadow:
     inset 0 0 90px rgba(0, 0, 0, 0.48),
     inset 0 0 15px rgba(255, 255, 255, 0.09);
-  opacity: 1;
-  transition: opacity 720ms ease;
+  opacity: 0.95;
+  transition:
+    opacity 720ms ease;
 }
 
 .intro-page.is-playing .intro-stage {
   animation:
-    screen-flicker 310ms steps(2, end)
+    screen-flicker 460ms steps(2, end)
     infinite;
 }
 
@@ -221,7 +252,9 @@ button {
     0 0 10px #fff,
     0 0 28px rgba(255, 255, 255, 0.95),
     0 0 72px rgba(204, 239, 255, 0.8);
-  transform: translateY(-50%) scaleX(0);
+  transform:
+    translateY(-50%)
+    scaleX(0);
   transform-origin: center;
 }
 
@@ -237,32 +270,88 @@ button {
 
 .intro-page.is-tv-on .signal-noise {
   opacity: 0;
-  filter: contrast(1.6) brightness(2.5);
-  transform: scale(1.12);
+  filter: contrast(1.4) brightness(2.2);
+  transform: scale(1.08);
 }
 
 .intro-page.is-tv-on .color-static,
 .intro-page.is-tv-on .scanlines,
 .intro-page.is-tv-on .tracking-lines {
   opacity: 0;
-  filter: brightness(2.3);
+  filter: brightness(2);
 }
 
 .intro-page.is-tv-on .screen-vignette {
   opacity: 0;
 }
 
-/* 흰색 발광 로고 */
+/* 로딩 표시 */
+
+.loading-mark {
+  position: absolute;
+  z-index: 19;
+  left: 50%;
+  bottom: clamp(42px, 8vh, 76px);
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.44em;
+  text-indent: 0.44em;
+  opacity: 0;
+  text-shadow:
+    0 0 5px rgba(255, 255, 255, 0.42),
+    0 0 12px rgba(144, 194, 255, 0.24);
+  transform:
+    translateX(-50%)
+    translateY(6px);
+  transition:
+    opacity 320ms ease,
+    transform 320ms ease;
+}
+
+.loading-mark span {
+  display: inline-block;
+  letter-spacing: 0.12em;
+  text-indent: 0;
+  animation:
+    loading-dots 900ms steps(3, end)
+    infinite;
+}
+
+.intro-page.is-playing .loading-mark {
+  opacity: 1;
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+.intro-page.is-tv-on .loading-mark,
+.intro-page.is-logo-coloring .loading-mark,
+.intro-page.is-paper-wash .loading-mark,
+.intro-page.is-exiting .loading-mark {
+  opacity: 0;
+  transform:
+    translateX(-50%)
+    translateY(8px);
+}
+
+/* 로고 */
 
 .logo-scene {
   position: absolute;
   z-index: 12;
   inset: 0;
   pointer-events: none;
-  transform: translateY(0) scale(1);
+  opacity: 1;
+  transform:
+    translateY(0)
+    scale(1);
   transform-origin: center;
   transition:
-    transform 1150ms var(--intro-ease);
+    opacity 620ms ease,
+    transform 760ms var(--intro-ease),
+    filter 620ms ease;
 }
 
 .logo-halo {
@@ -301,14 +390,14 @@ button {
     scale(0.94);
   transform-origin: center;
   transition:
-    top 1150ms var(--intro-ease),
     opacity 700ms ease,
     transform 1150ms var(--intro-ease),
     filter 720ms ease;
 }
 
 .logo-image,
-.logo-letters {
+.logo-letters,
+.logo-curve {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -348,6 +437,11 @@ button {
   z-index: 4;
 }
 
+.logo-curve {
+  z-index: 5;
+  pointer-events: none;
+}
+
 .logo-piece {
   position: absolute;
   display: block;
@@ -357,8 +451,20 @@ button {
   transform-origin: center;
   will-change:
     transform,
-    opacity,
-    filter;
+    opacity;
+}
+
+.logo-curve-piece {
+  position: absolute;
+  display: block;
+  max-width: none;
+  height: auto;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transform-origin: left center;
+  will-change:
+    clip-path,
+    opacity;
 }
 
 .intro-page.is-playing .logo-shell {
@@ -368,7 +474,8 @@ button {
     scale(1);
   animation:
     white-logo-arrival 1.35s 160ms
-    var(--intro-ease) both;
+    var(--intro-ease)
+    both;
 }
 
 .intro-page.is-playing .logo-halo {
@@ -413,6 +520,36 @@ button {
     ease forwards;
 }
 
+.intro-page.is-logo-coloring .logo-curve-piece {
+  animation:
+    curve-draw 900ms 720ms
+    var(--intro-ease)
+    both;
+}
+
+.intro-page.is-logo-fading .logo-scene {
+  opacity: 0;
+  filter: blur(2px);
+  transform:
+    translateY(-8px)
+    scale(0.96);
+}
+
+.intro-page.is-paper-wash .logo-scene {
+  opacity: 0;
+  filter: blur(2px);
+  transform:
+    translateY(-8px)
+    scale(0.96);
+}
+
+.intro-page.is-paper-wash .logo-halo {
+  opacity: 0;
+  transform:
+    translate(-50%, -50%)
+    scale(0.76);
+}
+
 /* 크림색이 종이에 번지듯 채워지는 전환 */
 
 .paper-wash {
@@ -423,22 +560,22 @@ button {
     radial-gradient(
       circle at 51% 48%,
       rgba(255, 255, 255, 0.98) 0 13%,
-      rgba(255, 249, 241, 0.98) 29%,
-      rgba(255, 240, 224, 0.98) 57%,
+      rgba(255, 251, 245, 0.98) 29%,
+      rgba(255, 246, 236, 0.98) 57%,
       var(--intro-cream) 78%
     ),
     radial-gradient(
       circle at 26% 36%,
-      rgba(255, 227, 204, 0.58),
+      rgba(255, 246, 236, 0.5),
       transparent 34%
     ),
     radial-gradient(
       circle at 75% 66%,
-      rgba(255, 235, 213, 0.52),
+      rgba(255, 248, 240, 0.48),
       transparent 36%
     );
   clip-path: circle(0% at 50% 50%);
-  filter: saturate(0.92);
+  filter: saturate(0.94);
 }
 
 .paper-wash::before,
@@ -452,86 +589,21 @@ button {
 .paper-wash::before {
   inset: 18% 9% 31% 23%;
   background:
-    rgba(255, 245, 232, 0.64);
+    rgba(255, 251, 245, 0.68);
 }
 
 .paper-wash::after {
   inset: 36% 26% 14% 8%;
   background:
-    rgba(255, 234, 211, 0.42);
+    rgba(255, 246, 236, 0.44);
 }
 
 .intro-page.is-paper-wash .paper-wash {
   opacity: 1;
   animation:
-    paper-spread 1250ms
+    paper-spread 1180ms
     var(--intro-ease)
     forwards;
-}
-
-.intro-page.is-paper-wash .logo-scene {
-  transform:
-    translateY(-14%)
-    scale(0.58);
-}
-
-.intro-page.is-paper-wash .logo-halo {
-  opacity: 0;
-  transform:
-    translate(-50%, -50%)
-    scale(0.76);
-}
-
-.intro-page.is-paper-wash .loading-mark {
-  opacity: 0;
-  transform:
-    translateX(-50%)
-    translateY(12px);
-}
-
-/* 로딩 표시 */
-
-.loading-mark {
-  position: absolute;
-  z-index: 14;
-  bottom: clamp(44px, 8vh, 84px);
-  left: 50%;
-  display: flex;
-  color: rgba(255, 255, 255, 0.78);
-  align-items: center;
-  gap: 7px;
-  letter-spacing: 0.42em;
-  font-size: 10px;
-  font-weight: 600;
-  text-indent: 0.42em;
-  transform: translateX(-50%);
-  transition:
-    color 500ms ease,
-    opacity 400ms ease,
-    transform 500ms var(--intro-ease);
-}
-
-.loading-mark__dots {
-  display: flex;
-  margin-left: -2px;
-  gap: 4px;
-}
-
-.loading-mark__dots i {
-  width: 3px;
-  height: 3px;
-  background: currentColor;
-  border-radius: 50%;
-  animation:
-    loading-dot 840ms ease-in-out infinite;
-}
-
-.loading-mark__dots i:nth-child(2) {
-  animation-delay: 120ms;
-}
-
-.loading-mark__dots i:nth-child(3) {
-  animation-delay: 240ms;
 }
 
 /* 건너뛰기 */
@@ -572,7 +644,9 @@ button {
   box-shadow:
     0 10px 24px rgba(0, 0, 0, 0.32),
     inset 0 2px 4px rgba(0, 0, 0, 0.16);
-  transform: translateY(1px) scale(0.97);
+  transform:
+    translateY(1px)
+    scale(0.97);
 }
 
 .intro-page.is-paper-wash .skip-intro {
@@ -584,9 +658,30 @@ button {
   opacity: 0;
 }
 
+.intro-page.is-exiting .intro-stage::after {
+  opacity: 1;
+}
+
 .intro-page.is-exiting .intro-stage {
-  opacity: 0;
-  filter: brightness(1.04);
+  opacity: 1;
+  filter: none;
+}
+
+/* 페이지 전환 */
+
+::view-transition-group(root) {
+  animation-duration: 720ms;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(root) {
+  animation:
+    intro-root-out 720ms ease both;
+}
+
+::view-transition-new(root) {
+  animation:
+    intro-root-in 720ms ease both;
 }
 
 .noscript-message {
@@ -670,15 +765,11 @@ button {
 @keyframes screen-flicker {
   0%,
   100% {
-    filter: brightness(0.96);
+    filter: brightness(0.98);
   }
 
-  34% {
-    filter: brightness(1.06);
-  }
-
-  68% {
-    filter: brightness(0.9);
+  50% {
+    filter: brightness(1.04);
   }
 }
 
@@ -721,6 +812,20 @@ button {
     transform:
       translateY(-50%)
       scaleX(1.06);
+  }
+}
+
+@keyframes loading-dots {
+  0% {
+    opacity: 0.22;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.22;
   }
 }
 
@@ -767,79 +872,61 @@ button {
 @keyframes letter-pop {
   0% {
     opacity: 0;
-    filter:
-      brightness(1.72)
-      saturate(0.3)
-      drop-shadow(0 0 3px #fff);
     transform:
-      translateY(9px)
-      rotate(0)
-      scale(0.92);
-  }
-
-  16% {
-    opacity: 1;
-  }
-
-  43% {
-    opacity: 1;
-    filter:
-      brightness(1.2)
-      saturate(1.1)
-      drop-shadow(
-        0 0 8px rgba(255, 255, 255, 0.92)
-      )
-      drop-shadow(
-        0 0 17px rgba(255, 222, 101, 0.62)
-      );
-    transform:
-      translateY(calc(var(--jump) * -1))
+      translateY(var(--jump))
       rotate(var(--tilt))
-      scale(1.08);
-  }
-
-  68% {
+      scale(0.82);
     filter:
-      brightness(1.04)
-      saturate(1.04)
-      drop-shadow(
-        0 4px 6px rgba(255, 114, 92, 0.13)
-      );
-    transform:
-      translateY(6px)
-      rotate(calc(var(--tilt) * -0.22))
-      scale(0.985);
+      blur(5px)
+      brightness(1.18);
   }
 
-  84% {
+  46% {
+    opacity: 1;
     transform:
-      translateY(-4px)
-      rotate(calc(var(--tilt) * 0.12))
-      scale(1.015);
+      translateY(calc(var(--jump) * -0.34))
+      rotate(calc(var(--tilt) * -0.55))
+      scale(1.12);
+    filter:
+      blur(0)
+      brightness(1.08);
+  }
+
+  72% {
+    opacity: 1;
+    transform:
+      translateY(3px)
+      rotate(calc(var(--tilt) * 0.22))
+      scale(0.98);
   }
 
   100% {
     opacity: 1;
-    filter:
-      brightness(1)
-      saturate(1)
-      drop-shadow(
-        0 4px 6px rgba(255, 114, 92, 0.08)
-      );
     transform:
       translateY(0)
-      rotate(0)
+      rotate(0deg)
       scale(1);
+    filter:
+      blur(0)
+      brightness(1);
   }
 }
 
-@keyframes color-logo-settle {
-  from {
+@keyframes curve-draw {
+  0% {
     opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    filter: blur(3px);
   }
 
-  to {
+  18% {
     opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    filter: blur(0);
   }
 }
 
@@ -853,11 +940,25 @@ button {
   }
 }
 
+@keyframes color-logo-settle {
+  from {
+    opacity: 0;
+    transform: scale(1.01);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes paper-spread {
   0% {
     opacity: 0;
     clip-path: circle(0% at 50% 50%);
-    transform: scale(0.96) rotate(-1deg);
+    transform:
+      scale(0.96)
+      rotate(-1deg);
   }
 
   18% {
@@ -871,20 +972,29 @@ button {
   100% {
     opacity: 1;
     clip-path: circle(84% at 50% 50%);
-    transform: scale(1.08) rotate(0);
+    transform:
+      scale(1.08)
+      rotate(0);
   }
 }
 
-@keyframes loading-dot {
-  0%,
-  100% {
-    opacity: 0.28;
-    transform: translateY(0);
+@keyframes intro-root-out {
+  from {
+    opacity: 1;
   }
 
-  45% {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes intro-root-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
     opacity: 1;
-    transform: translateY(-3px);
   }
 }
 
@@ -895,43 +1005,19 @@ button {
     --intro-logo-width: min(91vw, 430px);
   }
 
-  .intro-stage {
-    background:
-      radial-gradient(
-        circle at 50% 47%,
-        #393941 0,
-        #23232b 39%,
-        #13131a 82%
-      );
-  }
-
   .logo-halo {
     width: 108vw;
     height: 42vw;
     max-height: 210px;
   }
 
-  .intro-page.is-paper-wash .logo-scene {
-    transform:
-      translateY(-16%)
-      scale(0.86);
-  }
-
-  .intro-page.is-paper-wash .logo-halo {
-    opacity: 0;
+  .skip-intro {
+    font-size: 11px;
   }
 
   .loading-mark {
-    bottom:
-      max(
-        42px,
-        calc(6vh + env(safe-area-inset-bottom))
-      );
-    font-size: 9px;
-  }
-
-  .skip-intro {
-    font-size: 11px;
+    bottom: 48px;
+    font-size: 10px;
   }
 }
 
@@ -942,12 +1028,6 @@ button {
 
   .loading-mark {
     bottom: 28px;
-  }
-
-  .intro-page.is-paper-wash .logo-scene {
-    transform:
-      translateY(-8%)
-      scale(0.67);
   }
 }
 
