@@ -24,25 +24,62 @@
           <p>마음에 담아둔 작품을 한곳에서 편하게 만나보세요.</p>
         </section>
         <section class="continue-banner">
+          <span class="continue-label">이어보고 있는 작품</span>
           <div class="continue-thumb">
-            <img src="../images/contents/id-01.jpg" alt="이어보기">
-            <span class="thumb-play" aria-hidden="true"><i></i></span>
+            <video id="wishPlayer" poster="../images/contents/id-01.jpg" preload="metadata" playsinline>
+              <source src="../videos/crayon-shin-chan.mp4" type="video/mp4">
+              브라우저가 영상 재생을 지원하지 않습니다.
+            </video>
+            <button id="wishPlayButton" class="thumb-play" type="button" aria-label="짱구는 못말려 영상 재생"><i aria-hidden="true"></i></button>
+            <button id="wishLandscapeCloseButton" class="wish-landscape-close" type="button" aria-label="가로 전체화면 닫기">×</button>
           </div>
           <div>
             <strong>찜해둔 작품, 이어보세요!</strong>
-            <h3>최근 시청한 콘텐츠</h3>
-            <p>지난 시청 위치부터 이어볼 수 있어요.</p>
+            <h3>짱구는 못말려</h3>
+            <p>다섯 살 말썽꾸러기 짱구와 가족, 친구들이 펼치는 유쾌한 일상 이야기.</p>
             <div class="progress">
               <span style="--value:70%"></span>
             </div>
             <div class="continue-time"><span>10:45</span><span>24:25</span></div>
           </div>
+          <div class="continue-actions" aria-label="이어보기 작품 관리">
+            <button id="continuePlayButton" class="continue-primary" type="button"><span aria-hidden="true">▶</span> 이어보기</button>
+            <button id="continueWishButton" class="continue-secondary" type="button"><span aria-hidden="true">♥</span> 찜 해제</button>
+            <dl class="continue-meta">
+              <div><dt>총</dt><dd>12화</dd></div>
+              <div><dt>시청 등급</dt><dd>전체</dd></div>
+              <div><dt>최근 시청</dt><dd>2024.07.22</dd></div>
+            </dl>
+          </div>
+        </section>
+        <section id="wishTopEmpty" class="wish-empty wish-empty--top" hidden>
+          <img class="wish-empty__character" src="../images/main/profile07.png" alt="울고 있는 챔버스 캐릭터">
+          <div class="wish-empty__copy">
+            <h3>아직 찜한 작품이 없어요</h3>
+            <p>마음에 드는 애니를 찜하면<br>여기에 모아볼 수 있어요.</p>
+            <a class="primary-btn" href="main.html">콘텐츠 둘러보기</a>
+          </div>
+          <aside class="wish-empty__daily" aria-label="오늘의 추천">
+            <h4>오늘의 추천</h4>
+            <a href="play.html?id=50">
+              <img src="../images/contents/id-50.jpg" alt="">
+              <span><strong>카드캡터 체리</strong><small>판타지 · 1998</small></span>
+            </a>
+            <a href="play.html?id=43">
+              <img src="../images/contents/id-43.jpg" alt="">
+              <span><strong>꿈빛 파티시엘</strong><small>일상 · 2009</small></span>
+            </a>
+            <a href="play.html?id=7">
+              <img src="../images/contents/id-07.jpg" alt="">
+              <span><strong>도라에몽</strong><small>모험 · 2005</small></span>
+            </a>
+          </aside>
         </section>
         <section class="section">
           <div class="section-head">
             <div>
               <div class="title-with-icon">
-                <h2 class="section-title">내가 찜한 작품</h2>
+                <h2 class="section-title"><span id="wishSectionTitle">내가 찜한 작품</span> <span id="wishCount" class="wish-count"></span></h2>
                 <span class="section-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24"><path d="M20 8.8c0 5-8 10-8 10s-8-5-8-10a4.3 4.3 0 0 1 7.5-2.9L12 6.5l.5-.6A4.3 4.3 0 0 1 20 8.8z"></path></svg>
                 </span>
@@ -53,10 +90,36 @@
               <button type="button" class="tab" role="tab" aria-selected="false">시리즈</button>
               <button type="button" class="tab" role="tab" aria-selected="false">극장판</button>
             </div>
+            <div id="wishRecommendControls" class="wish-recommend-controls" hidden>
+              <button id="wishRecommendPrev" type="button" aria-label="이전 추천 작품">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+              </button>
+              <button id="wishRecommendNext" type="button" aria-label="다음 추천 작품">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+              </button>
+            </div>
           </div>
           <div id="wishList" class="wish-grid"></div>
         </section>
+        <section id="wishPopularSection" class="section wish-popular" hidden>
+          <div class="wish-popular__head">
+            <h2>지금 인기 작품 <span aria-hidden="true">🔥</span></h2>
+            <a href="main.html">전체보기 <span aria-hidden="true">›</span></a>
+          </div>
+          <div id="wishPopularList" class="wish-grid"></div>
+        </section>
       </main>
+      <footer class="main-footer">
+        <strong>CHAMVERSE</strong>
+        <a href="notice.html">서비스 안내 <span>＋</span></a>
+        <a href="notice.html">고객 지원 <span>＋</span></a>
+        <small>ⓒ 본 사이트는 비상업적 목적으로 제작되었습니다.</small>
+      </footer>
+    </div>
+    <div id="wishUndo" class="wish-undo" role="status" aria-live="polite">
+      <span class="wish-undo__icon" aria-hidden="true">✓</span>
+      <span>찜 목록에서 삭제했어요</span>
+      <button id="wishUndoButton" type="button">실행 취소</button>
     </div>
   <script src="../js/common.js"></script>
   <script src="../js/app-utils.js"></script>

@@ -20,24 +20,49 @@
         <div class="live-layout">
           <section class="live-primary" aria-labelledby="liveTitle">
             <div class="live-video">
-              <video id="livePlayer" poster="../images/contents/id-01.jpg" preload="metadata" playsinline>
-                <source src="../images/live/onepiece-live.mp4" type="video/mp4">
+              <video id="livePlayer" poster="../images/live/live01.jpg" preload="metadata" playsinline loop controlslist="nofullscreen">
+                <source src="../videos/onepiece-live.mp4" type="video/mp4">
                 브라우저가 영상 재생을 지원하지 않습니다.
               </video>
               <span class="live-badge">LIVE <i aria-hidden="true"></i></span>
-              <span class="viewer-count">라이브 시청 중</span>
               <button id="livePlayButton" class="play-mark" type="button" aria-label="원피스 라이브 영상 재생"><i aria-hidden="true"></i></button>
-            </div>
-            <div class="live-info">
-              <span class="tag live-now">현재 방송 중</span>
-              <h1 id="liveTitle" class="section-title">라이브 콘텐츠</h1>
-              <p id="liveDescription" class="description"></p>
+              <button id="landscapeCloseButton" class="landscape-close" type="button" aria-label="가로 전체화면 닫기">×</button>
+              <button id="liveFullscreenButton" class="live-fullscreen-button" type="button" aria-label="라이브 영상 전체화면으로 보기"><i aria-hidden="true"></i></button>
               <div class="meta" aria-label="방송 진행 시간">
                 <span id="liveElapsed">12:50:00</span>
                 <div id="liveProgress" class="progress" role="progressbar" aria-label="라이브 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75">
                   <span id="liveProgressBar"></span>
                 </div>
                 <span>13:00:00</span>
+              </div>
+            </div>
+            <div class="live-info">
+              <span class="tag live-now">현재 방송 중</span>
+              <h1 id="liveTitle" class="section-title">라이브 콘텐츠</h1>
+              <div class="live-genres" aria-label="콘텐츠 정보">
+                <span>판타지</span>
+                <span>액션</span>
+                <span>어드벤처</span>
+                <span>15세 이용가</span>
+              </div>
+              <div class="live-rating"><span aria-hidden="true">★</span> 4.8 <small>(12.3k)</small></div>
+              <p id="liveDescription" class="description"></p>
+              <div class="meta mobile-meta" aria-label="방송 진행 시간">
+                <span id="liveElapsedMobile">12:50:00</span>
+                <div id="liveProgressMobile" class="progress" role="progressbar" aria-label="라이브 진행률" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75">
+                  <span id="liveProgressBarMobile"></span>
+                </div>
+                <span>13:00:00</span>
+              </div>
+              <div class="live-actions">
+                <button id="liveWatchButton" class="live-watch" type="button">
+                  <i aria-hidden="true"></i>
+                  지금 시청하기
+                </button>
+                <button id="liveWishButton" class="live-wish" type="button">
+                  <span aria-hidden="true">♡</span>
+                  <b>찜하기</b>
+                </button>
               </div>
             </div>
           </section>
@@ -65,6 +90,12 @@
           </section>
         </div>
       </main>
+      <footer class="main-footer">
+        <strong>CHAMVERSE</strong>
+        <a href="notice.html">서비스 안내 <span>＋</span></a>
+        <a href="notice.html">고객 지원 <span>＋</span></a>
+        <small>ⓒ 본 사이트는 비상업적 목적으로 제작되었습니다.</small>
+      </footer>
     </div>
   <script src="../js/common.js"></script>
   <script src="../js/app-utils.js"></script>
