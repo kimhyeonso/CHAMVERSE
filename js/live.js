@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const elapsedTime = document.getElementById('liveElapsed');
   const progress = document.getElementById('liveProgress');
   const progressBar = document.getElementById('liveProgressBar');
+  const mobileElapsedTime = document.getElementById('liveElapsedMobile');
+  const mobileProgress = document.getElementById('liveProgressMobile');
+  const mobileProgressBar = document.getElementById('liveProgressBarMobile');
   const displayDurationInSeconds = 10 * 60;
   const animationDuration = 10 * 60 * 1000;
   const initialProgress = 0.75;
@@ -31,10 +34,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const currentSecond = Math.floor(animationRatio * displayDurationInSeconds);
 
     progressBar.style.transform = `scaleX(${progressRatio})`;
+    mobileProgressBar.style.transform = `scaleX(${progressRatio})`;
 
     if (currentSecond !== previousSecond) {
       elapsedTime.textContent = formatClock(startTimeInSeconds + currentSecond);
+      mobileElapsedTime.textContent = elapsedTime.textContent;
       progress.setAttribute('aria-valuenow', String(Math.round(progressRatio * 100)));
+      mobileProgress.setAttribute('aria-valuenow', progress.getAttribute('aria-valuenow'));
       previousSecond = currentSecond;
     }
 
@@ -43,6 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       progressAnimationId = requestAnimationFrame(animateLiveProgress);
     } else {
       progressBar.style.willChange = 'auto';
+      mobileProgressBar.style.willChange = 'auto';
     }
   };
 
@@ -61,11 +68,79 @@ document.addEventListener('DOMContentLoaded', async () => {
   const liveVideo = document.querySelector('.live-video');
   const livePlayer = document.getElementById('livePlayer');
   const livePlayButton = document.getElementById('livePlayButton');
+  const landscapeCloseButton = document.getElementById('landscapeCloseButton');
+  const liveFullscreenButton = document.getElementById('liveFullscreenButton');
+  const liveWatchButton = document.getElementById('liveWatchButton');
+  const liveWishButton = document.getElementById('liveWishButton');
+
+  const closeFallbackLandscape = () => {
+    liveVideo.classList.remove('is-fallback-landscape');
+    document.body.classList.remove('live-landscape-active');
+  };
+
+  const openLivePlayer = async () => {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
+    try {
+      if (liveVideo.requestFullscreen && (!isMobile || screen.orientation?.lock)) {
+        await liveVideo.requestFullscreen();
+
+        if (isMobile && screen.orientation?.lock) {
+          await screen.orientation.lock('landscape');
+        }
+
+        liveVideo.classList.add('is-native-fullscreen');
+        return;
+      }
+
+      if (!isMobile) return;
+    } catch {
+      if (document.fullscreenElement && document.exitFullscreen) {
+        await document.exitFullscreen().catch(() => {});
+      }
+    }
+
+    if (!isMobile) return;
+
+    /* 자동 회전이 막힌 모바일 브라우저에서는 영상을 직접 90도 회전합니다. */
+    liveVideo.classList.add('is-fallback-landscape');
+    document.body.classList.add('live-landscape-active');
+  };
+
+  landscapeCloseButton.addEventListener('click', async () => {
+    closeFallbackLandscape();
+
+    if (document.fullscreenElement && document.exitFullscreen) {
+      await document.exitFullscreen().catch(() => {});
+    }
+  });
+
+  liveFullscreenButton.addEventListener('click', () => {
+    openLivePlayer();
+  });
+
+  liveWatchButton.addEventListener('click', () => {
+    livePlayButton.click();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeFallbackLandscape();
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && liveVideo.classList.contains('is-native-fullscreen')) {
+      liveVideo.classList.remove('is-native-fullscreen');
+    }
+  });
 
   livePlayButton.addEventListener('click', async () => {
+    liveVideo.classList.add('has-started');
+
     try {
       livePlayer.controls = true;
-      await livePlayer.play();
+      const playPromise = livePlayer.play();
+      await openLivePlayer();
+      await playPromise;
     } catch {
       livePlayer.controls = false;
       ChamverseApp.showToast('영상을 재생할 수 없어요');
@@ -84,6 +159,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   livePlayer.addEventListener('ended', () => {
+    closeFallbackLandscape();
     liveVideo.classList.remove('is-playing');
     livePlayer.controls = false;
     livePlayer.currentTime = 0;
@@ -93,8 +169,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const items = await ChamverseApp.getContents();
   const live = items.find((item) => item.isLive) || items.find((item) => item.isRecommend) || items[0];
+  const syncLiveWishButton = () => {
+    const isWished = ChamverseApp.uniqueIds(ChamverseApp.KEY.wish).includes(live.id);
+    liveWishButton.classList.toggle('is-set', isWished);
+    liveWishButton.querySelector('span').textContent = isWished ? '♥' : '♡';
+    liveWishButton.querySelector('b').textContent = isWished ? '찜 완료' : '찜하기';
+  };
+  syncLiveWishButton();
+  liveWishButton.addEventListener('click', () => {
+    ChamverseApp.toggleId(ChamverseApp.KEY.wish, live.id);
+    syncLiveWishButton();
+  });
   const schedule = [live, ...items.filter((item) => item.id !== live.id).slice(0, 5)];
-  livePlayer.poster = live.poster;
+  livePlayer.poster = '../images/live/live01.jpg';
   document.getElementById('liveTitle').textContent = live.title;
   document.getElementById('liveDescription').textContent = live.description;
   const scheduleTimes = ['12:30', '13:00', '13:30', '14:00', '14:30', '15:00'];
@@ -105,19 +192,21 @@ document.addEventListener('DOMContentLoaded', async () => {
       <div class="schedule-row">
         <div class="schedule-status">
           <time>${scheduleTimes[index]}</time>
+          ${index < 2 ? `<strong class="desktop-schedule-label">${index === 0 ? 'LIVE' : 'NEXT'}</strong>` : ''}
         </div>
         <div class="schedule-copy">
           <div class="schedule-title-line">
             <h3>${item.title}</h3>
-            ${index < 2 ? `<strong>${index === 0 ? 'NOW' : 'NEXT'}</strong>` : ''}
+            ${index < 2 ? `<strong class="mobile-schedule-label">${index === 0 ? 'NOW' : 'NEXT'}</strong>` : ''}
           </div>
           <p>${item.description}</p>
+          <small class="schedule-duration">${item.runningTime || '25분'}</small>
         </div>
         <div class="schedule-action">
           <button type="button" class="${alertEnabled ? 'is-set' : ''}" aria-label="${index === 0 ? `${item.title} 라이브 시청` : `${item.title} 라이브 알림 ${alertEnabled ? '취소' : '설정'}`}" data-live-alert="${item.id}">
             ${index === 0
-              ? '<span class="button-label">라이브</span>'
-              : `<span class="notification-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10.3 21a2 2 0 0 0 3.4 0"></path></svg></span><span class="button-label">${alertEnabled ? '설정됨' : '알림'}</span>`}
+              ? '<span class="schedule-play-icon" aria-hidden="true"></span><span class="button-label desktop-button-label">시청하기</span><span class="button-label mobile-button-label">라이브</span>'
+              : `<span class="notification-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"></path><path d="M10.3 21a2 2 0 0 0 3.4 0"></path></svg></span><span class="button-label desktop-button-label">${alertEnabled ? '설정됨' : '알림 설정'}</span><span class="button-label mobile-button-label">${alertEnabled ? '설정됨' : '알림'}</span>`}
           </button>
         </div>
       </div>`;
