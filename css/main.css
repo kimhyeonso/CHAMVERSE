@@ -46,6 +46,7 @@
   border-radius: 14px;
   flex-direction: column;
   justify-content: flex-start;
+  touch-action: pan-y;
   transition: opacity 180ms ease;
 }
 
@@ -393,6 +394,12 @@
   margin-top: 52px;
   overflow: hidden;
   border-radius: 13px;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.vote-banner.is-dragging {
+  cursor: grabbing;
 }
 
 .banner-slider__track {
@@ -517,7 +524,7 @@
   z-index: 5;
   bottom: -6px;
   left: 0;
-  width: 136px;
+  width: 120px;
   max-width: none;
   height: auto;
   object-fit: contain;
@@ -797,7 +804,7 @@
 
 @media (min-width: 769px) {
   .main-page {
-    width: min(100%, 1280px);
+    width: min(100%, 1220px);
     padding-right: 48px;
     padding-left: 48px;
   }
@@ -812,7 +819,6 @@
     grid-auto-columns: calc((100% - 44px) / 5);
   }
 
-  .vote-banner,
   .episode-banner {
     max-width: 880px;
     margin-right: auto;
@@ -1002,7 +1008,7 @@
 
   .genre-lead img {
     bottom: -5px;
-    width: 122px;
+    width: 108px;
     height: auto;
   }
 

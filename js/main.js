@@ -75,13 +75,40 @@ document.addEventListener('DOMContentLoaded', async () => {
   heroElement.addEventListener('mouseenter', () => window.clearInterval(heroSliderTimer));
   heroElement.addEventListener('mouseleave', restartHeroSlider);
 
+  let heroSwipeStartX = 0;
+  heroElement.addEventListener('pointerdown', (event) => {
+    if (event.target.closest('a, button')) return;
+    heroSwipeStartX = event.clientX;
+    window.clearInterval(heroSliderTimer);
+  });
+
+  heroElement.addEventListener('pointerup', (event) => {
+    if (!heroSwipeStartX) return;
+    const swipeDistance = event.clientX - heroSwipeStartX;
+    heroSwipeStartX = 0;
+    if (Math.abs(swipeDistance) >= 40) {
+      const nextIndex = swipeDistance < 0
+        ? (heroIndex + 1) % heroSlides.length
+        : (heroIndex - 1 + heroSlides.length) % heroSlides.length;
+      renderHero(nextIndex, true);
+    }
+    restartHeroSlider();
+  });
+
+  heroElement.addEventListener('pointercancel', () => {
+    heroSwipeStartX = 0;
+    restartHeroSlider();
+  });
+
   const posterMarkup = (item, className, extra = '') => `
     <a class="${className}" href="play.html?id=${item.id}" ${extra}>
       <span class="${className}__poster"><img src="${item.poster}" alt="${item.title}" loading="lazy"></span>
       <h3>${item.title}</h3>
     </a>`;
 
-  const topItems = items.filter((item) => item.isTop10).slice(0, 10);
+  const shuffleItems = (source) => [...source].sort(() => Math.random() - 0.5);
+  const topItems = shuffleItems(items.filter((item) => item.isTop10)).slice(0, 10);
+  const topItemIds = new Set(topItems.map((item) => item.id));
   topTenList.innerHTML = topItems.map((item, index) => `
     <a class="rank-card" href="play.html?id=${item.id}" data-rank="${index + 1}" aria-label="${index + 1}위 ${item.title}">
       <span class="rank-card__poster"><img src="${item.poster}" alt="${item.title}" loading="lazy"></span>
@@ -92,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let isDragging = false;
 
   topTenList.addEventListener('pointerdown', (event) => {
-    if (event.pointerType === 'touch') return;
+    if (event.pointerType === 'touch' || event.target.closest('a')) return;
     isDragging = true;
     dragStartX = event.clientX;
     dragStartScroll = topTenList.scrollLeft;
@@ -120,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   let isContinueDragging = false;
 
   continueList.addEventListener('pointerdown', (event) => {
-    if (event.pointerType === 'touch') return;
+    if (event.pointerType === 'touch' || event.target.closest('a')) return;
     isContinueDragging = true;
     continueDragStartX = event.clientX;
     continueDragStartScroll = continueList.scrollLeft;
@@ -146,8 +173,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const watching = ChamverseApp.read(ChamverseApp.KEY.continueWatching, []);
   const continueItems = watching
     .map((entry) => ({ item: items.find((content) => content.id === Number(entry.contentId)), progress: entry.progress }))
-    .filter((entry) => entry.item);
-  const visibleContinue = continueItems.length ? continueItems.slice(0, 6) : recommended.slice(0, 6).map((item, index) => ({ item, progress: 0.25 + index * 0.05 }));
+    .filter((entry) => entry.item && !topItemIds.has(entry.item.id));
+  const fallbackContinue = shuffleItems(recommended.filter((item) => !topItemIds.has(item.id)))
+    .slice(0, 6)
+    .map((item, index) => ({ item, progress: 0.25 + index * 0.05 }));
+  const visibleContinue = continueItems.length ? shuffleItems(continueItems).slice(0, 6) : fallbackContinue;
   continueList.innerHTML = visibleContinue.map(({ item, progress }) => `
     <a class="continue-card" href="play.html?id=${item.id}">
       <span class="continue-card__image">
@@ -164,27 +194,34 @@ document.addEventListener('DOMContentLoaded', async () => {
   const bannerSlides = [...bannerTrack.children];
   const bannerDots = [...continueBannerSlider.querySelectorAll('.banner-slider__dots i')];
   const firstBannerClone = bannerSlides[0].cloneNode(true);
+  const lastBannerClone = bannerSlides[bannerSlides.length - 1].cloneNode(true);
   firstBannerClone.setAttribute('aria-hidden', 'true');
+  lastBannerClone.setAttribute('aria-hidden', 'true');
+  bannerTrack.prepend(lastBannerClone);
   bannerTrack.appendChild(firstBannerClone);
-  let bannerIndex = 0;
+  let bannerIndex = 1;
   let bannerTimer;
 
   const updateBannerDots = () => {
-    bannerDots.forEach((dot, index) => dot.classList.toggle('is-active', index === bannerIndex));
+    const activeIndex = (bannerIndex - 1 + bannerSlides.length) % bannerSlides.length;
+    bannerDots.forEach((dot, index) => dot.classList.toggle('is-active', index === activeIndex));
   };
 
-  const moveBanner = () => {
-    bannerIndex += 1;
+  const moveBanner = (direction = 1) => {
+    bannerIndex += direction;
     bannerTrack.style.transition = 'transform 480ms ease';
     bannerTrack.style.transform = `translateX(-${bannerIndex * 100}%)`;
     updateBannerDots();
   };
 
+  bannerTrack.style.transform = 'translateX(-100%)';
+
   bannerTrack.addEventListener('transitionend', () => {
-    if (bannerIndex !== bannerSlides.length) return;
-    bannerIndex = 0;
+    if (bannerIndex !== bannerSlides.length + 1 && bannerIndex !== 0) return;
+    if (bannerIndex === bannerSlides.length + 1) bannerIndex = 1;
+    if (bannerIndex === 0) bannerIndex = bannerSlides.length;
     bannerTrack.style.transition = 'none';
-    bannerTrack.style.transform = 'translateX(0)';
+    bannerTrack.style.transform = `translateX(-${bannerIndex * 100}%)`;
     updateBannerDots();
   });
 
@@ -195,6 +232,55 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   continueBannerSlider.addEventListener('mouseenter', () => window.clearInterval(bannerTimer));
   continueBannerSlider.addEventListener('mouseleave', startBannerSlider);
+
+  let bannerSwipeStartX = 0;
+  let bannerWasDragged = false;
+  let bannerPointerId = null;
+  let bannerPressedLink = null;
+  continueBannerSlider.addEventListener('pointerdown', (event) => {
+    if (!event.isPrimary) return;
+    bannerSwipeStartX = event.clientX;
+    bannerWasDragged = false;
+    bannerPointerId = event.pointerId;
+    bannerPressedLink = event.target.closest('a.banner-slider__slide');
+    continueBannerSlider.classList.add('is-dragging');
+    continueBannerSlider.setPointerCapture(event.pointerId);
+    window.clearInterval(bannerTimer);
+  });
+
+  continueBannerSlider.addEventListener('pointerup', (event) => {
+    if (!bannerSwipeStartX || event.pointerId !== bannerPointerId) return;
+    const swipeDistance = event.clientX - bannerSwipeStartX;
+    bannerSwipeStartX = 0;
+    bannerPointerId = null;
+    continueBannerSlider.classList.remove('is-dragging');
+    if (continueBannerSlider.hasPointerCapture(event.pointerId)) {
+      continueBannerSlider.releasePointerCapture(event.pointerId);
+    }
+    if (Math.abs(swipeDistance) >= 40) {
+      bannerWasDragged = true;
+      moveBanner(swipeDistance < 0 ? 1 : -1);
+    } else if (bannerPressedLink) {
+      bannerWasDragged = true;
+      window.location.href = bannerPressedLink.href;
+    }
+    bannerPressedLink = null;
+    startBannerSlider();
+  });
+
+  continueBannerSlider.addEventListener('pointercancel', () => {
+    bannerSwipeStartX = 0;
+    bannerPointerId = null;
+    bannerPressedLink = null;
+    continueBannerSlider.classList.remove('is-dragging');
+    startBannerSlider();
+  });
+
+  continueBannerSlider.addEventListener('click', (event) => {
+    if (!bannerWasDragged) return;
+    event.preventDefault();
+    bannerWasDragged = false;
+  }, true);
   startBannerSlider();
 
   const renderGenreRows = () => {
@@ -209,11 +295,23 @@ document.addEventListener('DOMContentLoaded', async () => {
       공포: '../images/main/profile06.png'
     };
     const genreOrder = ['일상', '코미디', '액션', '판타지', '모험', '로맨스', '추리', '공포'];
+    const usedVisibleGenreItemIds = new Set();
 
     genreRows.innerHTML = genreOrder.map((genre) => {
-      const matchedItems = items.filter((item) => item.genre?.includes(genre));
-      const genreItems = (matchedItems.length ? matchedItems : recommended).slice(0, 12);
+      const matchedItems = shuffleItems(items.filter((item) => item.genre?.includes(genre)));
+      const sourceItems = matchedItems.length ? matchedItems : shuffleItems(recommended);
+      const visibleItems = sourceItems
+        .filter((item) => !usedVisibleGenreItemIds.has(item.id))
+        .slice(0, 3);
+      const fillVisibleItems = visibleItems.length < 3
+        ? shuffleItems(items.filter((item) => !usedVisibleGenreItemIds.has(item.id) && !visibleItems.includes(item)))
+          .slice(0, 3 - visibleItems.length)
+        : [];
+      const firstVisibleItems = [...visibleItems, ...fillVisibleItems];
+      const remainingItems = shuffleItems(sourceItems.filter((item) => !firstVisibleItems.includes(item)));
+      const genreItems = [...firstVisibleItems, ...remainingItems].slice(0, 12);
       if (!genreItems.length) return '';
+      firstVisibleItems.forEach((item) => usedVisibleGenreItemIds.add(item.id));
       return `<article class="genre-row" data-genre-row="${genre}">
         <a class="genre-lead" href="play.html?id=${genreItems[0].id}"><img src="${genreCharacters[genre] || '../images/main/profile03.png'}" alt="${genre} 캐릭터" loading="lazy"></a>
         <div class="genre-card-row" aria-label="${genre} 콘텐츠 목록">
@@ -230,7 +328,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let isDragging = false;
 
     cardRow.addEventListener('pointerdown', (event) => {
-      if (event.pointerType === 'touch') return;
+      if (event.pointerType === 'touch' || event.target.closest('a')) return;
       isDragging = true;
       startX = event.clientX;
       startScroll = cardRow.scrollLeft;
