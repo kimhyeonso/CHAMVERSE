@@ -7,89 +7,87 @@
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/main.css">
   </head>
-<body data-page="main" data-static-page="true" data-use-common-ui="true">
+  <body data-page="main" data-static-page="true" data-use-common-ui="true">
     <div class="app main-static-page">
-      <main class="mobile-shell">
-        <header class="screen-header">
-          <a href="main.html">
-            <img class="brand" src="../images/common/logo.png" alt="CHAMVERSE">
-          </a>
-          <div class="header-actions">
-            <a class="icon-button" href="search.html">⌕</a>
-            <a class="profile-dot" href="myPage.html">☺</a>
+      <main class="main-page"> 
+        <section id="hero" class="main-hero" aria-label="이번 주 추천 콘텐츠">
+          <p class="hero-label">이번 주의 Pick!</p>
+          <div class="hero-copy">
+            <h1 id="heroTitle" class="sr-only">이번 주 추천 콘텐츠</h1>
+            <p id="heroDescription" class="sr-only"></p>
+            <div class="hero-actions">
+              <a id="heroPlay" class="hero-button" href="play.html">▶ <span>지금 보기</span></a>
+              <button id="heroWish" class="hero-button" type="button">＋ <span>찜하기</span></button>
+            </div>
           </div>
-        </header>
-        <div class="shell main-page">
-          <section class="hero">
-            <div class="eyebrow">이번 주의 Pick!</div>
-            <div class="hero-copy">
-              <h1 id="heroTitle">이번 주 추천 애니</h1>
-              <p id="heroDescription">콘텐츠 데이터를 불러오는 중입니다.</p>
-              <div class="button-row">
-                <a id="heroPlay" class="secondary-btn" href="play.html">▶ 지금 보기</a>
-                <button id="heroWish" class="secondary-btn">＋ 찜하기</button>
-              </div>
-            </div>
-            <div class="dots">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </section>
-          <section class="section">
-            <h2 class="section-title">TOP 10 시리즈</h2>
-            <div id="topTenList" class="card-row"></div>
-          </section>
-          <section class="section">
-            <h2 class="section-title">이어볼까요?</h2>
-            <div id="continueList" class="card-row"></div>
-          </section>
-          <section class="section event-card">
-            <div>
-              <h3>내 최애를 골라줘!</h3>
-              <p>
-                캐릭터 투표에 참여하고
-                <br>
-                나만의 응원권도 받아보세요.
-              </p>
-            </div>
-            <a class="primary-btn" href="voteEvent.html">투표하러 가기</a>
-          </section>
-          <section class="section">
-            <h2 class="section-title">장르 탐색</h2>
-            <div class="chips">
-              <button class="chip active">전체</button>
-              <button class="chip">일상</button>
-              <button class="chip">코미디</button>
-              <button class="chip">액션</button>
-            </div>
-            <div id="genreList" class="card-row"></div>
-          </section>
-        </div>
+          <div class="slider-dots" aria-label="추천 콘텐츠 4개 중 1번째">
+            <span class="is-active"></span><span></span><span></span><span></span>
+          </div>
+        </section>
+
+        <section class="main-section top-ten-section">
+          <h2>TOP 10 시리즈</h2>
+          <div id="topTenList" class="rank-row" aria-live="polite"></div>
+        </section>
+
+        <section class="main-section continue-section">
+          <h2>이어볼까요?</h2>
+          <div id="continueList" class="continue-row" aria-live="polite"></div>
+        </section>
+
+        <a class="vote-banner" href="vote.html" aria-label="최애 캐릭터 투표하기">
+          <img src="../images/main/banner.png" alt="내 최애를 골라줘! 캐릭터 투표">
+        </a>
+
+        <section class="main-section genre-section">
+          <h2>장르 탐색</h2>
+          <div id="genreChips" class="filter-chips" role="tablist" aria-label="장르 선택">
+            <button class="is-active" type="button" data-genre="전체">전체</button>
+            <button type="button" data-genre="일상">일상</button>
+            <button type="button" data-genre="코미디">코미디</button>
+            <button type="button" data-genre="액션">액션</button>
+            <button type="button" data-genre="판타지">판타지</button>
+            <button type="button" data-genre="모험">모험</button>
+            <button type="button" data-genre="로맨스">로맨스</button>
+            <button type="button" data-genre="추리">추리</button>
+            <button type="button" data-genre="공포">공포</button>
+          </div>
+          <div id="genreRows" class="genre-rows" aria-live="polite"></div>
+        </section>
+
+        <section id="episodeBanner" class="episode-banner">
+          <h2>이번 주 신규 에피소드</h2>
+          <div class="slider-dots" aria-label="신규 에피소드 3개 중 1번째">
+            <span class="is-active"></span><span></span><span></span>
+          </div>
+        </section>
+
+        <section class="main-section movie-section">
+          <h2>극장판 몰아보기</h2>
+          <div id="movieTabs" class="movie-tabs" role="tablist">
+            <button class="is-active" type="button" data-movie-genre="전체">전체</button>
+            <button type="button" data-movie-genre="일상">일상</button>
+            <button type="button" data-movie-genre="코미디">코미디</button>
+            <button type="button" data-movie-genre="공포">공포</button>
+            <button type="button" data-movie-genre="액션">액션</button>
+            <button type="button" data-movie-genre="판타지">판타지</button>
+          </div>
+          <div id="movieList" class="movie-grid" aria-live="polite"></div>
+        </section>
+
+        <a class="notice-bar" href="notice.html"><b>[공지]</b><span>서비스 점검 일정을 알려드려요!</span></a>
       </main>
-      <nav class="bottom-nav">
-        <div class="nav-inner">
-          <a class="active" href="main.html">
-            <img src="../images/common/icon-01-on.png" alt="">
-            홈
-          </a>
-          <a href="live.html">
-            <img src="../images/common/icon-02.png" alt="">
-            라이브
-          </a>
-          <a href="wish.html">
-            <img src="../images/common/icon-03.png" alt="">
-            찜
-          </a>
-          <a href="myPage.html">
-            <img src="../images/common/icon-04.png" alt="">
-            마이
-          </a>
-        </div>
-      </nav>
+
+      <footer class="main-footer">
+        <strong>CHAMVERSE</strong>
+        <a href="notice.html">서비스 안내 <span>＋</span></a>
+        <a href="notice.html">고객 지원 <span>＋</span></a>
+        <small>ⓒ 본 사이트는 비상업적 목적으로 제작되었습니다.</small>
+      </footer>
     </div>
-  <script src="../js/common.js"></script>
-  <script src="../js/app-utils.js"></script>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/app-utils.js"></script>
     <script src="../js/main.js"></script>
   </body>
 </html>
