@@ -1,7 +1,61 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  const items = await ChamverseApp.getContents();
-  const hero = items.find((item) => item.isRecommend) || items[0];
-  document.getElementById('voteHero').style.backgroundImage = `url('${hero.poster}')`;
-  const count = Object.values(ChamverseApp.votes()).reduce((sum, value) => sum + value, 0) + 12480;
-  document.querySelector('#voteHero .count').textContent = `D-5 마감 · ${count.toLocaleString()}명 참여 중`;
+document.addEventListener('DOMContentLoaded', () => {
+
+  const floatingVote =
+    document.querySelector('#floatingVote');
+
+  if (!floatingVote) return;
+
+
+  const handleFloatingVote = () => {
+
+    const scrollTop =
+      window.scrollY;
+
+    const scrollHeight =
+      document.documentElement.scrollHeight;
+
+    const viewportHeight =
+      window.innerHeight;
+
+    const maxScroll =
+      scrollHeight - viewportHeight;
+
+
+    if (maxScroll <= 0) return;
+
+
+    const scrollProgress =
+      scrollTop / maxScroll;
+
+
+    /*
+      페이지 약 65%를 본 시점부터 등장
+    */
+
+    if (scrollProgress >= 0.65) {
+
+      floatingVote.classList.add(
+        'is-visible'
+      );
+
+    } else {
+
+      floatingVote.classList.remove(
+        'is-visible'
+      );
+
+    }
+
+  };
+
+
+  window.addEventListener(
+    'scroll',
+    handleFloatingVote,
+    { passive: true }
+  );
+
+
+  handleFloatingVote();
+
 });
