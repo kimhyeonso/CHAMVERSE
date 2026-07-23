@@ -3,44 +3,112 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>회원가입 | CHAMVERSE</title>
+
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/signup.css">
   </head>
-  <body class="auth-page signup-page" data-page="signup" data-static-page="true">
+
+  <body
+    class="auth-page signup-page"
+    data-page="signup"
+    data-static-page="true"
+  >
     <main class="auth-box">
-      <a href="index.html">
-        <img class="auth-logo" src="../images/common/logo.png" alt="CHAMVERSE">
+      <a
+        class="logo-link"
+        href="index.html"
+        aria-label="CHAMVERSE 홈으로 이동"
+      >
+        <img
+          class="auth-logo"
+          src="../images/common/logo.png"
+          alt="CHAMVERSE"
+        >
       </a>
+
+      <div class="signup-visual" aria-hidden="true">
+        <img
+          class="signup-characters"
+          src="../images/signup/characters.png"
+          alt=""
+        >
+      </div>
+
       <h1>챔버스의 회원이 되어보세요!</h1>
-      <p>
+
+      <p class="intro-copy">
         추억 속의 그 애니메이션들이 모여있어요.
         <br>
         계정 생성 후 더 많은 애니를 만나보세요.
       </p>
-      <a class="primary-btn signup-cta" href="login.html">회원가입</a>
+
+      <a
+        class="primary-btn signup-cta"
+        href="login.html"
+      >
+        회원가입
+      </a>
+
       <div class="divider">또는</div>
+
       <div class="social-row">
-        <button class="social kakao">
-          <b>●</b>
-          카카오로 가입
+        <button
+          class="social kakao"
+          type="button"
+          data-provider="kakao"
+        >
+          <b class="social-icon" aria-hidden="true">
+            <img
+              class="social-icon__image social-icon__image--kakao"
+              src="https://cdn-icons-png.flaticon.com/512/2111/2111466.png"
+              alt=""
+              referrerpolicy="no-referrer"
+            >
+          </b>
+
+          <span>카카오로 가입</span>
         </button>
-        <button class="social naver">
-          <b>N</b>
-          네이버로 가입
+
+        <button
+          class="social naver"
+          type="button"
+          data-provider="naver"
+        >
+          <b class="social-icon" aria-hidden="true">
+            N
+          </b>
+
+          <span>네이버로 가입</span>
         </button>
-        <button class="social google">
-          <b>G</b>
-          구글로 가입
+
+        <button
+          class="social google"
+          type="button"
+          data-provider="google"
+        >
+          <b class="social-icon" aria-hidden="true">
+            <img
+              class="social-icon__image social-icon__image--google"
+              src="https://cdn.iconscout.com/icon/free/png-256/free-google-icon-svg-download-png-189824.png?f=webp&amp;w=128"
+              alt=""
+              referrerpolicy="no-referrer"
+            >
+          </b>
+
+          <span>구글로 가입</span>
         </button>
       </div>
+
       <p class="account-question">
         이미 계정이 있으신가요?
         <a href="login.html">로그인</a>
       </p>
     </main>
-  <script src="../js/common.js"></script>
-  <script src="../js/app-utils.js"></script>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/app-utils.js"></script>
     <script src="../js/signup.js"></script>
   </body>
 </html>

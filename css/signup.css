@@ -1,28 +1,95 @@
-/* signup.html 전용: 회원가입과 소셜 버튼 */
+/* signup.html 전용: 현재 크기를 유지한 회원가입 화면과 부드러운 효과 */
+
+html {
+  scrollbar-gutter: stable;
+}
+
 .signup-page {
   display: flex;
   min-height: 100vh;
-  padding: 10vh 24px 40px;
+  padding: 6vh 24px 40px;
   background: linear-gradient(135deg, #fffdfa, #fff6ee);
   align-items: center;
+  overflow-x: hidden;
 }
+
 .signup-page .auth-box {
   width: min(100%, 520px);
   margin: auto;
+  transition:
+    opacity 320ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+.signup-page.is-leaving .auth-box {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.signup-page .logo-link {
+  display: block;
+}
+
+/* 기존 로고 크기는 그대로 유지 */
+
 .signup-page .auth-logo {
   width: min(82%, 400px);
-  margin: 0 auto 48px;
+  margin: 0 auto 22px;
+  animation:
+    signup-logo-in 680ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
 }
+
+/* 로고와 소개글 사이의 캐릭터 이미지 */
+
+.signup-page .signup-visual {
+  width: min(62%, 320px);
+  margin: 0 auto 24px;
+  animation:
+    signup-visual-in 720ms 80ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+.signup-page .signup-characters {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(
+    0 9px 15px rgba(104, 70, 50, 0.08)
+  );
+}
+
+/* 소개 문구 */
+
 .signup-page h1 {
   margin: 0 0 10px;
   font-size: 27px;
+  line-height: 1.35;
+  text-align: center;
+  animation:
+    signup-rise-in 560ms 150ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
 }
+
 .signup-page p {
   color: #777;
   line-height: 1.6;
 }
-.signup-cta {
+
+.signup-page .intro-copy {
+  margin: 0;
+  text-align: center;
+  animation:
+    signup-rise-in 560ms 200ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+/* 회원가입 버튼: 기존 크기 유지 */
+
+.signup-page .signup-cta {
   display: grid;
   width: 100%;
   height: 58px;
@@ -30,35 +97,137 @@
   color: #fff;
   background: var(--coral);
   border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(151, 68, 63, 0.08);
   place-items: center;
   font-size: 18px;
   font-weight: 700;
+  animation:
+    signup-rise-in 580ms 260ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    backwards;
+  transition:
+    background 200ms ease,
+    box-shadow 200ms ease,
+    opacity 200ms ease,
+    transform 160ms ease;
 }
+
+.signup-page .signup-cta:hover,
+.signup-page .signup-cta:focus-visible {
+  background: #ed625d;
+  box-shadow: 0 9px 20px rgba(151, 68, 63, 0.22);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.signup-page .signup-cta:active {
+  background: #e85c57;
+  box-shadow:
+    0 13px 26px rgba(132, 52, 48, 0.34),
+    inset 0 2px 5px rgba(120, 44, 41, 0.18);
+  transform: translateY(2px) scale(0.995);
+}
+
+.signup-page .signup-cta.is-busy {
+  opacity: 0.78;
+  pointer-events: none;
+}
+
+/* 또는 구분선 */
+
 .signup-page .divider {
   display: flex;
   margin: 28px 0;
   color: #999;
   align-items: center;
   gap: 15px;
+  animation:
+    signup-rise-in 560ms 320ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
 }
-.signup-page .divider::before, .signup-page .divider::after {
-  flex: 1;
+
+.signup-page .divider::before,
+.signup-page .divider::after {
   height: 1px;
-  content: "";
   background: #ddd;
+  content: "";
+  flex: 1;
 }
+
+/* 소셜 가입 */
+
 .signup-page .social-row {
   display: flex;
   justify-content: center;
   gap: 30px;
 }
+
 .signup-page .social {
   display: grid;
+  padding: 5px 2px;
   color: #555;
   background: transparent;
+  border-radius: 12px;
   place-items: center;
   gap: 7px;
+
+  /* 애니메이션 종료 후에도 계속 보이도록 유지 */
+  opacity: 1;
+  transform: translateY(0);
+
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
 }
+
+.signup-page .social:nth-child(1) {
+  animation:
+    signup-social-in 520ms 380ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    backwards;
+}
+
+.signup-page .social:nth-child(2) {
+  animation:
+    signup-social-in 520ms 430ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    backwards;
+}
+
+.signup-page .social:nth-child(3) {
+  animation:
+    signup-social-in 520ms 480ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    backwards;
+}
+
+.signup-page .social:hover,
+.signup-page .social:focus-visible {
+  color: #333;
+  background: rgba(255, 255, 255, 0.62);
+  
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.signup-page .social:active {
+  box-shadow:
+    0 11px 21px rgba(75, 52, 39, 0.23),
+    inset 0 2px 4px rgba(75, 52, 39, 0.08);
+  transform: translateY(2px) scale(0.98);
+}
+
+.signup-page .social:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+/* 소셜 아이콘: 기존 48px 유지 */
+
 .signup-page .social b {
   display: grid;
   width: 48px;
@@ -66,22 +235,222 @@
   background: #fff;
   border-radius: 50%;
   place-items: center;
+  overflow: hidden;
   font-size: 22px;
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
+
+.signup-page .social:hover b,
+.signup-page .social:focus-visible b {
+  box-shadow: 0 7px 15px rgba(91, 65, 49, 0.17);
+  transform: scale(1.04);
+}
+
+.signup-page .social:active b {
+  box-shadow: 0 9px 17px rgba(75, 52, 39, 0.23);
+  transform: scale(0.97);
+}
+
+/* 카카오 아이콘 */
+
 .signup-page .kakao b {
   background: #fee500;
 }
+
+.signup-page .social-icon__image {
+  display: block;
+  max-width: none;
+  object-fit: contain;
+}
+
+.signup-page .social-icon__image--kakao {
+  width: 32px;
+  height: 32px;
+}
+
+/* 네이버 아이콘은 기존 모습 유지 */
+
 .signup-page .naver b {
-  color: #1ec800;
+  color: #fff;
+  background: #1ec800;
 }
+
+/* 구글 아이콘 */
+
 .signup-page .google b {
-  color: #4285f4;
+  background: #fff;
 }
-.account-question {
-  margin-top: 30px;
+
+.signup-page .social-icon__image--google {
+  width: 25px;
+  height: 25px;
+}
+
+/* 로그인 이동 문구 */
+
+.signup-page .account-question {
+  margin: 30px 0 0;
   text-align: center;
+  animation:
+    signup-rise-in 560ms 540ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
 }
-.account-question a {
+
+.signup-page .account-question a {
+  display: inline-block;
+  padding: 2px 3px;
   color: var(--coral);
+  border-radius: 5px;
   text-decoration: underline;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.signup-page .account-question a:hover,
+.signup-page .account-question a:focus-visible {
+  background: rgba(244, 110, 105, 0.08);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.signup-page .account-question a:active {
+  box-shadow: 0 5px 11px rgba(151, 68, 63, 0.18);
+  transform: translateY(1px);
+}
+
+/* 처음 화면에 들어올 때의 부드러운 등장 효과 */
+
+@keyframes signup-logo-in {
+  from {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes signup-visual-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes signup-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(13px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes signup-social-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 모바일 */
+
+@media (max-width: 560px) {
+  .signup-page {
+    padding: 44px 26px 52px;
+    align-items: flex-start;
+  }
+
+  .signup-page .auth-box {
+    margin: 0 auto;
+  }
+
+  .signup-page .auth-logo {
+    width: min(94%, 340px);
+    margin-bottom: 18px;
+  }
+
+  .signup-page .signup-visual {
+    width: min(84%, 330px);
+    margin-bottom: 24px;
+  }
+
+  .signup-page h1 {
+    font-size: 23px;
+  }
+
+  .signup-page .intro-copy {
+    font-size: 14px;
+  }
+
+  .signup-page .signup-cta {
+    margin-top: 24px;
+  }
+
+  .signup-page .divider {
+    margin: 24px 0;
+  }
+
+  .signup-page .social-row {
+    gap: clamp(12px, 5vw, 24px);
+  }
+
+  .signup-page .social {
+    min-width: 0;
+    font-size: 14px;
+  }
+
+  .signup-page .account-question {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 360px) {
+  .signup-page {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .signup-page .social-row {
+    gap: 8px;
+  }
+
+  .signup-page .social {
+    font-size: 13px;
+  }
+}
+
+/* 사용자가 동작 줄이기를 설정한 경우 */
+
+@media (prefers-reduced-motion: reduce) {
+  .signup-page *,
+  .signup-page *::before,
+  .signup-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
 }
