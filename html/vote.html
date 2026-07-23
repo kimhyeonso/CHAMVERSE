@@ -1,42 +1,393 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>투표하기 | CHAMVERSE</title>
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/vote.css">
-  </head>
-<body data-page="vote" data-static-page="true" data-use-common-ui="true">
-    <div class="app">
-      <main class="page">
-        <header class="screen-header compact">
-          <a class="back" href="voteEvent.html">‹</a>
-          <span>CHAMVERSE</span>
-        </header>
-        <div class="tabs">
-          <button class="tab active">투표하기</button>
-          <a class="tab" href="ranking.html">현재 랭킹</a>
-        </div>
-        <section class="section vote-banner">
-          <div>
-            <h1>
-              지금,
-              <br>
-              당신의 캐릭터에게
-              <br>
-              <b>투표하세요!</b>
-            </h1>
-            <p>2026.07.01 - 2026.07.30</p>
+
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>투표하기 | CHAMVERSE</title>
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/vote.css">
+</head>
+
+
+<body
+  data-page="vote"
+  data-static-page="true"
+  data-use-common-ui="true"
+>
+
+<div class="app">
+
+  <main class="vote-page">
+
+
+    <!-- ===============================
+     TOP
+    ================================ -->
+    <div class="vote-top">
+
+    <a
+      class="vote-back"
+      href="voteEvent.html"
+      aria-label="이전 페이지"
+    >
+      ‹
+    </a>
+
+    <nav class="vote-tabs">
+
+      <button
+        type="button"
+        class="vote-tab is-active"
+      >
+        투표하기
+      </button>
+
+      <a
+        href="ranking.html"
+        class="vote-tab"
+      >
+        현재 랭킹
+      </a>
+
+    </nav>
+
+  </div>
+    <!-- ==================================
+         INTRO
+    =================================== -->
+    <section class="vote-intro">
+
+      <!-- decoration -->
+      <span class="vote-intro__deco vote-intro__deco--01">
+        ★
+      </span>
+
+      <span class="vote-intro__deco vote-intro__deco--02">
+        ♥
+      </span>
+
+      <span class="vote-intro__deco vote-intro__deco--03">
+        ✦
+      </span>
+
+
+      <div class="vote-intro__inner">
+
+        <div class="vote-intro__text">
+
+          <p class="vote-label">
+            CHARACTER VOTE 2026
+          </p>
+
+
+          <h1>
+            오늘의 최애를
+            <br>
+
+            <strong>
+              딱 한 명만 골라주세요!
+            </strong>
+          </h1>
+
+
+          <p class="vote-intro__description">
+            가장 좋아하는 캐릭터를 선택해주세요.
+            <br>
+            당신의 한 표가 새로운 1위를 만들 수도 있어요.
+          </p>
+
+
+          <div class="vote-status">
+
+            <span>
+              1인 1표
+            </span>
+
+            <i></i>
+
+            <span>
+              D-5
+            </span>
+
+            <i></i>
+
+            <span>
+              12,480명 참여 중
+            </span>
+
           </div>
-          <img src="../images/contents/id-02.jpg" alt="투표 이벤트">
-        </section>
-        <section id="characterGrid" class="character-grid"></section>
-        <button id="voteSubmit" class="primary-btn vote-submit">투표 완료하기</button>
-      </main>
+
+        </div>
+
+
+        <!-- 우측 이벤트 그래픽 -->
+        <div class="vote-intro__visual">
+
+          <div class="vote-intro__circle">
+
+            <span class="vote-intro__crown">
+              ♛
+            </span>
+
+            <span class="vote-intro__question">
+              ?
+            </span>
+
+          </div>
+
+          <p>
+            WHO'S
+            <strong>YOUR PICK?</strong>
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================
+         CHARACTER AREA
+    =================================== -->
+    <section class="vote-characters">
+
+      <div class="vote-characters__top">
+
+        <div>
+
+          <span>
+            MY FAVORITE CHARACTER
+          </span>
+
+          <h2>
+            누구에게 투표할까요?
+          </h2>
+
+        </div>
+
+
+        <p>
+          캐릭터를 클릭하면
+          선택할 수 있어요.
+        </p>
+
+      </div>
+
+
+      <div
+        id="characterGrid"
+        class="character-grid"
+      ></div>
+
+    </section>
+
+
+
+    <!-- ==================================
+         NOTICE
+    =================================== -->
+    <section class="vote-notice">
+
+      <span class="vote-notice__icon">
+        !
+      </span>
+
+      <div>
+
+        <strong>
+          투표 전 확인해주세요!
+        </strong>
+
+        <p>
+          투표 완료 후에는 캐릭터를 변경할 수 없습니다.
+          신중하게 최애 캐릭터를 선택해주세요.
+        </p>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- ==================================
+       BOTTOM VOTE CTA
+  =================================== -->
+  <aside
+    id="voteFloating"
+    class="vote-floating"
+  >
+
+    <div class="vote-floating__inner">
+
+      <div class="vote-floating__selected">
+
+        <div
+          id="selectedThumb"
+          class="vote-floating__thumb"
+        ></div>
+
+        <div class="vote-floating__text">
+
+          <span>
+            MY PICK
+          </span>
+
+          <strong id="selectedName">
+            캐릭터를 선택해주세요
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <button
+        id="voteSubmit"
+        type="button"
+        class="vote-submit"
+        disabled
+      >
+
+        투표하기
+
+        <span>
+          →
+        </span>
+
+      </button>
+
     </div>
-  <script src="../js/common.js"></script>
-  <script src="../js/app-utils.js"></script>
-    <script src="../js/vote.js"></script>
-  </body>
+
+  </aside>
+
+
+
+  <!-- ==================================
+       CONFIRM MODAL
+  =================================== -->
+  <div
+    id="voteModal"
+    class="vote-modal"
+    aria-hidden="true"
+  >
+
+    <div class="vote-modal__dim"></div>
+
+
+    <div
+      class="vote-modal__box"
+      role="dialog"
+      aria-modal="true"
+    >
+
+      <button
+        id="modalClose"
+        class="vote-modal__close"
+        type="button"
+        aria-label="닫기"
+      >
+        ×
+      </button>
+
+
+      <div
+        id="modalCharacter"
+        class="vote-modal__character"
+      ></div>
+
+
+      <span class="vote-modal__label">
+        YOUR PICK
+      </span>
+
+
+      <h2>
+        <strong id="modalName"></strong>에게
+        <br>
+        투표할까요?
+      </h2>
+
+
+      <p>
+        투표 완료 후에는
+        <br>
+        선택을 변경할 수 없어요.
+      </p>
+
+
+      <div class="vote-modal__buttons">
+
+        <button
+          id="modalCancel"
+          type="button"
+          class="modal-button modal-button--cancel"
+        >
+          다시 고르기
+        </button>
+
+
+        <button
+          id="modalConfirm"
+          type="button"
+          class="modal-button modal-button--confirm"
+        >
+          이 캐릭터에 투표하기
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ==================================
+       COMPLETE
+  =================================== -->
+  <div
+    id="voteComplete"
+    class="vote-complete"
+  >
+
+    <div class="vote-complete__content">
+
+      <span>
+        ♥
+      </span>
+
+      <strong>
+        투표가 완료됐어요!
+      </strong>
+
+      <p>
+        소중한 한 표 감사합니다.
+      </p>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<script src="../js/common.js"></script>
+<script src="../js/app-utils.js"></script>
+<script src="../js/vote.js"></script>
+
+</body>
+
 </html>

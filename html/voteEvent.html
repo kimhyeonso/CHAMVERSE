@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="ko">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,41 +21,60 @@
   <main class="vote-event" id="voteEvent">
 
 
-    <!-- ==================================
+    <!-- =========================================
          HERO
-    =================================== -->
+    ========================================== -->
     <section class="vote-hero">
 
-      <div class="hero-deco hero-deco--01"></div>
-      <div class="hero-deco hero-deco--02"></div>
+      <!-- 배경 장식 -->
+      <div class="hero-shape hero-shape--01"></div>
+      <div class="hero-shape hero-shape--02"></div>
 
-      <div class="vote-hero__inner">
+      <span class="hero-deco hero-deco--star01">★</span>
+      <span class="hero-deco hero-deco--star02">✦</span>
+      <span class="hero-deco hero-deco--heart">♥</span>
+      <span class="hero-deco hero-deco--plus">+</span>
 
-        <p class="hero-label">
-          CHAMVERSE CHARACTER PICK 2026
-        </p>
 
+      <div class="vote-hero__inner reveal">
+
+        <!-- EVENT RIBBON -->
+        <div class="event-ribbon">
+          <span>♥</span>
+          CHARACTER EVENT
+          <span>♥</span>
+        </div>
+
+
+        <!-- TITLE -->
         <h1 class="hero-title">
-          <span>WHO'S YOUR</span>
-          <strong>FAVORITE?</strong>
-        </h1>
 
-        <p class="hero-description">
-          매일 보고 싶고, 자꾸 생각나는 그 캐릭터.
-          <br>
-          지금 당신의 최애에게 한 표를 보내주세요.
-        </p>
-
-
-        <!-- 메인 3D 캐릭터 -->
-        <div class="hero-visual">
-
-          <span class="hero-sticker hero-sticker--left">
-            MY PICK!
+          <span class="hero-title__small">
+            내 최애를
           </span>
 
-          <span class="hero-sticker hero-sticker--right">
-            ♥
+          <strong
+            class="hero-title__3d"
+            data-text="1위로 만들어줘!"
+          >
+            1위로 만들어줘!
+          </strong>
+
+        </h1>
+
+
+        <p class="hero-description">
+          좋아하는 캐릭터에게 한 표를 보내고
+          <br>
+          CHAMVERSE 최고의 캐릭터를 직접 결정해보세요!
+        </p>
+
+
+        <!-- CHARACTER VISUAL -->
+        <div class="hero-character">
+
+          <span class="hero-crown">
+            ♛
           </span>
 
           <img
@@ -67,25 +85,25 @@
         </div>
 
 
-        <!-- 이벤트 정보 -->
+        <!-- EVENT INFO -->
         <div class="hero-info">
 
-          <div>
-            <span>기간</span>
+          <div class="hero-info__item">
+            <span>투표</span>
             <strong>07.20 - 07.28</strong>
           </div>
 
           <i></i>
 
-          <div>
-            <span>참여</span>
-            <strong>12,480 PICK</strong>
+          <div class="hero-info__item">
+            <span>참여자</span>
+            <strong>12,480</strong>
           </div>
 
           <i></i>
 
-          <div>
-            <span>마감</span>
+          <div class="hero-info__item">
+            <span>기간</span>
             <strong>D-5</strong>
           </div>
 
@@ -94,7 +112,7 @@
       </div>
 
 
-      <div class="scroll-guide">
+      <div class="hero-scroll">
         <span>SCROLL</span>
         <i></i>
       </div>
@@ -103,21 +121,21 @@
 
 
 
-    <!-- ==================================
+    <!-- =========================================
          CHARACTER PICK
-    =================================== -->
+    ========================================== -->
     <section class="pick-section">
+
+      <span class="pick-bg-text">
+        PICK!
+      </span>
 
       <div class="section-inner">
 
-        <div class="section-index">
-          01
-        </div>
+        <header class="section-heading reveal">
 
-        <header class="section-heading">
-
-          <p>
-            MEET YOUR FAVORITES
+          <p class="section-label">
+            WHO'S YOUR PICK?
           </p>
 
           <h2>
@@ -126,48 +144,59 @@
             <strong>가져간 캐릭터는?</strong>
           </h2>
 
-          <span>
-            개성 넘치는 CHAMVERSE 캐릭터 중
-            <br>
-            가장 마음에 드는 한 명을 찾아보세요.
-          </span>
 
         </header>
 
 
-        <div class="character-showcase">
+        <!-- CHARACTER CARDS -->
+        <div class="character-grid">
 
-          <!-- 케로로 -->
-          <article class="character-card character-card--side">
 
-            <div class="character-card__number">
+          <!-- 뚱이 -->
+          <article
+            class="character-card character-card--yellow reveal"
+          >
+
+            <span class="character-card__rank">
               02
+            </span>
+
+            <div class="character-card__title">
+              <span>PIKACHU</span>
+              <strong>피카츄</strong>
             </div>
 
             <div class="character-card__image">
               <img
-                src="/images/vote/Keroro-07.png"
-                alt="케로로"
+                src="/images/vote/Pikachu-04.png"
+                alt="피카츄"
               >
             </div>
 
-            <div class="character-card__info">
-              <span>KARORO</span>
-              <strong>케로로</strong>
-            </div>
+            <span class="character-card__deco">
+              ★
+            </span>
 
           </article>
 
 
-          <!-- 자두 -->
-          <article class="character-card character-card--main">
 
-            <div class="character-card__badge">
+          <!-- 스폰지밥 -->
+          <article
+            class="character-card character-card--coral character-card--main reveal"
+          >
+
+            <span class="character-card__badge">
               HOT PICK
-            </div>
+            </span>
 
-            <div class="character-card__number">
+            <span class="character-card__rank">
               01
+            </span>
+
+            <div class="character-card__title">
+              <span>JADOO</span>
+              <strong>자두</strong>
             </div>
 
             <div class="character-card__image">
@@ -177,34 +206,41 @@
               >
             </div>
 
-            <div class="character-card__info">
-              <span>JADOO</span>
-              <strong>자두</strong>
-            </div>
+            <span class="character-card__deco">
+              ♥
+            </span>
 
           </article>
 
 
-          <!-- 루피 -->
-          <article class="character-card character-card--side">
 
-            <div class="character-card__number">
+          <!-- 케로로 -->
+          <article
+            class="character-card character-card--blue reveal"
+          >
+
+            <span class="character-card__rank">
               03
+            </span>
+
+            <div class="character-card__title">
+              <span>KERORO</span>
+              <strong>케로로</strong>
             </div>
 
             <div class="character-card__image">
               <img
-                src="/images/vote/loopy-08.png"
-                alt="루피"
+                src="/images/vote/Keroro-07.png"
+                alt="케로로"
               >
             </div>
 
-            <div class="character-card__info">
-              <span>LOOPY</span>
-              <strong>루피</strong>
-            </div>
+            <span class="character-card__deco">
+              ✦
+            </span>
 
           </article>
+
 
         </div>
 
@@ -214,118 +250,121 @@
 
 
 
-    <!-- ==================================
+    <!-- =========================================
          LIVE RANKING
-    =================================== -->
+    ========================================== -->
     <section class="ranking-section">
 
-      <div class="ranking-section__blob"></div>
+      <span class="ranking-deco ranking-deco--01">
+        ★
+      </span>
+
+      <span class="ranking-deco ranking-deco--02">
+        ♥
+      </span>
+
 
       <div class="section-inner">
 
-        <div class="ranking-heading">
-
-          <div>
-
-            <div class="section-index">
-              02
-            </div>
-
-            <header class="section-heading">
-
-              <p>
-                LIVE CHARACTER RANKING
-              </p>
-
-              <h2>
-                지금 가장 사랑받는
-                <br>
-                <strong>TOP 3 캐릭터</strong>
-              </h2>
-
-            </header>
-
-          </div>
+        <header class="section-heading section-heading--center reveal">
 
 
-          <span class="live-badge">
-            <i></i>
-            LIVE
-          </span>
 
-        </div>
+          <p class="section-label">
+            CHARACTER RANKING
+          </p>
 
 
-        <div class="ranking-podium">
+          <h2>
+            지금 가장 사랑받는
+            <br>
+            <strong>TOP 3</strong>
+          </h2>
 
-          <!-- 2위 -->
-          <article class="rank-item rank-item--02">
+        </header>
 
-            <span class="rank-medal">
-              02
-            </span>
 
-            <div class="rank-character">
+
+        <!-- PODIUM -->
+        <div class="podium">
+
+
+          <!-- 2 -->
+          <article class="podium-item podium-item--02 reveal">
+
+            <div class="podium-character">
+
               <img
                 src="/images/vote/Shin_chan-10.png"
-                alt="뚱이"
+                alt="짱구"
               >
+
             </div>
 
-            <div class="rank-info">
+            <div class="podium-name">
               <span>SHIN_CHAN</span>
               <strong>짱구</strong>
-              <p>8,235표</p>
+              <em>8,235표</em>
+            </div>
+
+            <div class="podium-block">
+              <span>2</span>
             </div>
 
           </article>
 
 
-          <!-- 1위 -->
-          <article class="rank-item rank-item--01">
 
-            <span class="rank-crown">
+          <!-- 1 -->
+          <article class="podium-item podium-item--01 reveal">
+
+            <span class="podium-crown">
               ♛
             </span>
 
-            <span class="rank-medal">
-              01
-            </span>
+            <div class="podium-character">
 
-            <div class="rank-character">
               <img
                 src="/images/vote/Patrick Star-11.png"
-                alt="스폰지밥"
+                alt="뚱이"
               >
+
             </div>
 
-            <div class="rank-info">
+            <div class="podium-name">
               <span>PATRICK</span>
               <strong>뚱이</strong>
-              <p>8,363표</p>
+              <em>8,363표</em>
+            </div>
+
+            <div class="podium-block">
+              <span>1</span>
             </div>
 
           </article>
 
 
-          <!-- 3위 -->
-          <article class="rank-item rank-item--03">
 
-            <span class="rank-medal">
-              03
-            </span>
+          <!-- 3 -->
+          <article class="podium-item podium-item--03 reveal">
 
-            <div class="rank-character">
+            <div class="podium-character">
+
               <img
-                src="/images/vote/loopy-08.png"
-                alt="루피"
+                src="/images/vote/Dooly-02.png"
+                alt="둘리"
               >
+
             </div>
 
-            <div class="rank-info">
-              <span>LOOPY</span>
-              <strong>루피</strong>
-              <p>7,910표</p>
+            <div class="podium-name">
+              <span>DOOLY</span>
+              <strong>둘리</strong>
+              <em>7,910표</em>
+            </div>
+
+            <div class="podium-block">
+              <span>3</span>
             </div>
 
           </article>
@@ -335,10 +374,13 @@
 
         <a
           href="ranking.html"
-          class="ranking-more"
+          class="ranking-link reveal"
         >
           전체 캐릭터 랭킹 보기
-          <span>→</span>
+
+          <span>
+            →
+          </span>
         </a>
 
       </div>
@@ -347,72 +389,100 @@
 
 
 
-    <!-- ==================================
-         CLOSE RACE
-    =================================== -->
-    <section class="battle-section">
+    <!-- =========================================
+         CLOSE BATTLE
+    ========================================== -->
+    <section
+      class="battle-section"
+      id="battleSection"
+    >
 
-      <div class="battle-section__inner">
+      <div class="battle-decoration">
+        !
+      </div>
 
-        <span class="battle-mini">
-          ONE PICK CAN CHANGE EVERYTHING
+
+      <div class="battle-inner reveal">
+
+        <span class="battle-label">
+          WAIT A MINUTE!
         </span>
 
 
         <h2>
+
           잠깐,
-          <br>
-          지금 <strong>128표</strong>밖에
-          <br>
-          차이 안 나요!
+
+          <span>
+            지금 1위와 2위는
+          </span>
+
+          <strong>
+            단 128표 차이!
+          </strong>
+
         </h2>
 
+        <!-- VOTE BAR -->
+        <div class="vote-bars">
 
-        <div class="vote-gap">
 
-          <div class="vote-gap__row">
+          <div class="vote-bar">
 
-            <div class="vote-gap__name">
-              <span>01</span>
-              <strong>뚱이</strong>
+            <div class="vote-bar__top">
+
+              <span>
+                <b>01</b>
+                뚱이
+              </span>
+
+              <strong>
+                8,363
+              </strong>
+
             </div>
 
-            <div class="vote-gap__bar">
-              <i style="--progress: 88%"></i>
-            </div>
+            <div class="vote-bar__track">
 
-            <strong class="vote-gap__number">
-              8,363
-            </strong>
+              <i
+                class="vote-bar__fill"
+                style="--progress: 92%;"
+              ></i>
+
+            </div>
 
           </div>
 
 
-          <div class="vote-gap__row">
 
-            <div class="vote-gap__name">
-              <span>02</span>
-              <strong>짱구</strong>
+          <div class="vote-bar">
+
+            <div class="vote-bar__top">
+
+              <span>
+                <b>02</b>
+                짱구
+              </span>
+
+              <strong>
+                8,235
+              </strong>
+
             </div>
 
-            <div class="vote-gap__bar">
-              <i style="--progress: 84%"></i>
-            </div>
+            <div class="vote-bar__track">
 
-            <strong class="vote-gap__number">
-              8,235
-            </strong>
+              <i
+                class="vote-bar__fill"
+                style="--progress: 87%;"
+              ></i>
+
+            </div>
 
           </div>
+
 
         </div>
-
-
-        <p class="battle-description">
-          순위는 아직 정해지지 않았어요.
-          <br>
-          당신의 PICK이 새로운 1위를 만들 수도 있으니까요.
-        </p>
 
       </div>
 
@@ -420,51 +490,69 @@
 
 
 
-    <!-- ==================================
-         FINAL
-    =================================== -->
+    <!-- =========================================
+         FINAL AWARDS
+    ========================================== -->
     <section class="final-section">
 
-      <div class="final-deco final-deco--01">
-        ♥
-      </div>
-
-      <div class="final-deco final-deco--02">
+      <span class="final-deco final-deco--01">
         ★
-      </div>
+      </span>
 
-      <div class="final-deco final-deco--03">
-        +
-      </div>
+      <span class="final-deco final-deco--02">
+        ♥
+      </span>
+
+      <span class="final-deco final-deco--03">
+        ✦
+      </span>
 
 
-      <div class="final-section__inner">
+      <div class="final-inner reveal">
 
-        <p>
-          YOUR PICK MATTERS
+        <p class="final-label">
+          CHAMVERSE CHARACTER AWARDS
         </p>
 
+
         <h2>
-          좋아하는 마음,
-          <br>
-          <strong>한 표로 보여주세요.</strong>
+
+          YOUR PICK
+
+          <strong
+            class="final-title-3d"
+            data-text="MATTERS!"
+          >
+            MATTERS!
+          </strong>
+
         </h2>
 
-        <span>
-          CHAMVERSE 최고의 캐릭터를
-          <br>
-          결정하는 건 바로 당신!
-        </span>
 
 
-        <div class="final-characters">
+        <div class="final-trophy">
+
+          <img
+            src="/images/vote/win.png"
+            alt="CHAMVERSE 캐릭터 어워즈 트로피"
+          >
+
+        </div>
+
+
+        <!-- <div class="final-characters">
 
           <img
             src="/images/vote/액션.png"
             alt="CHAMVERSE 캐릭터"
           >
 
-        </div>
+        </div> -->
+
+
+        <p class="final-small">
+          당신의 최애를 투표하세요!
+        </p>
 
       </div>
 
@@ -474,9 +562,9 @@
 
 
 
-  <!-- ==================================
+  <!-- =========================================
        FLOATING CTA
-  =================================== -->
+  ========================================== -->
   <aside
     class="floating-vote"
     id="floatingVote"
@@ -484,24 +572,38 @@
 
     <div class="floating-vote__inner">
 
-      <div class="floating-vote__text">
+      <div class="floating-vote__left">
 
-        <span>
-          CHARACTER PICK
-        </span>
+        <div class="floating-vote__icon">
+          ♛
+        </div>
 
-        <strong>
-          D-5 · 내 최애 1위 만들기
-        </strong>
+        <div class="floating-vote__text">
+
+          <span>
+            D-5
+          </span>
+
+          <strong>
+            내 최애를 1위로 만들어줘!
+          </strong>
+
+        </div>
 
       </div>
+
 
       <a
         href="vote.html"
         class="floating-vote__button"
       >
-        PICK
-        <span>→</span>
+
+        투표하기
+
+        <span>
+          →
+        </span>
+
       </a>
 
     </div>
