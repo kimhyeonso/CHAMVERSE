@@ -1,2 +1,52 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><title>검색 | CHAMVERSE</title></head><body></body></html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>검색 | CHAMVERSE</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/search.css">
+  </head>
+<body data-page="search" data-static-page="true" data-use-common-ui="true">
+    <div class="app">
+      <main class="page">
+        <header class="screen-header compact">
+          <a class="back" href="main.html">‹</a>
+          <span>CHAMVERSE</span>
+        </header>
+        <form class="search-box" id="searchForm">
+          <input id="searchInput" placeholder="작품명, 캐릭터명을 검색해보세요.">
+          <button>⌕</button>
+        </form>
+        <section class="history">
+          <h2>최근 검색어</h2>
+          <ul id="historyList">
+            <li>
+              신비아파트
+              <button>×</button>
+            </li>
+            <li>
+              명탐정 코난
+              <button>×</button>
+            </li>
+            <li>
+              노진구
+              <button>×</button>
+            </li>
+          </ul>
+        </section>
+        <section class="search-trending">
+          <h2 class="section-title">지금 많이 찾고 있어요</h2>
+          <div id="trendingList" class="card-row"></div>
+        </section>
+        <section id="searchResultSection" class="section" hidden>
+          <h2 class="section-title">검색 결과</h2>
+          <div id="searchResults" class="wish-grid"></div>
+        </section>
+      </main>
+    </div>
+  <script src="../js/common.js"></script>
+  <script src="../js/app-utils.js"></script>
+    <script src="../js/search.js"></script>
+  </body>
+</html>

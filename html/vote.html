@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>투표하기 | CHAMVERSE</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/vote.css">
+  </head>
+<body data-page="vote" data-static-page="true" data-use-common-ui="true">
+    <div class="app">
+      <main class="page">
+        <header class="screen-header compact">
+          <a class="back" href="voteEvent.html">‹</a>
+          <span>CHAMVERSE</span>
+        </header>
+        <div class="tabs">
+          <button class="tab active">투표하기</button>
+          <a class="tab" href="ranking.html">현재 랭킹</a>
+        </div>
+        <section class="section vote-banner">
+          <div>
+            <h1>
+              지금,
+              <br>
+              당신의 캐릭터에게
+              <br>
+              <b>투표하세요!</b>
+            </h1>
+            <p>2026.07.01 - 2026.07.30</p>
+          </div>
+          <img src="../images/contents/id-02.jpg" alt="투표 이벤트">
+        </section>
+        <section id="characterGrid" class="character-grid"></section>
+        <button id="voteSubmit" class="primary-btn vote-submit">투표 완료하기</button>
+      </main>
+    </div>
+  <script src="../js/common.js"></script>
+  <script src="../js/app-utils.js"></script>
+    <script src="../js/vote.js"></script>
+  </body>
+</html>

@@ -1,1 +1,176 @@
-/* 검색 페이지 스타일 */
+﻿/* search.html 전용: 검색창, 최근 검색어, 결과 카드 */
+.search-page, body:has(.search-box) {
+  background: #fff;
+}
+.search-page .app, body:has(.search-box) .app {
+  min-height: 100vh;
+  background: #fff;
+}
+.search-page .page, body:has(.search-box) .page {
+  width: min(100%, 768px);
+  margin: auto;
+  padding: 0 30px 50px;
+}
+.search-page .screen-header, body:has(.search-box) .screen-header {
+  position: relative;
+  display: flex;
+  height: 72px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 800;
+}
+.search-page .back, body:has(.search-box) .back {
+  position: absolute;
+  left: 0;
+  font-size: 32px;
+}
+.search-page .search-box, body:has(.search-box) .search-box {
+  display: flex;
+  height: 54px;
+  padding: 0 18px;
+  background: var(--cream);
+  border-radius: 28px;
+  align-items: center;
+  gap: 10px;
+}
+.search-page .search-box input, body:has(.search-box) .search-box input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+.search-page .search-box button, body:has(.search-box) .search-box button {
+  background: transparent;
+  font-size: 25px;
+}
+.history {
+  padding: 0 10px;
+}
+.history h2 {
+  margin-top: 30px;
+  font-size: 17px;
+}
+.history ul {
+  padding: 0;
+}
+.history li {
+  display: flex;
+  padding: 10px 0;
+  list-style: none;
+  justify-content: space-between;
+}
+.history li button {
+  background: transparent;
+}
+.search-trending {
+  margin-top: 70px;
+}
+.section-title {
+  margin: 0 0 19px;
+  font-size: 24px;
+}
+.card-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 130px;
+  gap: 14px;
+  overflow-x: auto;
+}
+.poster {
+  overflow: hidden;
+  background: #f1f1f1;
+  border-radius: 11px;
+  aspect-ratio: .7;
+}
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.poster-card h3 {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+.poster-card p {
+  margin: 4px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.wish-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.content-card__poster {
+  position: relative;
+  overflow: hidden;
+  background: #f1f1f1;
+  border-radius: 11px;
+  aspect-ratio: 0.7;
+}
+.content-card__poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.content-card h3 {
+  margin: 8px 0 0;
+  overflow: hidden;
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.content-card p {
+  margin: 4px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.content-card__action {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  color: var(--coral);
+  background: #fff;
+  border-radius: 50%;
+}
+@media (min-width: 769px) {
+  .search-page .page, body:has(.search-box) .page {
+    width: min(100%, 1280px);
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+  .search-page .card-row, body:has(.search-box) .card-row {
+    grid-auto-flow: initial;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    overflow: visible;
+  }
+  .search-page .wish-grid, body:has(.search-box) .wish-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+@media (max-width: 768px) {
+  body:has(.search-box) .page {
+    padding: 0 19px 40px;
+  }
+}
+.loading-state {
+  display: grid;
+  min-height: 140px;
+  place-items: center;
+  gap: 10px;
+  color: #777;
+}
+.loading-state span {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #ffe3e2;
+  border-top-color: var(--coral, #ff6b6b);
+  border-radius: 50%;
+  animation: search-spin .7s linear infinite;
+}
+@keyframes search-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

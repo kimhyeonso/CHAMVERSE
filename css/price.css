@@ -1,1 +1,66 @@
-/* 이용권 페이지 스타일 */
+﻿/* price.html 전용: 이용권 카드 */
+body:has(.price-list) .app {
+  min-height: 100vh;
+  background: #fff;
+}
+body:has(.price-list) .page {
+  width: min(100%,768px);
+  margin: auto;
+  padding: 0 30px 45px;
+}
+.screen-header {
+  position: relative;
+  display: flex;
+  height: 72px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 800;
+}
+.screen-header .back {
+  position: absolute;
+  left: 0;
+}
+.center-info {
+  margin: 48px 0 34px;
+  text-align: center;
+}
+.center-info h1 {
+  font-size: 26px;
+}
+.center-info p {
+  color: #999;
+}
+.menu-list {
+  overflow: hidden;
+  border: 1px solid #ddc6c6;
+  border-radius: 14px;
+}
+.menu-row {
+  display: flex;
+  min-height: 78px;
+  padding: 0 20px;
+  border-bottom: 1px solid #ddc6c6;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-row:last-child {
+  border: 0;
+}
+.price-list small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+}
+.primary-btn {
+  min-height: 34px;
+  padding: 0 15px;
+  color: #fff;
+  background: var(--coral);
+  border-radius: 8px;
+}
+@media(max-width:768px) {
+  body:has(.price-list) .page {
+    padding: 0 19px 35px;
+  }
+}

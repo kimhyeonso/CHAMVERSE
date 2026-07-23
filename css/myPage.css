@@ -1,1 +1,189 @@
-/* 마이페이지 스타일 */
+﻿/* myPage.html 전용: 계정 카드와 메뉴 */
+body:has(#watchingList) .app {
+  min-height: 100vh;
+  background: #fff;
+}
+body:has(#watchingList) .page {
+  width: min(100%,768px);
+  margin: auto;
+  padding: 0 30px 45px;
+}
+.screen-header {
+  position: relative;
+  display: flex;
+  height: 72px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 800;
+}
+.screen-header .back {
+  position: absolute;
+  left: 0;
+}
+.account-card {
+  display: flex;
+  padding: 20px;
+  border: 1px solid #ddc6c6;
+  border-radius: 16px;
+  gap: 20px;
+  align-items: center;
+}
+.account-card img {
+  width: 95px;
+  height: 95px;
+  background: #eee;
+  object-fit: cover;
+}
+.account-card h2 {
+  margin: 0 0 5px;
+  font-size: 22px;
+}
+.account-card p {
+  margin: 6px 0;
+}
+.account-card .badge {
+  display: inline-block;
+  padding: 4px 16px;
+  color: #fff;
+  background: var(--coral);
+  border-radius: 6px;
+  font-size: 12px;
+}
+.account-card > a {
+  margin-left: auto;
+  color: var(--coral);
+  font-size: 12px;
+}
+.section {
+  margin-top: 35px;
+}
+.section-title {
+  margin: 0 0 18px;
+  font-size: 23px;
+}
+.card-row {
+  display: grid;
+  min-height: 175px;
+  grid-auto-flow: column;
+  grid-auto-columns: 130px;
+  gap: 14px;
+  overflow-x: auto;
+}
+.poster {
+  overflow: hidden;
+  background: #eee;
+  border-radius: 11px;
+  aspect-ratio: .7;
+}
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.poster-card h3 {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+.poster-card p {
+  margin: 4px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.content-card__poster {
+  overflow: hidden;
+  background: #eee;
+  border-radius: 11px;
+  aspect-ratio: 0.7;
+}
+.content-card__poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.content-card h3 {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+.content-card p {
+  margin: 4px 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.content-card__progress {
+  height: 4px;
+  margin-top: 5px;
+  background: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.content-card__progress span {
+  display: block;
+  width: var(--progress);
+  height: 100%;
+  background: var(--coral);
+}
+.menu-list {
+  overflow: hidden;
+  border: 1px solid #ddc6c6;
+  border-radius: 14px;
+}
+.menu-row {
+  display: flex;
+  min-height: 54px;
+  padding: 0 20px;
+  border-bottom: 1px solid #ddc6c6;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-row:last-child {
+  border: 0;
+}
+.counter {
+  padding: 3px 10px;
+  color: #fff;
+  background: var(--coral);
+  border-radius: 12px;
+  font-size: 12px;
+}
+@media(min-width:769px) {
+  body:has(#watchingList) .page {
+    width: min(100%,1280px);
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+  .card-row {
+    grid-auto-flow: initial;
+    grid-template-columns: repeat(6,minmax(0,1fr));
+    overflow: visible;
+  }
+}
+@media(max-width:768px) {
+  body:has(#watchingList) .page {
+    padding: 0 19px 35px;
+  }
+  .account-card img {
+    width: 82px;
+    height: 82px;
+  }
+}
+.loading-state {
+  display: grid;
+  min-height: 150px;
+  place-items: center;
+  gap: 10px;
+  color: #777;
+}
+.loading-state span {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #ffe3e2;
+  border-top-color: var(--coral, #ff6b6b);
+  border-radius: 50%;
+  animation: mypage-spin .7s linear infinite;
+}
+@keyframes mypage-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

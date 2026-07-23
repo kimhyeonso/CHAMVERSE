@@ -1,63 +1,161 @@
-/* 공통 스타일 */
-@font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
-    font-weight: 100;
-    font-display: swap;
+/*
+ * 공통 파일에는 모든 앱 화면이 함께 쓰는 헤더와 하단 메뉴만 둡니다.
+ * 카드, 버튼, 목록 등 화면 고유 UI는 각 페이지 CSS 파일에서 관리합니다.
+ */
+@import url('https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy.css');
+:root {
+  --coral: #f46e69;
+  --red: #ff4b4c;
+  --ink: #202124;
+  --muted: #8d8d94;
+  --line: #ead6d5;
+  --cream: #fff4e8;
+  --wash: #f7f7f7;
+  --blue: #3c82fd;
+  --yellow: #fdc327;
 }
-
-@font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-2ExtraLight.woff2') format('woff2');
-    font-weight: 200;
-    font-display: swap;
+* {
+  box-sizing: border-box;
 }
-
-@font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
-    font-weight: 300;
-    font-display: swap;
+html {
+  scroll-behavior: smooth;
 }
-
-@font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-display: swap;
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #f6f6f6;
+  font-family: Paperlogy, Pretendard, "Noto Sans KR", Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: -0.04em;
 }
-
-@font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-display: swap;
+button, input, select {
+  font: inherit;
 }
-
-@font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
-    font-weight: 600;
-    font-display: swap;
+button {
+  border: 0;
+  cursor: pointer;
 }
-
-@font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-display: swap;
+a {
+  color: inherit;
+  text-decoration: none;
 }
-
-@font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
-    font-weight: 800;
-    font-display: swap;
+img {
+  display: block;
+  max-width: 100%;
 }
-
-@font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');
-    font-weight: 900;
-    font-display: swap;
+/* --------------------------------------------------------------------------
+   공통 브랜드 헤더
+   -------------------------------------------------------------------------- */
+.common-header {
+  display: flex;
+  width: 100%;
+  height: 82px;
+  padding: 0 max(24px, calc((100vw - 1280px) / 2));
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+}
+.common-header__inner {
+  display: flex;
+  width: min(100%, 1280px);
+  justify-content: space-between;
+  align-items: center;
+}
+.common-header__logo {
+  width: 166px;
+}
+.common-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.common-header__search {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  color: var(--ink);
+  background: transparent;
+  place-items: center;
+  font-size: 27px;
+}
+.common-header__profile {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  place-items: center;
+  font-size: 14px;
+  position: relative;
+}
+.common-header__profile::after {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 8px;
+  height: 8px;
+  content: "";
+  background: var(--red);
+  border-radius: 50%;
+}
+/* --------------------------------------------------------------------------
+   공통 하단 메뉴
+   -------------------------------------------------------------------------- */
+body[data-use-common-ui="true"] .app {
+  padding-bottom: 78px;
+}
+.common-nav {
+  position: fixed;
+  z-index: 20;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 78px;
+  background: rgba(241, 241, 241, 0.96);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  justify-content: center;
+  backdrop-filter: blur(12px);
+}
+.common-nav__inner {
+  display: grid;
+  width: min(100%, 620px);
+  grid-template-columns: repeat(4, 1fr);
+}
+.common-nav__item {
+  display: grid;
+  min-height: 78px;
+  color: var(--ink);
+  place-content: center;
+  gap: 3px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+}
+.common-nav__item img {
+  width: 30px;
+  height: 30px;
+  margin: auto;
+  object-fit: contain;
+}
+.common-nav__item.is-active {
+  color: var(--coral);
+}
+@media (max-width: 768px) {
+  .common-header {
+    height: 64px;
+    padding: 0 19px;
+  }
+  .common-header__logo {
+    width: 132px;
+  }
+  .common-nav, .common-nav__item {
+    height: 62px;
+    min-height: 62px;
+  }
+  .common-nav__item {
+    font-size: 0;
+  }
 }

@@ -1,1 +1,64 @@
-/* 공지사항 페이지 스타일 */
+﻿/* notice.html 전용: 공지와 고객센터 탭 */
+body:has(.notice-list) .app {
+  min-height: 100vh;
+  background: #fff;
+}
+body:has(.notice-list) .page {
+  width: min(100%,768px);
+  margin: auto;
+  padding: 0 30px 45px;
+}
+.screen-header {
+  position: relative;
+  display: flex;
+  height: 72px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 800;
+}
+.screen-header .back {
+  position: absolute;
+  left: 0;
+}
+.section {
+  margin-top: 20px;
+}
+.tabs {
+  display: flex;
+  gap: 25px;
+  border-bottom: 1px solid #eee;
+}
+.tab {
+  padding: 12px 3px;
+  background: transparent;
+  font-weight: 700;
+}
+.tab.active {
+  border-bottom: 2px solid var(--coral);
+}
+.notice-list {
+  overflow: hidden;
+  margin-top: 18px;
+  border: 1px solid #ddc6c6;
+  border-radius: 14px;
+}
+.notice-list .menu-row {
+  display: flex;
+  width: 100%;
+  min-height: 58px;
+  padding: 0 18px;
+  background: #fff;
+  border-bottom: 1px solid #ddc6c6;
+  text-align: left;
+  justify-content: space-between;
+  align-items: center;
+}
+.notice-list .menu-row:last-child {
+  border: 0;
+}
+@media(max-width:768px) {
+  body:has(.notice-list) .page {
+    padding: 0 19px 35px;
+  }
+}

@@ -1,2 +1,43 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><title>라이브 | CHAMVERSE</title></head><body></body></html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>라이브 | CHAMVERSE</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/live.css">
+  </head>
+<body data-page="live" data-static-page="true" data-use-common-ui="true">
+    <div class="app">
+      <main class="page">
+        <header class="screen-header compact">
+          <a class="back" href="main.html">‹</a>
+          <span>
+            CHAMVERSE
+            <b>LIVE</b>
+          </span>
+        </header>
+        <section class="live-video">
+          <img id="livePoster" src="../images/contents/id-01.jpg" alt="현재 라이브">
+          <span class="live-badge">LIVE ·</span>
+        </section>
+        <section class="section">
+          <span class="tag live-now">현재 방송 중</span>
+          <h1 id="liveTitle" class="section-title">라이브 콘텐츠</h1>
+          <p id="liveDescription" class="description"></p>
+          <div class="meta">
+            <span>12:30</span>
+            <div class="progress">
+              <span style="--value:66%"></span>
+            </div>
+            <span>13:00</span>
+          </div>
+          <div id="scheduleList" class="schedule"></div>
+        </section>
+      </main>
+    </div>
+  <script src="../js/common.js"></script>
+  <script src="../js/app-utils.js"></script>
+    <script src="../js/live.js"></script>
+  </body>
+</html>

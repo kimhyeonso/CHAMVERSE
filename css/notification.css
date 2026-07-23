@@ -1,0 +1,95 @@
+﻿/* notification.html 전용: 알림 설정 */
+body:has(.center-info) .app {
+  min-height: 100vh;
+  background: #fff;
+}
+body:has(.center-info) .page {
+  width: min(100%,768px);
+  margin: auto;
+  padding: 0 30px 45px;
+}
+.screen-header {
+  position: relative;
+  display: flex;
+  height: 72px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 800;
+}
+.screen-header .back {
+  position: absolute;
+  left: 0;
+}
+.center-info {
+  margin: 22px 0 34px;
+  text-align: center;
+}
+.profile-placeholder {
+  width: 106px;
+  height: 106px;
+  margin: 0 auto 25px;
+  object-fit: cover;
+}
+.center-info h1 {
+  font-size: 24px;
+}
+.center-info p {
+  color: #999;
+}
+.settings-group {
+  margin-top: 28px;
+}
+.settings-group h2 {
+  margin: 0 0 13px 5px;
+  font-size: 15px;
+}
+.menu-list {
+  overflow: hidden;
+  border: 1px solid #ddc6c6;
+  border-radius: 14px;
+}
+.menu-row {
+  display: flex;
+  min-height: 60px;
+  padding: 0 20px;
+  border-bottom: 1px solid #ddc6c6;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-row:last-child {
+  border: 0;
+}
+.toggle {
+  width: 50px;
+  height: 26px;
+  padding: 3px;
+  background: #bdbdbd;
+  border-radius: 100px;
+}
+.toggle span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+}
+.toggle.on {
+  background: var(--coral);
+}
+.toggle.on span {
+  transform: translateX(24px);
+}
+#notificationTime {
+  max-width: 180px;
+  color: var(--muted);
+  background: #fff;
+  border: 0;
+  text-align: right;
+  font-size: 12px;
+}
+@media(max-width:768px) {
+  body:has(.center-info) .page {
+    padding: 0 19px 35px;
+  }
+}

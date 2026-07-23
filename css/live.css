@@ -1,1 +1,129 @@
-/* 라이브 페이지 스타일 */
+﻿/* live.html 전용: 라이브 영상과 편성표 */
+body:has(.live-video) .app {
+  min-height: 100vh;
+  background: #fff;
+}
+body:has(.live-video) .page {
+  width: min(100%, 768px);
+  margin: auto;
+  padding: 0 30px 45px;
+}
+.screen-header {
+  position: relative;
+  display: flex;
+  height: 72px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+.screen-header .back {
+  position: absolute;
+  left: 0;
+}
+.screen-header b {
+  color: var(--coral);
+}
+.live-video {
+  position: relative;
+  overflow: hidden;
+  background: #ddd;
+  border-radius: 14px;
+  aspect-ratio: 1.75;
+}
+.live-video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.live-badge {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  padding: 7px 11px;
+  color: #fff;
+  background: #ff4651;
+  border-radius: 4px;
+  font-weight: 800;
+}
+.section {
+  margin-top: 30px;
+}
+.live-now {
+  color: var(--coral);
+  background: #fff1ed;
+  border: 0;
+}
+.section-title {
+  margin: 12px 0 5px;
+  font-size: 24px;
+}
+.description {
+  color: #777;
+}
+.meta {
+  display: flex;
+  margin: 14px 0;
+  color: #777;
+  align-items: center;
+  gap: 10px;
+}
+.progress {
+  flex: 1;
+  height: 5px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.progress span {
+  display: block;
+  width: var(--value);
+  height: 100%;
+  background: var(--coral);
+}
+.schedule {
+  overflow: hidden;
+  border: 1px solid #e1d2d2;
+  border-radius: 15px;
+}
+.schedule-row {
+  display: grid;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e8dddd;
+  grid-template-columns: 62px 1fr auto;
+  gap: 9px;
+  align-items: center;
+}
+.schedule-row:last-child {
+  border: 0;
+}
+.schedule-row strong {
+  color: var(--coral);
+}
+.schedule-row h3,.schedule-row p {
+  margin: 0;
+}
+.schedule-row h3 {
+  font-size: 13px;
+}
+.schedule-row p {
+  color: #999;
+  font-size: 11px;
+}
+@media (min-width: 769px) {
+  body:has(.live-video) .page {
+    width: min(100%, 1100px);
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+  .live-video {
+    aspect-ratio: 2.25;
+  }
+}
+@media(max-width:768px) {
+  body:has(.live-video) .page {
+    padding: 0 19px 35px;
+  }
+  .live-video {
+    aspect-ratio: 1.25;
+  }
+}

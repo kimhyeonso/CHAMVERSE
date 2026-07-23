@@ -3,25 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>찜한 콘텐츠 | CHAMVERSE</title>
+    <title>다운로드 | CHAMVERSE</title>
     <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/wish.css">
+    <link rel="stylesheet" href="../css/download.css">
   </head>
-<body data-page="wish" data-static-page="true" data-use-common-ui="true">
+<body data-page="download" data-static-page="true" data-use-common-ui="true">
     <div class="app">
       <main class="page">
         <header class="screen-header compact">
           <a class="back" href="myPage.html">‹</a>
-          <span>찜한 콘텐츠 모아보기</span>
+          <span>다운로드 콘텐츠</span>
         </header>
-        <section class="continue-banner">
-          <img src="../images/contents/id-01.jpg" alt="이어보기">
+        <section class="storage">
+          <div class="cloud">⇩</div>
           <div>
-            <strong>찜해둔 작품, 이어보세요!</strong>
-            <h3>최근 시청한 콘텐츠</h3>
-            <p>지난 시청 위치부터 이어볼 수 있어요.</p>
+            <h2>오프라인 저장</h2>
+            <p><span id="storageUsed">0MB</span> / <span id="storageTotal">5GB</span></p>
             <div class="progress">
-              <span style="--value:70%"></span>
+              <span id="storageBar" style="--value:0%"></span>
             </div>
           </div>
         </section>
@@ -31,13 +30,13 @@
             <button class="tab">시리즈</button>
             <button class="tab">극장판</button>
           </div>
-          <h2 class="section-title">내가 찜한 작품</h2>
-          <div id="wishList" class="wish-grid"></div>
+          <label class="download-sort">정렬 <select id="downloadSort"><option value="recent">최신 다운로드순</option><option value="title">제목순</option></select></label>
+          <div id="downloadList"></div>
         </section>
       </main>
     </div>
   <script src="../js/common.js"></script>
   <script src="../js/app-utils.js"></script>
-    <script src="../js/wish.js"></script>
+    <script src="../js/download.js"></script>
   </body>
 </html>

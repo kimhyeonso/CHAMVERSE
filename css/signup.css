@@ -1,1 +1,87 @@
-/* 회원가입 페이지 스타일 */
+/* signup.html 전용: 회원가입과 소셜 버튼 */
+.signup-page {
+  display: flex;
+  min-height: 100vh;
+  padding: 10vh 24px 40px;
+  background: linear-gradient(135deg, #fffdfa, #fff6ee);
+  align-items: center;
+}
+.signup-page .auth-box {
+  width: min(100%, 520px);
+  margin: auto;
+}
+.signup-page .auth-logo {
+  width: min(82%, 400px);
+  margin: 0 auto 48px;
+}
+.signup-page h1 {
+  margin: 0 0 10px;
+  font-size: 27px;
+}
+.signup-page p {
+  color: #777;
+  line-height: 1.6;
+}
+.signup-cta {
+  display: grid;
+  width: 100%;
+  height: 58px;
+  margin-top: 30px;
+  color: #fff;
+  background: var(--coral);
+  border-radius: 10px;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.signup-page .divider {
+  display: flex;
+  margin: 28px 0;
+  color: #999;
+  align-items: center;
+  gap: 15px;
+}
+.signup-page .divider::before, .signup-page .divider::after {
+  flex: 1;
+  height: 1px;
+  content: "";
+  background: #ddd;
+}
+.signup-page .social-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.signup-page .social {
+  display: grid;
+  color: #555;
+  background: transparent;
+  place-items: center;
+  gap: 7px;
+}
+.signup-page .social b {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 50%;
+  place-items: center;
+  font-size: 22px;
+}
+.signup-page .kakao b {
+  background: #fee500;
+}
+.signup-page .naver b {
+  color: #1ec800;
+}
+.signup-page .google b {
+  color: #4285f4;
+}
+.account-question {
+  margin-top: 30px;
+  text-align: center;
+}
+.account-question a {
+  color: var(--coral);
+  text-decoration: underline;
+}

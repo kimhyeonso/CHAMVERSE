@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>알림 설정 | CHAMVERSE</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/notification.css">
+  </head>
+<body data-page="notification" data-static-page="true" data-use-common-ui="true">
+    <div class="app">
+      <main class="page">
+        <header class="screen-header compact">
+          <a class="back" href="myPage.html">‹</a>
+          <span>알림 설정</span>
+        </header>
+        <section class="center-info">
+          <img class="profile-placeholder" src="../images/profile/profile03.png" alt="OTT 캐릭터">
+          <h1>
+            CHAMVERSE의 소식을
+            <br>
+            받아보세요!
+          </h1>
+          <p>원하는 알림만 선택해서 받아볼 수 있어요!</p>
+        </section>
+        <section class="settings-group">
+          <h2>전체 알림</h2>
+          <div class="menu-list">
+            <div class="menu-row">
+              <b>전체 알림</b>
+              <button class="toggle on">
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="settings-group">
+          <h2>서비스 알림</h2>
+          <div class="menu-list">
+            <div class="menu-row">
+              <b>신작 & 업데이트 알림</b>
+              <button class="toggle on">
+                <span></span>
+              </button>
+            </div>
+            <div class="menu-row">
+              <b>극장판 공개 알림</b>
+              <button class="toggle on">
+                <span></span>
+              </button>
+            </div>
+            <div class="menu-row">
+              <b>라이브 시작 알림</b>
+              <button class="toggle">
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="settings-group">
+          <h2>콘텐츠 추천 알림</h2>
+          <div class="menu-list">
+            <div class="menu-row"><b>맞춤 콘텐츠 추천</b><button class="toggle on"><span></span></button></div>
+            <div class="menu-row"><b>인기 콘텐츠 추천</b><button class="toggle"><span></span></button></div>
+            <div class="menu-row"><b>시청 이어보기 알림</b><button class="toggle"><span></span></button></div>
+          </div>
+        </section>
+        <section class="settings-group">
+          <h2>알림 받는 시간</h2>
+          <div class="menu-list">
+            <label class="menu-row"><b>알림 받는 시간 설정</b><select id="notificationTime"><option>오전 8:00 - 오후 10:00</option><option>오전 9:00 - 오후 9:00</option><option>항상 받기</option></select></label>
+          </div>
+        </section>
+      </main>
+    </div>
+  <script src="../js/common.js"></script>
+  <script src="../js/app-utils.js"></script>
+    <script src="../js/notification.js"></script>
+  </body>
+</html>

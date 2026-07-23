@@ -1,0 +1,68 @@
+﻿/* voteEvent.html 전용: 캐릭터 투표 이벤트 배너 */
+body:has(#voteHero) .app {
+  min-height: 100vh;
+  background: #fff;
+}
+.vote-hero {
+  display: flex;
+  min-height: 520px;
+  padding: 58px 36px 45px;
+  color: #fff;
+  background-color: #333;
+  background-position: center;
+  background-size: cover;
+  flex-direction: column;
+  justify-content: end;
+  position: relative;
+}
+.vote-hero::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: rgba(0,0,0,.64);
+}
+.vote-hero > * {
+  position: relative;
+}
+.vote-hero .count {
+  color: var(--coral);
+  font-weight: 800;
+}
+.vote-hero h1 {
+  margin: 28px 0;
+  font-size: 40px;
+  line-height: 1.13;
+}
+.vote-hero h1 b {
+  color: var(--coral);
+}
+.vote-hero .button-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.vote-hero .primary-btn,.vote-hero .secondary-btn {
+  display: grid;
+  width: 100%;
+  min-height: 52px;
+  border-radius: 10px;
+  place-items: center;
+  font-weight: 700;
+}
+.vote-hero .primary-btn {
+  color: #fff;
+  background: var(--coral);
+}
+.vote-hero .secondary-btn {
+  color: var(--coral);
+  background: #fff;
+}
+@media(max-width:768px) {
+  .vote-hero {
+    min-height: 520px;
+    padding: 48px 35px 40px;
+  }
+  .vote-hero h1 {
+    font-size: 32px;
+  }
+}

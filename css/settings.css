@@ -1,0 +1,98 @@
+﻿/* settings.html 전용: 재생·앱 환경 설정 */
+body:has(.settings-group) .app {
+  min-height: 100vh;
+  background: #fff;
+}
+body:has(.settings-group) .page {
+  width: min(100%,768px);
+  margin: auto;
+  padding: 0 30px 45px;
+}
+.screen-header {
+  position: relative;
+  display: flex;
+  height: 72px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 800;
+}
+.screen-header .back {
+  position: absolute;
+  left: 0;
+}
+.settings-group {
+  margin-top: 32px;
+}
+.settings-group h2 {
+  margin: 0 0 13px 5px;
+  font-size: 15px;
+}
+.menu-list {
+  overflow: hidden;
+  border: 1px solid #ddc6c6;
+  border-radius: 14px;
+}
+.menu-row {
+  display: flex;
+  min-height: 54px;
+  padding: 0 20px;
+  border-bottom: 1px solid #ddc6c6;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu-row:last-child {
+  border: 0;
+}
+.toggle {
+  width: 50px;
+  height: 26px;
+  padding: 3px;
+  background: #bdbdbd;
+  border-radius: 100px;
+}
+.toggle span {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: .2s;
+}
+.toggle.on {
+  background: var(--coral);
+}
+.toggle.on span {
+  transform: translateX(24px);
+}
+.settings-account-actions {
+  display: grid;
+  text-align: center;
+  gap: 14px;
+}
+.settings-account-actions p {
+  color: var(--muted);
+}
+.settings-account-actions button {
+  background: transparent;
+}
+#logoutButton {
+  color: var(--coral);
+  font-size: 17px;
+  font-weight: 800;
+}
+body.dark-mode .app {
+  color: #f5f5f5;
+  background: #27272a;
+}
+body.dark-mode .menu-list {
+  border-color: #555;
+}
+body.dark-mode .menu-row {
+  border-color: #555;
+}
+@media(max-width:768px) {
+  body:has(.settings-group) .page {
+    padding: 0 19px 35px;
+  }
+}

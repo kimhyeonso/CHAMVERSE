@@ -1,2 +1,65 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><title>마이페이지 | CHAMVERSE</title></head><body></body></html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>마이페이지 | CHAMVERSE</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/myPage.css">
+  </head>
+<body data-page="myPage" data-static-page="true" data-use-common-ui="true">
+    <div class="app">
+      <main class="page">
+        <header class="screen-header compact">
+          <a class="back" href="main.html">‹</a>
+          <span>마이페이지</span>
+        </header>
+        <section class="account-card">
+          <img src="../images/profile/profile01.png" alt="프로필">
+          <div>
+            <h2>챔프 님</h2>
+            <span class="badge">일반 회원권</span>
+            <p>qwer@naver.com</p>
+          </div>
+          <a href="login.html">로그아웃</a>
+        </section>
+        <section class="section">
+          <h2 class="section-title">계속 시청하기</h2>
+          <div id="watchingList" class="card-row"></div>
+        </section>
+        <section class="section menu-list">
+          <a class="menu-row" href="wish.html">
+            <span>
+              찜한 콘텐츠
+              <b class="counter">12개</b>
+            </span>
+            <b>›</b>
+          </a>
+          <a class="menu-row" href="download.html">
+            <span>
+              다운로드 콘텐츠
+              <b class="counter">3개</b>
+            </span>
+            <b>›</b>
+          </a>
+          <a class="menu-row" href="price.html"><span>이용권 관리</span><b>›</b></a>
+          <a class="menu-row" href="notification.html">
+            <span>알림 설정</span>
+            <b>›</b>
+          </a>
+          <a class="menu-row" href="settings.html">
+            <span>설정</span>
+            <b>›</b>
+          </a>
+          <a class="menu-row" href="notice.html">
+            <span>고객센터</span>
+            <b>›</b>
+          </a>
+        </section>
+      </main>
+    </div>
+  <script src="../js/common.js"></script>
+  <script src="../js/app-utils.js"></script>
+    <script src="../js/myPage.js"></script>
+  </body>
+</html>

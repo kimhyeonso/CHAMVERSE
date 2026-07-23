@@ -1,1 +1,42 @@
-/* 인덱스 페이지 스타일 */
+/* index.html 전용: 인트로 화면 */
+.index-page {
+  min-height: 100vh;
+  padding: 11vh 24px 40px;
+  background: linear-gradient(135deg, #fffdfa, #fff6ee);
+}
+.intro-box {
+  width: min(100%, 520px);
+  margin: auto;
+  text-align: center;
+}
+.intro-box .auth-logo {
+  width: min(82%, 400px);
+  margin: 0 auto 58px;
+}
+.intro-box h1 {
+  margin: 0 0 12px;
+  font-size: 29px;
+  line-height: 1.35;
+}
+.intro-box p {
+  margin: 0 0 34px;
+  color: #777;
+  line-height: 1.7;
+}
+.intro-cta {
+  display: grid;
+  width: 100%;
+  height: 58px;
+  color: #fff;
+  background: var(--coral);
+  border-radius: 11px;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+.text-link {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--coral);
+  font-weight: 700;
+}
