@@ -1,9 +1,7 @@
 ﻿/* live.html 전용: 라이브 영상과 편성표 */
 body:has(.live-video) .app {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 12% 5%, rgba(244, 110, 105, .08), transparent 26%),
-    #faf8f7;
+  background: #fff;
 }
 body:has(.live-video) .page {
   width: min(100%, 1320px);

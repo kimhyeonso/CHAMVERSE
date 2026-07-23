@@ -240,12 +240,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   scheduleList.addEventListener('click', (event) => {
     const button = event.target.closest('[data-live-alert]');
+    if (button && Number(button.dataset.liveAlert) === Number(live.id)) {
+      livePlayButton.click();
+      return;
+    }
     if (!button || button.textContent.trim() === '라이브') return;
     const alertKey = `live-${button.dataset.liveAlert}`;
     const alertEnabled = !ChamverseApp.getToggle(ChamverseApp.KEY.notifications, alertKey);
     ChamverseApp.setToggle(ChamverseApp.KEY.notifications, alertKey, alertEnabled);
     const buttonLabel = button.querySelector('.button-label');
+    const desktopLabel = button.querySelector('.desktop-button-label');
+    const mobileLabel = button.querySelector('.mobile-button-label');
     if (buttonLabel) buttonLabel.textContent = alertEnabled ? '설정됨' : '알림';
+    if (desktopLabel) desktopLabel.textContent = alertEnabled ? '설정됨' : '알림 설정';
+    if (mobileLabel) mobileLabel.textContent = alertEnabled ? '설정됨' : '알림';
     button.classList.toggle('is-set', alertEnabled);
     button.setAttribute('aria-label', `라이브 알림 ${alertEnabled ? '취소' : '설정'}`);
     ChamverseApp.showToast(alertEnabled ? '라이브 알림을 켰어요' : '라이브 알림을 껐어요');

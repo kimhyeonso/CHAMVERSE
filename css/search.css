@@ -1,9 +1,7 @@
 /* search.html 전용: 검색창, 최근 검색어, 결과 카드 */
 body:has(.search-box) .app {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 10% 4%, rgba(244, 110, 105, .08), transparent 25%),
-    #faf8f7;
+  background: #fff;
 }
 
 body:has(.search-box) .page {
@@ -355,10 +353,15 @@ body:has(.search-box) .page {
 }
 
 @media (min-width: 901px) {
+  body[data-page="search"] .common-header__search,
+  body[data-page="search"] .common-header__divider {
+    display: none;
+  }
+
   .search-intro,
   .search-box,
   .history {
-    width: min(100%, 920px);
+    width: 100%;
   }
 
   .search-box {
@@ -400,6 +403,41 @@ body:has(.search-box) .page {
   .search-trending,
   #searchResultSection {
     margin-top: 64px;
+  }
+}
+
+@media (min-width: 1200px) {
+  body:has(.search-box) .page {
+    width: min(100%, 1500px);
+    padding-right: 32px;
+    padding-left: 32px;
+  }
+
+  .search-intro h1 {
+    font-size: 34px;
+  }
+
+  .search-box input {
+    font-size: 18px;
+  }
+
+  .history h2 {
+    font-size: 20px;
+  }
+
+  .history li,
+  .history-keyword,
+  .history .history-empty {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .card-row,
+  .wish-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
 
