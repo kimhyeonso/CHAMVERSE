@@ -12,24 +12,68 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!items.length) return;
 
   const recommended = items.filter((item) => item.isRecommend);
-  const hero = recommended[0] || items[0];
+  const heroSlides = (recommended.length ? recommended : items).slice(0, 4);
+  let heroIndex = 0;
+  let hero = heroSlides[heroIndex];
   const heroElement = document.getElementById('hero');
   const heroTitle = document.getElementById('heroTitle');
   const heroDescription = document.getElementById('heroDescription');
   const heroPlay = document.getElementById('heroPlay');
   const heroWish = document.getElementById('heroWish');
-
-  heroElement.style.backgroundImage = `linear-gradient(115deg, rgba(255, 250, 243, 0.95), rgba(255, 243, 228, 0.74)), url('${hero.poster}')`;
-  heroTitle.textContent = hero.title;
-  heroDescription.textContent = hero.description;
-  heroPlay.href = `play.html?id=${hero.id}`;
-  heroWish.dataset.contentId = hero.id;
+  const heroDots = heroElement.querySelector('.slider-dots');
 
   const updateHeroWish = () => {
     const wished = ChamverseApp.uniqueIds(ChamverseApp.KEY.wish).includes(hero.id);
+    heroWish.classList.toggle('is-wished', wished);
     heroWish.innerHTML = wished ? '♥ <span>찜 취소</span>' : '＋ <span>찜하기</span>';
   };
-  updateHeroWish();
+
+  const renderHero = (index, shouldAnimate = false) => {
+    if (shouldAnimate) heroElement.classList.add('is-changing');
+    window.setTimeout(() => {
+      heroIndex = index;
+      hero = heroSlides[heroIndex];
+      heroElement.style.backgroundImage = `linear-gradient(0deg, rgba(7, 12, 18, 0.9), rgba(7, 12, 18, 0.08)), url('${hero.poster}')`;
+      heroTitle.textContent = hero.title;
+      heroDescription.textContent = hero.description;
+      heroPlay.href = `play.html?id=${hero.id}`;
+      heroWish.dataset.contentId = hero.id;
+      updateHeroWish();
+      heroDots.setAttribute('aria-label', `추천 콘텐츠 ${heroSlides.length}개 중 ${heroIndex + 1}번째`);
+      heroDots.querySelectorAll('button').forEach((dot, dotIndex) => {
+        dot.classList.toggle('is-active', dotIndex === heroIndex);
+        dot.setAttribute('aria-current', String(dotIndex === heroIndex));
+      });
+      heroElement.classList.remove('is-changing');
+    }, shouldAnimate ? 180 : 0);
+  };
+
+  heroDots.innerHTML = heroSlides.map((item, index) => `
+    <button type="button" aria-label="${index + 1}번째 추천 콘텐츠: ${item.title}"${index === 0 ? ' class="is-active" aria-current="true"' : ''}></button>
+  `).join('');
+  renderHero(0);
+
+  let heroSliderTimer = window.setInterval(() => {
+    renderHero((heroIndex + 1) % heroSlides.length, true);
+  }, 3000);
+
+  const restartHeroSlider = () => {
+    window.clearInterval(heroSliderTimer);
+    heroSliderTimer = window.setInterval(() => {
+      renderHero((heroIndex + 1) % heroSlides.length, true);
+    }, 3000);
+  };
+
+  heroDots.addEventListener('click', (event) => {
+    const selectedDot = event.target.closest('button');
+    if (!selectedDot) return;
+    const selectedIndex = [...heroDots.querySelectorAll('button')].indexOf(selectedDot);
+    renderHero(selectedIndex, true);
+    restartHeroSlider();
+  });
+
+  heroElement.addEventListener('mouseenter', () => window.clearInterval(heroSliderTimer));
+  heroElement.addEventListener('mouseleave', restartHeroSlider);
 
   const posterMarkup = (item, className, extra = '') => `
     <a class="${className}" href="play.html?id=${item.id}" ${extra}>
@@ -108,11 +152,50 @@ document.addEventListener('DOMContentLoaded', async () => {
     <a class="continue-card" href="play.html?id=${item.id}">
       <span class="continue-card__image">
         <img src="${item.poster}" alt="${item.title}" loading="lazy">
+        <span class="continue-card__play" aria-hidden="true"></span>
         <span class="continue-card__progress"><span style="--progress:${Math.min(92, Math.round(progress * 100))}%"></span></span>
       </span>
       <h3>${item.title}</h3>
       <p>${Math.max(1, Math.round((item.episode || 12) / 50))}화</p>
     </a>`).join('');
+
+  const continueBannerSlider = document.getElementById('continueBannerSlider');
+  const bannerTrack = continueBannerSlider.querySelector('.banner-slider__track');
+  const bannerSlides = [...bannerTrack.children];
+  const bannerDots = [...continueBannerSlider.querySelectorAll('.banner-slider__dots i')];
+  const firstBannerClone = bannerSlides[0].cloneNode(true);
+  firstBannerClone.setAttribute('aria-hidden', 'true');
+  bannerTrack.appendChild(firstBannerClone);
+  let bannerIndex = 0;
+  let bannerTimer;
+
+  const updateBannerDots = () => {
+    bannerDots.forEach((dot, index) => dot.classList.toggle('is-active', index === bannerIndex));
+  };
+
+  const moveBanner = () => {
+    bannerIndex += 1;
+    bannerTrack.style.transition = 'transform 480ms ease';
+    bannerTrack.style.transform = `translateX(-${bannerIndex * 100}%)`;
+    updateBannerDots();
+  };
+
+  bannerTrack.addEventListener('transitionend', () => {
+    if (bannerIndex !== bannerSlides.length) return;
+    bannerIndex = 0;
+    bannerTrack.style.transition = 'none';
+    bannerTrack.style.transform = 'translateX(0)';
+    updateBannerDots();
+  });
+
+  const startBannerSlider = () => {
+    window.clearInterval(bannerTimer);
+    bannerTimer = window.setInterval(moveBanner, 4000);
+  };
+
+  continueBannerSlider.addEventListener('mouseenter', () => window.clearInterval(bannerTimer));
+  continueBannerSlider.addEventListener('mouseleave', startBannerSlider);
+  startBannerSlider();
 
   const renderGenreRows = () => {
     const genreCharacters = {
@@ -131,9 +214,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       const matchedItems = items.filter((item) => item.genre?.includes(genre));
       const genreItems = (matchedItems.length ? matchedItems : recommended).slice(0, 12);
       if (!genreItems.length) return '';
-      const lead = genreItems[0];
       return `<article class="genre-row" data-genre-row="${genre}">
-        <a class="genre-lead" href="play.html?id=${lead.id}"><h3>${genre}</h3><img src="${genreCharacters[genre] || '../images/main/profile03.png'}" alt="${genre} 캐릭터" loading="lazy"></a>
+        <a class="genre-lead" href="play.html?id=${genreItems[0].id}"><img src="${genreCharacters[genre] || '../images/main/profile03.png'}" alt="${genre} 캐릭터" loading="lazy"></a>
         <div class="genre-card-row" aria-label="${genre} 콘텐츠 목록">
           ${genreItems.map((item) => `<a class="genre-card" href="play.html?id=${item.id}"><img src="${item.poster}" alt="${item.title}" loading="lazy"></a>`).join('')}
         </div>
@@ -172,8 +254,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     cardRow.addEventListener('pointercancel', finishDrag);
   });
 
-  const episodeItem = recommended[1] || items[1] || hero;
-  document.getElementById('episodeBanner').style.backgroundImage = `linear-gradient(110deg, rgba(249, 249, 249, 0.94), rgba(246, 246, 246, 0.55)), url('${episodeItem.poster}')`;
+  const newEpisodeIds = [1, 7, 25, 54, 18];
+  const newEpisodeItems = newEpisodeIds
+    .map((contentId) => items.find((item) => item.id === contentId))
+    .filter(Boolean);
+  const visibleNewEpisodes = newEpisodeItems.length ? newEpisodeItems : recommended.slice(0, 5);
+  document.getElementById('newEpisodeList').innerHTML = visibleNewEpisodes.map((item) => `
+    <a class="new-episode-card" href="play.html?id=${item.id}">
+      <span class="new-episode-card__image">
+        <img src="${item.poster}" alt="${item.title}" loading="lazy">
+        <span class="new-episode-card__badge">NEW</span>
+      </span>
+      <h3>${item.title}</h3>
+    </a>
+  `).join('');
 
   const renderMovies = (genre = '전체') => {
     let source = items.filter((item) => (item.episode || 0) <= 52);
@@ -188,47 +282,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     const button = event.target.closest('[data-genre]');
     if (!button) return;
     document.querySelectorAll('#genreChips button').forEach((chip) => chip.classList.toggle('is-active', chip === button));
-    if (button.dataset.genre === '전체') {
-      genreRows.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      return;
-    }
-    document.querySelector(`[data-genre-row="${button.dataset.genre}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const selectedGenre = button.dataset.genre;
+    genreRows.querySelectorAll('[data-genre-row]').forEach((row) => {
+      row.hidden = selectedGenre !== '전체' && row.dataset.genreRow !== selectedGenre;
+    });
   });
-
-  const genreChips = document.getElementById('genreChips');
-  let chipDragStartX = 0;
-  let chipDragStartScroll = 0;
-  let isChipDragging = false;
-
-  genreChips.addEventListener('pointerdown', (event) => {
-    if (event.pointerType === 'touch') return;
-    isChipDragging = true;
-    chipDragStartX = event.clientX;
-    chipDragStartScroll = genreChips.scrollLeft;
-    genreChips.classList.add('is-dragging');
-    genreChips.setPointerCapture(event.pointerId);
-  });
-
-  genreChips.addEventListener('pointermove', (event) => {
-    if (!isChipDragging) return;
-    genreChips.scrollLeft = chipDragStartScroll - (event.clientX - chipDragStartX);
-  });
-
-  const finishChipDrag = (event) => {
-    if (!isChipDragging) return;
-    isChipDragging = false;
-    genreChips.classList.remove('is-dragging');
-    if (genreChips.hasPointerCapture(event.pointerId)) genreChips.releasePointerCapture(event.pointerId);
-  };
-
-  genreChips.addEventListener('pointerup', finishChipDrag);
-  genreChips.addEventListener('pointercancel', finishChipDrag);
 
   document.getElementById('movieTabs').addEventListener('click', (event) => {
     const button = event.target.closest('[data-movie-genre]');
     if (!button) return;
     document.querySelectorAll('#movieTabs button').forEach((tab) => tab.classList.toggle('is-active', tab === button));
     renderMovies(button.dataset.movieGenre);
+  });
+
+  // 가로 스크롤 영역에서도 카드 선택은 항상 상세 페이지로 연결합니다.
+  document.querySelector('.main-page').addEventListener('click', (event) => {
+    const contentCard = event.target.closest(
+      'a.rank-card, a.continue-card, a.genre-lead, a.genre-card, a.banner-slider__slide, a.new-episode-card, a.movie-card'
+    );
+    if (!contentCard) return;
+
+    event.preventDefault();
+    window.location.href = contentCard.href;
   });
 
   heroWish.addEventListener('click', () => {

@@ -1,10 +1,37 @@
 [
   {
     "contentId": 1,
-    "background": "../images/play/shinchan/background.jpg",
+    "background": "../images/contents/id-01.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "1기",
+      "2기",
+      "3기",
+      "4기",
+      "5기",
+      "6기",
+      "7기",
+      "8기",
+      "9기",
+      "10기",
+      "11기",
+      "12기",
+      "13기",
+      "14기",
+      "15기",
+      "16기",
+      "17기",
+      "18기",
+      "19기",
+      "20기",
+      "21기",
+      "22기",
+      "23기",
+      "24기",
+      "25기"
+    ],
     "director": "혼고 미츠루",
     "cast": [
       "박영남",
@@ -17,14 +44,81 @@
       "text": "학교가 끝나면 만나던 추억의 말썽꾸러기"
     },
     "recommend": [2, 3, 4, 6],
-    "episodes": []
+    "episodes": {
+      "1기": [
+        {
+          "episode": 1,
+          "thumbnail": "../images/play/id-01-1",
+          "runningTime": "19분",
+          "link" : "https://www.facebook.com/100075533543543/videos/%EC%A7%B1%EA%B5%AC%EB%8A%94-%EB%AA%BB%EB%A7%90%EB%A0%A4-1%EA%B8%B0-1%ED%99%94/838311436342062/"
+        },
+        {
+          "episode": 2,
+          "thumbnail": "../images/play/id-01-1",
+          "runningTime": "24분",
+          "link" : "https://www.facebook.com/100075533543543/videos/838311569675382/?__so__=permalink"
+        },
+        {
+          "episode": 3,
+          "thumbnail": "../images/play/id-01-1",
+          "runningTime": "24분",
+          "link" : "https://www.facebook.com/100075533543543/videos/838311823008690?__so__=per"
+        },
+        {
+          "episode": 4,
+          "thumbnail": "../images/play/id-01-1",
+          "runningTime": "24분",
+          "link" : "https://www.facebook.com/100075533543543/videos/838320106341195/?__so__=permalink"
+        },
+        {
+          "episode": 5,
+          "thumbnail": "../images/play/id-01-1",
+          "runningTime": "24분",
+          "link" : "https://www.facebook.com/100075533543543/videos/838312683008604?__so__=permalink"
+        }
+      ],
+
+      "2기": [
+        {
+          "episode": 1,
+          "thumbnail": "../images/play/id-01-2",
+          "runningTime": "24분"
+        },
+        {
+          "episode": 2,
+          "thumbnail": "../images/play/id-01-2",
+          "runningTime": "24분"
+        },{
+          "episode": 3,
+          "thumbnail": "../images/play/id-01-2",
+          "runningTime": "24분"
+        },
+        {
+          "episode": 4,
+          "thumbnail": "../images/play/id-01-2",
+          "runningTime": "24분"
+        },{
+          "episode": 5,
+          "thumbnail": "../images/play/id-01-2",
+          "runningTime": "24분"
+        }
+      ]
+    }
   },
   {
     "contentId": 2,
-    "background": "../images/play/jadoo/background.jpg",
+    "background": "../images/contents/id-02.jpg",
     "runningTime": "약 24분",
     "country": "대한민국",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "1기",
+      "2기",
+      "3기",
+      "4기",
+      "5기",
+      "스페셜"
+    ],
     "director": "손석우, 고세윤",
     "cast": [
       "여민정",
@@ -41,10 +135,15 @@
   },
   {
     "contentId": 3,
-    "background": "../images/play/atashinchi/background.jpg",
+    "background": "../images/contents/id-03.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "아따맘마",
+      "새로운 아따맘마 1기",
+      "새로운 아따맘마 2기"
+    ],
     "director": null,
     "cast": [
       "이미자",
@@ -61,10 +160,15 @@
   },
   {
     "contentId": 4,
-    "background": "../images/play/maruko/background.jpg",
+    "background": "../images/contents/id-04.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "1기",
+      "2기",
+      "3기"
+    ],
     "director": "스다 유미코",
     "cast": [
       "정선혜",
@@ -81,10 +185,14 @@
   },
   {
     "contentId": 5,
-    "background": "../images/play/kodocha/background.jpg",
+    "background": "../images/contents/id-05.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "시즌 1",
+    "seasonLabel": "시즌 선택",
+    "seasons": [
+      "1기",
+      "2기"
+    ],
     "director": "다이치 아키타로",
     "cast": [
       "양정화",
@@ -101,10 +209,17 @@
   },
   {
     "contentId": 6,
-    "background": "../images/play/bonobono/background.jpg",
+    "background": "../images/contents/id-06.jpg",
     "runningTime": "약 5분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "보노보노 1995",
+      "안녕! 보노보노 1기",
+      "안녕! 보노보노 2기",
+      "안녕! 보노보노 3기",
+      "안녕! 보노보노 4기"
+    ],
     "director": "야마구치 히데노리",
     "cast": [],
     "nostalgia": {
@@ -116,10 +231,35 @@
   },
   {
     "contentId": 7,
-    "background": "../images/play/doraemon/background.jpg",
+    "background": "../images/contents/id-07.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "도라에몽",
+      "신 도라에몽 1기",
+      "신 도라에몽 2기",
+      "신 도라에몽 3기",
+      "신 도라에몽 4기",
+      "신 도라에몽 5기",
+      "신 도라에몽 6기",
+      "신 도라에몽 7기",
+      "신 도라에몽 8기",
+      "신 도라에몽 9기",
+      "신 도라에몽 10기",
+      "신 도라에몽 11기",
+      "신 도라에몽 12기",
+      "신 도라에몽 13기",
+      "신 도라에몽 14기",
+      "신 도라에몽 15기",
+      "신 도라에몽 16기",
+      "신 도라에몽 17기",
+      "신 도라에몽 18기",
+      "신 도라에몽 19기",
+      "신 도라에몽 20기",
+      "신 도라에몽 21기",
+      "신 도라에몽 스페셜"
+    ],
     "director": "쿠스바 고조",
     "cast": [
       "문남숙",
@@ -136,10 +276,19 @@
   },
   {
     "contentId": 8,
-    "background": "../images/play/pingu/background.jpg",
+    "background": "../images/contents/id-08.jpg",
     "runningTime": "약 5분",
     "country": "스위스, 영국",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "시즌 1",
+      "시즌 2",
+      "시즌 3",
+      "시즌 4",
+      "시즌 5",
+      "시즌 6",
+      "스페셜"
+    ],
     "director": "오트마르 구트만",
     "cast": [
       "카를로 보노미"
@@ -155,10 +304,21 @@
 
   {
     "contentId": 9,
-    "background": "../images/play/keroro/background.jpg",
+    "background": "../images/contents/id-09.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "1기",
+      "2기",
+      "3기",
+      "4기",
+      "5기",
+      "6기",
+      "7기",
+      "케로로 팝스타",
+      "신작 시리즈"
+    ],
     "director": "사토 준이치",
     "cast": [
       "양정화",
@@ -176,10 +336,14 @@
   },
   {
     "contentId": 10,
-    "background": "../images/play/greatfamily/background.jpg",
+    "background": "../images/contents/id-10.jpg",
     "runningTime": "약 7분",
     "country": "일본",
     "seasonLabel": "시리즈 선택",
+    "seasons": [
+      "괴짜가족",
+      "매일! 괴짜가족"
+    ],
     "director": null,
     "cast": [],
     "nostalgia": {
@@ -191,10 +355,27 @@
   },
   {
     "contentId": 11,
-    "background": "../images/play/spongebob/background.jpg",
+    "background": "../images/contents/id-11.jpg",
     "runningTime": "약 22분",
     "country": "미국",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "시즌 1",
+      "시즌 2",
+      "시즌 3",
+      "시즌 4",
+      "시즌 5",
+      "시즌 6",
+      "시즌 7",
+      "시즌 8",
+      "시즌 9",
+      "시즌 10",
+      "시즌 11",
+      "시즌 12",
+      "시즌 13",
+      "시즌 14",
+      "시즌 15"
+    ],
     "director": null,
     "cast": [
       "전태열",
@@ -211,10 +392,18 @@
   },
   {
     "contentId": 12,
-    "background": "../images/play/larva/background.jpg",
+    "background": "../images/contents/id-12.jpg",
     "runningTime": "약 2분",
     "country": "대한민국",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "라바 시즌 1",
+      "라바 시즌 2",
+      "라바 인 뉴욕",
+      "라바 키즈",
+      "라바 아일랜드",
+      "라바 패밀리"
+    ],
     "director": "맹주공",
     "cast": [
       "홍범기"
@@ -228,10 +417,13 @@
   },
   {
     "contentId": 13,
-    "background": "../images/play/zandori/background.jpg",
+    "background": "../images/contents/id-13.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+     "seasons": [
+      "시즌 1"
+    ],
     "director": null,
     "cast": [],
     "nostalgia": {
@@ -243,10 +435,18 @@
   },
   {
     "contentId": 14,
-    "background": "../images/play/ninjatori/background.jpg",
+    "background": "../images/contents/id-14.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "1기",
+      "2기",
+      "3기",
+      "4기",
+      "5기",
+      "6기"
+    ],
     "director": null,
     "cast": [],
     "nostalgia": {
@@ -258,10 +458,15 @@
   },
   {
     "contentId": 15,
-    "background": "../images/play/ikamusume/background.jpg",
+    "background": "../images/contents/id-15.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "침략! 오징어 소녀",
+      "침략!? 오징어 소녀",
+      "OVA"
+    ],
     "director": "미즈시마 츠토무",
     "cast": [],
     "nostalgia": {
@@ -273,10 +478,16 @@
   },
   {
     "contentId": 16,
-    "background": "../images/play/dooly/background.jpg",
+    "background": "../images/contents/id-16.jpg",
     "runningTime": "약 24분",
     "country": "대한민국",
     "seasonLabel": "시리즈 선택",
+    "seasons": [
+      "아기공룡 둘리 1987",
+      "아기공룡 둘리 1988",
+      "얼음별 대모험",
+      "뉴 아기공룡 둘리"
+    ],
     "director": "김수정",
     "cast": [
       "박영남",
@@ -291,10 +502,21 @@
   },
   {
     "contentId": 17,
-    "background": "../images/play/gintama/background.jpg",
+    "background": "../images/contents/id-17.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "은혼1",
+      "은혼2",
+      "은혼' 연장전",
+      "은혼3",
+      "은혼4",
+      "은혼. 포로리편",
+      "은혼. 은빛 영혼편",
+      "은혼 THE SEMI-FINAL",
+      "은혼 THE FINAL"
+    ],
     "director": "타카마츠 신지",
     "cast": [],
     "nostalgia": {
@@ -308,10 +530,19 @@
 
   {
     "contentId": 18,
-    "background": "../images/play/shinbi/background.jpg",
+    "background": "../images/contents/id-18.jpg",
     "runningTime": "약 24분",
     "country": "대한민국",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "1기",
+      "2기",
+      "3기",
+      "4기",
+      "5기",
+      "6기"
+    ],
+
     "director": "김병갑",
     "cast": [
       "김영은",
@@ -328,10 +559,13 @@
   },
   {
     "contentId": 19,
-    "background": "../images/play/ghostrestaurant/background.jpg",
+    "background": "../images/contents/id-19.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+     "seasons": [
+      "학교괴담"
+    ],
     "director": "이케다 요이치",
     "cast": [],
     "nostalgia": {
@@ -343,10 +577,15 @@
   },
   {
     "contentId": 20,
-    "background": "../images/play/schoolghost/background.jpg",
+    "background": "../images/contents/id-20.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "시즌 1",
+    "seasonLabel": "시즌 선택",
+    "seasons": [
+      "지옥선생 누베",
+      "지옥선생 누베 OVA",
+      "지옥선생 누베 2025"
+    ],
     "director": "아베 노리유키",
     "cast": [
       "정미숙",
@@ -362,10 +601,13 @@
   },
   {
     "contentId": 21,
-    "background": "../images/play/chocolatemagic/background.jpg",
+    "background": "../images/contents/id-21.jpg",
     "runningTime": "약 12분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+     "seasons": [
+      "초코초코 대작전"
+    ],
     "director": null,
     "cast": [],
     "nostalgia": {
@@ -377,10 +619,13 @@
   },
   {
     "contentId": 22,
-    "background": "../images/play/ghosthunt/background.jpg",
+    "background": "../images/contents/id-22.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+    "seasons": [
+      "고스트 헌트"
+    ],
     "director": "마유미 이토",
     "cast": [],
     "nostalgia": {
@@ -392,10 +637,13 @@
   },
   {
     "contentId": 23,
-    "background": "../images/play/gggg/background.jpg",
+    "background": "../images/contents/id-23.jpg",
     "runningTime": "약 25분",
     "country": "대한민국",
     "seasonLabel": "시즌 1",
+     "seasons": [
+      "기기괴괴"
+    ],
     "director": null,
     "cast": [],
     "nostalgia": {
@@ -409,10 +657,15 @@
 
   {
     "contentId": 24,
-    "background": "../images/play/naruto/background.jpg",
+    "background": "../images/contents/id-24.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "시즌 1",
+    "seasonLabel": "시즌 선택",
+    "seasons": [
+      "나루토",
+      "나루토 질풍전",
+      "보루토: 나루토 넥스트 제너레이션즈"
+    ],
     "director": "다테 하야토",
     "cast": [
       "류점희",
@@ -428,10 +681,30 @@
   },
   {
     "contentId": 25,
-    "background": "../images/play/onepiece/background.jpg",
+    "background": "../images/contents/id-25.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "에그헤드 편",
+    "seasonLabel": "시즌 선택",
+    "seasons": [
+      "이스트 블루 편",
+      "알라바스타 편",
+      "하늘섬 편",
+      "워터 세븐 편",
+      "에니에스 로비 편",
+      "스릴러 바크 편",
+      "샤본디 제도 편",
+      "여인섬 편",
+      "임펠 다운 편",
+      "마린포드 편",
+      "어인섬 편",
+      "펑크 하자드 편",
+      "드레스로자 편",
+      "조우 편",
+      "홀케이크 아일랜드 편",
+      "레벨리 편",
+      "와노쿠니 편",
+      "에그헤드 편"
+    ],
     "director": "우다 코노스케",
     "cast": [
       "강수진",
@@ -447,10 +720,17 @@
   },
   {
     "contentId": 26,
-    "background": "../images/play/bleach/background.jpg",
+    "background": "../images/contents/id-26.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "블리치",
+      "블리치 천년혈전편",
+      "블리치 천년혈전편: 결별담",
+      "블리치 천년혈전편: 상극담",
+      "블리치 천년혈전편: 화담"
+    ],
     "director": "아베 노리유키",
     "cast": [],
     "nostalgia": {
@@ -462,10 +742,18 @@
   },
   {
     "contentId": 27,
-    "background": "../images/play/dragonball/background.jpg",
+    "background": "../images/contents/id-27.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "드래곤볼 Z",
+    "seasonLabel": "시즌선택",
+    "seasons": [
+      "드래곤볼",
+      "드래곤볼 Z",
+      "드래곤볼 GT",
+      "드래곤볼 카이",
+      "드래곤볼 슈퍼",
+      "드래곤볼 다이마"
+    ],
     "director": "니시오 다이스케",
     "cast": [
       "김환진",
@@ -480,10 +768,31 @@
   },
   {
     "contentId": 28,
-    "background": "../images/play/powerranger/background.jpg",
+    "background": "../images/contents/id-28.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "매직포스",
+    "seasonLabel": "시즌 선택",
+     "seasons": [
+      "파워레인저 다이노썬더",
+      "파워레인저 S.P.D.",
+      "파워레인저 매직포스",
+      "파워레인저 트레저포스",
+      "파워레인저 와일드스피릿",
+      "파워레인저 엔진포스",
+      "파워레인저 미라클포스",
+      "파워레인저 캡틴포스",
+      "파워레인저 고버스터즈",
+      "파워레인저 다이노포스",
+      "파워레인저 트레인포스",
+      "파워레인저 닌자포스",
+      "파워레인저 애니멀포스",
+      "파워레인저 갤럭시포스",
+      "파워레인저 루팡포스 VS 패트롤포스",
+      "파워레인저 다이노소울",
+      "파워레인저 젠카이저",
+      "파워레인저 돈브라더즈",
+      "파워레인저 킹덤포스"
+    ],
     "director": null,
     "cast": [],
     "nostalgia": {
@@ -495,10 +804,21 @@
   },
   {
     "contentId": 29,
-    "background": "../images/play/yugioh/background.jpg",
+    "background": "../images/contents/id-29.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "듀얼몬스터즈",
+    "seasonLabel": "시즌 선택",
+     "seasons": [
+      "유희왕 듀얼몬스터즈",
+      "유희왕 GX",
+      "유희왕 5D's",
+      "유희왕 ZEXAL",
+      "유희왕 ZEXAL II",
+      "유희왕 ARC-V",
+      "유희왕 VRAINS",
+      "유희왕 SEVENS",
+      "유희왕 고 러시!!"
+    ],
     "director": "스기시마 쿠니히사",
     "cast": [
       "김영선",
@@ -513,10 +833,38 @@
   },
   {
     "contentId": 30,
-    "background": "../images/play/kamenrider/background.jpg",
+    "background": "../images/contents/id-30.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "덴오",
+    "seasonLabel": "시즌 선택",
+    "seasons": [
+      "가면라이더 쿠우가",
+      "가면라이더 아기토",
+      "가면라이더 류우키",
+      "가면라이더 파이즈",
+      "가면라이더 블레이드",
+      "가면라이더 히비키",
+      "가면라이더 카부토",
+      "가면라이더 덴오",
+      "가면라이더 키바",
+      "가면라이더 디케이드",
+      "가면라이더 더블",
+      "가면라이더 오즈",
+      "가면라이더 포제",
+      "가면라이더 위자드",
+      "가면라이더 가이무",
+      "가면라이더 드라이브",
+      "가면라이더 고스트",
+      "가면라이더 에그제이드",
+      "가면라이더 빌드",
+      "가면라이더 지오",
+      "가면라이더 제로원",
+      "가면라이더 세이버",
+      "가면라이더 리바이스",
+      "가면라이더 기츠",
+      "가면라이더 갓챠드",
+      "가면라이더 가브"
+    ],
     "director": "타사키 류타",
     "cast": [],
     "nostalgia": {
@@ -528,10 +876,26 @@
   },
   {
     "contentId": 31,
-    "background": "../images/play/beyblade/background.jpg",
+    "background": "../images/contents/id-31.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "시즌 1",
+    "seasonLabel": "시즌 선택",
+    "seasons": [
+      "탑블레이드",
+      "탑블레이드 V",
+      "팽이대전 G블레이드",
+      "메탈 베이블레이드",
+      "메탈 베이블레이드 폭",
+      "메탈 베이블레이드 4D",
+      "메탈 베이블레이드 ZERO-G",
+      "베이블레이드 버스트",
+      "베이블레이드 버스트 갓",
+      "베이블레이드 버스트 초제트",
+      "베이블레이드 버스트 진검",
+      "베이블레이드 버스트 슈퍼킹",
+      "베이블레이드 버스트 다이너마이트 배틀",
+      "베이블레이드 X"
+    ],
     "director": "카와세 토시후미",
     "cast": [],
     "nostalgia": {
@@ -543,10 +907,20 @@
   },
   {
     "contentId": 32,
-    "background": "../images/play/pokemon/background.jpg",
+    "background": "../images/contents/id-32.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "포켓몬스터",
+      "포켓몬스터 AG",
+      "포켓몬스터 DP",
+      "포켓몬스터 베스트위시",
+      "포켓몬스터 XY",
+      "포켓몬스터 썬&문",
+      "포켓몬스터 W",
+      "포켓몬스터: 리코와 로드의 모험"
+    ],
     "director": "유야마 쿠니히코",
     "cast": [
       "최덕희",
@@ -562,10 +936,23 @@
   },
   {
     "contentId": 33,
-    "background": "../images/play/digimon/background.jpg",
+    "background": "../images/contents/id-33.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "어드벤처",
+    "seasonLabel": "시즌 선택",
+    "seasons": [
+      "디지몬 어드벤처",
+      "파워 디지몬",
+      "디지몬 테이머즈",
+      "디지몬 프론티어",
+      "디지몬 세이버즈",
+      "디지몬 크로스워즈",
+      "디지몬 크로스워즈: 디지몬 헌터",
+      "디지몬 유니버스 어플리 몬스터즈",
+      "디지몬 어드벤처:",
+      "디지몬 고스트 게임",
+      "디지몬 비트브레이크"
+    ],
     "director": "카쿠도 히로유키",
     "cast": [
       "정미숙",
@@ -583,10 +970,14 @@
 
 {
     "contentId": 34,
-    "background": "../images/play/inuyasha/background.jpg",
+    "background": "../images/contents/id-34.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "이누야샤",
+      "이누야샤 완결편"
+    ],
     "director": "이케다 마사시",
     "cast": [
       "강수진",
@@ -601,10 +992,14 @@
   },
   {
     "contentId": 35,
-    "background": "../images/play/fushigiboshi/background.jpg",
+    "background": "../images/contents/id-35.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "쌍둥이공주",
+      "쌍둥이공주 꼬옥! 2기"
+    ],
     "director": "사토 준이치, 고모토 쇼고",
     "cast": [
       "이지영"
@@ -618,10 +1013,15 @@
   },
   {
     "contentId": 36,
-    "background": "../images/play/shugochara/background.jpg",
+    "background": "../images/contents/id-36.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "캐릭캐릭 체인지!",
+      "캐릭캐릭 체인지!! 두근",
+      "캐릭캐릭 체인지 파티!"
+    ],
     "director": "야스다 켄지",
     "cast": [],
     "nostalgia": {
@@ -633,10 +1033,14 @@
   },
   {
     "contentId": 37,
-    "background": "../images/play/secretjouju/background.jpg",
+    "background": "../images/contents/id-37.jpg",
     "runningTime": "약 12분",
     "country": "대한민국",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "쥬쥬 시즌 1",
+      "쥬쥬 시즌 2"
+    ],
     "director": null,
     "cast": [],
     "nostalgia": {
@@ -648,10 +1052,18 @@
   },
   {
     "contentId": 38,
-    "background": "../images/play/aikatsu/background.jpg",
+    "background": "../images/contents/id-38.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "아이엠스타!",
+      "아이엠스타! 2기",
+      "아이엠스타! 3기",
+      "아이카츠 스타즈!",
+      "아이카츠 프렌즈!",
+      "아이카츠 온 퍼레이드!"
+    ],
     "director": "키무라 류이치",
     "cast": [],
     "nostalgia": {
@@ -663,10 +1075,13 @@
   },
   {
     "contentId": 39,
-    "background": "../images/play/sugarsugarrune/background.jpg",
+    "background": "../images/contents/id-39.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+    "seasons": [
+      "슈가슈가룬"
+    ],
     "director": "마츠시타 유키히로",
     "cast": [],
     "nostalgia": {
@@ -678,10 +1093,20 @@
   },
   {
     "contentId": 40,
-    "background": "../images/play/sailormoon/background.jpg",
+    "background": "../images/contents/id-40.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "세일러문",
+      "세일러문 R",
+      "세일러문 S",
+      "세일러문 SuperS",
+      "세일러문 Sailor Stars",
+      "세일러문 Crystal",
+      "세일러문 Eternal",
+      "세일러문 Cosmos"
+    ],
     "director": "사토 준이치",
     "cast": [
       "최덕희"
@@ -695,7 +1120,7 @@
   },
   {
     "contentId": 41,
-    "background": "../images/play/gakuenalice/background.jpg",
+    "background": "../images/contents/id-41.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
@@ -712,10 +1137,13 @@
 
   {
     "contentId": 42,
-    "background": "../images/play/fullmoon/background.jpg",
+    "background": "../images/contents/id-42.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+    "seasons": [
+      "달빛천사"
+    ],
     "director": "카토 토시유키",
     "cast": [
       "이용신",
@@ -731,10 +1159,14 @@
   },
   {
     "contentId": 43,
-    "background": "../images/play/yumeiro/background.jpg",
+    "background": "../images/contents/id-43.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "꿈빛 파티시엘",
+      "꿈빛 파티시엘 SP 프로페셔널"
+    ],
     "director": "스즈키 이쿠",
     "cast": [],
     "nostalgia": {
@@ -746,10 +1178,15 @@
   },
   {
     "contentId": 44,
-    "background": "../images/play/marmaladeboy/background.jpg",
+    "background": "../images/contents/id-44.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "시즌 1",
+    "seasonLabel": "시즌 선택",
+    "seasons": [
+      "너에게 닿기를",
+      "너에게 닿기를 2ND SEASON",
+      "너에게 닿기를 3RD SEASON"
+    ],
     "director": "야베 아키오",
     "cast": [],
     "nostalgia": {
@@ -761,10 +1198,13 @@
   },
   {
     "contentId": 45,
-    "background": "../images/play/bebedevil/background.jpg",
+    "background": "../images/contents/id-45.jpg",
     "runningTime": "약 5분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+    "seasons": [
+      "꼬마마법사 레미 비바체!"
+    ],
     "director": "카미야 준",
     "cast": [],
     "nostalgia": {
@@ -776,10 +1216,14 @@
   },
   {
     "contentId": 46,
-    "background": "../images/play/dadada/background.jpg",
+    "background": "../images/contents/id-46.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "슈퍼갤즈!",
+      "슈퍼갤즈! 시즌2"
+    ],
     "director": "사쿠라이 히로아키",
     "cast": [
       "정미숙",
@@ -794,10 +1238,13 @@
   },
   {
     "contentId": 47,
-    "background": "../images/play/karekano/background.jpg",
+    "background": "../images/contents/id-47.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+     "seasons": [
+      "그 남자 그 여자의 사정"
+    ],
     "director": "안노 히데아키",
     "cast": [],
     "nostalgia": {
@@ -809,10 +1256,15 @@
   },
   {
     "contentId": 48,
-    "background": "../images/play/kiminitodoke/background.jpg",
+    "background": "../images/contents/id-48.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "오늘부터 신령님",
+      "오늘부터 신령님 ◎",
+      "오늘부터 신령님 OVA"
+    ],
     "director": "카부라기 히로",
     "cast": [],
     "nostalgia": {
@@ -824,10 +1276,13 @@
   },
   {
     "contentId": 49,
-    "background": "../images/play/ouran/background.jpg",
+    "background": "../images/contents/id-49.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+    "seasons": [
+      "오란고교 호스트부"
+    ],
     "director": "이고라시 타쿠야",
     "cast": [],
     "nostalgia": {
@@ -839,10 +1294,16 @@
   },
   {
     "contentId": 50,
-    "background": "../images/play/cardcaptor/background.jpg",
+    "background": "../images/contents/id-50.jpg",
     "runningTime": "약 25분",
     "country": "일본",
-    "seasonLabel": "클리어 카드 편",
+    "seasonLabel": "시즌 선택",
+     "seasons": [
+      "카드캡터 체리",
+      "카드캡터 체리 극장판",
+      "카드캡터 체리 봉인된 카드",
+      "카드캡터 체리 클리어 카드편"
+    ],
     "director": "아사카 모리오",
     "cast": [
       "문선희",
@@ -857,10 +1318,15 @@
   },
   {
     "contentId": 51,
-    "background": "../images/play/shugochara/background.jpg",
+    "background": "../images/contents/id-01.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+     "seasons": [
+      "캐릭캐릭 체인지!",
+      "캐릭캐릭 체인지!! 두근",
+      "캐릭캐릭 체인지 파티!"
+    ],
     "director": "야스다 켄지",
     "cast": [],
     "nostalgia": {
@@ -872,10 +1338,12 @@
   },
   {
     "contentId": 52,
-    "background": "../images/play/sugarsugarrune/background.jpg",
+    "background": "../images/contents/id-01.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "시즌 1",
+    "seasonLabel": "시즌 1","seasons": [
+      "슈가슈가룬"
+    ],
     "director": "마츠시타 유키히로",
     "cast": [],
     "nostalgia": {
@@ -889,7 +1357,7 @@
 
   {
     "contentId": 7,
-    "background": "../images/play/doraemon/background.jpg",
+    "background": "../images/contents/id-07.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
@@ -909,7 +1377,7 @@
   },
   {
     "contentId": 25,
-    "background": "../images/play/onepiece/background.jpg",
+    "background": "../images/contents/id-25.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "에그헤드 편",
@@ -928,7 +1396,7 @@
   },
   {
     "contentId": 33,
-    "background": "../images/play/digimon/background.jpg",
+    "background": "../images/contents/id-33.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "어드벤처",
@@ -947,10 +1415,14 @@
   },
   {
     "contentId": 53,
-    "background": "../images/play/dinosaurking/background.jpg",
+    "background": "../images/contents/id-51.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "시즌 1",
+    "seasonLabel": "시즌 선택",
+     "seasons": [
+      "공룡킹 어드벤처",
+      "공룡킹 어드벤처 2기"
+    ],
     "director": "키무라 료이치",
     "cast": [],
     "nostalgia": {
@@ -964,10 +1436,36 @@
 
   {
     "contentId": 54,
-    "background": "../images/play/conan/background.jpg",
+    "background": "../images/contents/52.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 선택",
+    "seasons": [
+      "명탐정 코난",
+      "명탐정 코난 시즌 1",
+      "명탐정 코난 시즌 2",
+      "명탐정 코난 시즌 3",
+      "명탐정 코난 시즌 4",
+      "명탐정 코난 시즌 5",
+      "명탐정 코난 시즌 6",
+      "명탐정 코난 시즌 7",
+      "명탐정 코난 시즌 8",
+      "명탐정 코난 시즌 9",
+      "명탐정 코난 시즌 10",
+      "명탐정 코난 시즌 11",
+      "명탐정 코난 시즌 12",
+      "명탐정 코난 시즌 13",
+      "명탐정 코난 시즌 14",
+      "명탐정 코난 시즌 15",
+      "명탐정 코난 시즌 16",
+      "명탐정 코난 시즌 17",
+      "명탐정 코난 시즌 18",
+      "명탐정 코난 시즌 19",
+      "명탐정 코난 시즌 20",
+      "명탐정 코난 시즌 21",
+      "명탐정 코난 시즌 22",
+      "명탐정 코난 시즌 23"
+    ],
     "director": "코다마 켄지",
     "cast": [
       "김선혜",
@@ -983,10 +1481,15 @@
   },
   {
     "contentId": 55,
-    "background": "../images/play/kindaichi/background.jpg",
+    "background": "../images/contents/id-53.jpg",
     "runningTime": "약 24분",
     "country": "일본",
-    "seasonLabel": "시즌 1",
+    "seasonLabel": "시즌 선택",
+    "seasons": [
+      "소년탐정 김전일",
+      "소년탐정 김전일 R",
+      "김전일 37세의 사건부"
+    ],
     "director": "니시오 다이스케",
     "cast": [
       "김승준",
@@ -1001,10 +1504,13 @@
   },
   {
     "contentId": 56,
-    "background": "../images/play/holmes/background.jpg",
+    "background": "../images/contents/id-54.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+    "seasons": [
+      "명탐정 홈즈"
+    ],
     "director": "미야자키 하야오",
     "cast": [],
     "nostalgia": {
@@ -1015,10 +1521,13 @@
   },
   {
     "contentId": 57,
-    "background": "../images/play/detectiveq/background.jpg",
+    "background": "../images/contents/id-55.jpg",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+     "seasons": [
+      "탐정학원 Q"
+    ],
     "director": "아베 노리유키",
     "cast": [],
     "nostalgia": {

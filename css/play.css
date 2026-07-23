@@ -4,6 +4,7 @@ body:has(#playHero) .app {
   background: #fff;
 }
 body:has(#playHero) .page {
+  position: relative;
   width: min(100%, 768px);
   margin: auto;
   padding: 0 30px 45px;
@@ -19,6 +20,22 @@ body:has(#playHero) .screen-header {
 }
 .brand {
   width: 140px;
+}
+.play-back-button {
+  position: absolute;
+  z-index: 5;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  color: #222;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+  place-items: center;
+  font-size: 28px;
+  line-height: 1;
 }
 #playHero {
   display: flex;
@@ -51,7 +68,12 @@ body:has(#playHero) .screen-header {
   color: #777;
   gap: 8px;
   align-items: center;
+  flex-wrap: wrap;
+  row-gap: 6px;
   font-size: 13px;
+}
+.meta > span {
+  white-space: nowrap;
 }
 .meta.light {
   color: #fff;
@@ -89,6 +111,16 @@ body:has(#playHero) .screen-header {
   background: #fff;
   border: 1px solid #e7cfcf;
 }
+.wish-icon {
+  display: inline-block;
+  margin-right: 4px;
+  font-size: 19px;
+  line-height: 1;
+  vertical-align: -1px;
+}
+.wish-icon.is-filled {
+  color: var(--coral);
+}
 .feature-actions {
   display: grid;
   padding-bottom: 17px;
@@ -104,6 +136,15 @@ body:has(#playHero) .screen-header {
 .feature-actions b {
   font-size: 22px;
   font-weight: 400;
+}
+#ratingScore {
+  font-size: 16px;
+  font-weight: 700;
+}
+.feature-icon {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
 }
 .section-title {
   font-size: 22px;
@@ -127,7 +168,7 @@ body:has(#playHero) .screen-header {
   display: grid;
   padding: 16px 0;
   border-bottom: 1px solid #e0d0d0;
-  grid-template-columns: 130px 1fr 20px;
+  grid-template-columns: 130px 1fr;
   gap: 14px;
   align-items: center;
 }
@@ -156,7 +197,7 @@ body:has(#playHero) .screen-header {
     min-height: 460px;
   }
   .episode {
-    grid-template-columns: 220px 1fr 32px;
+    grid-template-columns: 220px 1fr;
   }
 }
 @media (max-width:768px) {
@@ -168,7 +209,14 @@ body:has(#playHero) .screen-header {
     margin: 0 -19px;
     border-radius: 0;
   }
+  .play-back-button {
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    font-size: 24px;
+  }
   .episode {
-    grid-template-columns: 110px 1fr 18px;
+    grid-template-columns: 110px 1fr;
   }
 }
