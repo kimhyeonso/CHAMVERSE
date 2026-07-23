@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   ChamverseApp.showLoading(document.getElementById('trendingList'));
   const items = await ChamverseApp.getContents();
   const historyList = document.getElementById('historyList');
+  const trendingSection = document.querySelector('.search-trending');
+  let activeKeyword = '';
   const renderHistory = () => {
     const history = ChamverseApp.read(ChamverseApp.KEY.recentSearches, []);
     historyList.innerHTML = history.length
@@ -9,12 +11,20 @@ document.addEventListener('DOMContentLoaded', async () => {
       : '<li class="history-empty">최근 검색어가 없습니다.</li>';
   };
   const renderResults = (keyword) => {
+    activeKeyword = keyword;
+    if (trendingSection) trendingSection.hidden = true;
     const normalized = keyword.toLowerCase();
     const found = items.filter((item) => item.title.toLowerCase().includes(normalized) || item.genre.some((genre) => genre.toLowerCase().includes(normalized)));
     document.getElementById('searchResults').innerHTML = found.length
       ? found.map((item) => ChamverseApp.createCard(item, { action: 'wish' })).join('')
       : ChamverseApp.createEmptyState('검색 결과가 없어요.', '추천 작품 보기', 'main.html');
     document.getElementById('searchResultSection').hidden = false;
+  };
+  const showDiscovery = () => {
+    activeKeyword = '';
+    if (trendingSection) trendingSection.hidden = false;
+    document.getElementById('searchResultSection').hidden = true;
+    document.getElementById('searchResults').innerHTML = '';
   };
 
   document.getElementById('trendingList').innerHTML = items.filter((item) => item.isTop10).slice(0, 8).map((item) => ChamverseApp.createCard(item)).join('');
@@ -23,7 +33,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('searchForm').addEventListener('submit', (event) => {
     event.preventDefault();
     const keyword = document.getElementById('searchInput').value.trim();
-    if (!keyword) return;
+    if (!keyword) {
+      showDiscovery();
+      return;
+    }
     ChamverseApp.addRecentSearch(keyword);
     renderHistory();
     renderResults(keyword);
@@ -44,6 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!wish) return;
     event.preventDefault();
     const added = ChamverseApp.toggleId(ChamverseApp.KEY.wish, wish.dataset.wish);
+    if (activeKeyword) renderResults(activeKeyword);
     ChamverseApp.showToast(added ? '찜 목록에 추가했어요.' : '찜 목록에서 삭제했어요.');
   });
 });

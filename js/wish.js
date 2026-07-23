@@ -112,6 +112,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
 
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && continueThumb.classList.contains('has-started')) {
+      resetWishPlayer();
+      closeWishFallbackLandscape();
+    }
+  });
+
+  wishPlayer.addEventListener('webkitendfullscreen', () => {
+    resetWishPlayer();
+    closeWishFallbackLandscape();
+  });
+
   wishPlayer.addEventListener('play', () => {
     continueThumb.classList.add('is-playing');
   });
@@ -121,15 +133,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   wishPlayer.addEventListener('ended', () => {
+    resetWishPlayer();
     closeWishFallbackLandscape();
-    continueThumb.classList.remove('is-playing');
-    wishPlayer.controls = false;
-    wishPlayer.currentTime = 0;
-    wishPlayer.load();
   });
 
   const lastWatching = ChamverseApp.read(ChamverseApp.KEY.continueWatching, [])[0];
   const continuing = items.find((item) => item.id === lastWatching?.contentId) || items.find((item) => ChamverseApp.uniqueIds(ChamverseApp.KEY.wish).includes(item.id)) || items[0];
+  let bannerContentId = continuing?.id ?? null;
   const banner = document.querySelector('.continue-banner');
   if (banner && continuing) {
     /* thumbnail 데이터 경로가 없을 때도 깨지지 않도록 실제 포스터를 우선 사용합니다. */
@@ -153,6 +163,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       resetWishPlayer();
       closeWishFallbackLandscape();
     } else if (featuredWish) {
+      bannerContentId = featuredWish.id;
       const isShinChan = featuredWish.id === 1;
       continueThumb.classList.toggle('is-poster-only', !isShinChan);
       if (!isShinChan) resetWishPlayer();
@@ -268,8 +279,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   wishList.addEventListener('click', handleWishAction);
   wishPopularList.addEventListener('click', handleWishAction);
   continueWishButton?.addEventListener('click', () => {
-    if (!continuing) return;
-    ChamverseApp.toggleId(ChamverseApp.KEY.wish, continuing.id);
+    if (bannerContentId === null) return;
+    ChamverseApp.toggleId(ChamverseApp.KEY.wish, bannerContentId);
     render();
     ChamverseApp.showToast('찜 목록에서 삭제했어요.');
   });
