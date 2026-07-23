@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const history = ChamverseApp.read(ChamverseApp.KEY.recentSearches, []);
     historyList.innerHTML = history.length
       ? history.map((keyword) => `<li><button class="history-keyword" data-keyword="${keyword}">${keyword}</button><button class="history-remove" data-keyword="${keyword}">×</button></li>`).join('')
-      : '<li>최근 검색어가 없습니다.</li>';
+      : '<li class="history-empty">최근 검색어가 없습니다.</li>';
   };
   const renderResults = (keyword) => {
     const normalized = keyword.toLowerCase();

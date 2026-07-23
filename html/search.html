@@ -14,9 +14,20 @@
           <a class="back" href="main.html">‹</a>
           <span>CHAMVERSE</span>
         </header>
+        <section class="search-intro" aria-labelledby="searchPageTitle">
+          <div class="title-with-icon">
+            <h1 id="searchPageTitle">콘텐츠 검색</h1>
+            <span class="section-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 4 4"></path></svg>
+            </span>
+          </div>
+          <p>보고 싶은 작품이나 캐릭터를 빠르게 찾아보세요.</p>
+        </section>
         <form class="search-box" id="searchForm">
-          <input id="searchInput" placeholder="작품명, 캐릭터명을 검색해보세요.">
-          <button>⌕</button>
+          <input id="searchInput" aria-label="검색어" placeholder="작품명, 캐릭터명을 검색해보세요.">
+          <button type="submit" aria-label="검색">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 4 4"></path></svg>
+          </button>
         </form>
         <section class="history">
           <h2>최근 검색어</h2>
