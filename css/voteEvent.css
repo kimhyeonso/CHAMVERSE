@@ -30,7 +30,8 @@ body[data-page="voteEvent"] {
 
   color: var(--vote-brown);
 
-  background: var(--vote-cream);
+  background:
+    var(--vote-coral);
 }
 
 
@@ -38,7 +39,7 @@ body[data-page="voteEvent"] .app {
   overflow: hidden;
 
   background:
-    var(--vote-cream);
+    var(--vote-coral);
 }
 
 
@@ -1397,7 +1398,7 @@ body[data-page="voteEvent"] .app {
   min-height: 100vh;
 
   padding:
-    130px 40px 0;
+    130px 40px 150px;
 
   overflow: hidden;
 
@@ -1411,7 +1412,6 @@ body[data-page="voteEvent"] .app {
   border-radius:
     70px 70px 0 0;
 }
-
 
 .final-inner {
   position: relative;
@@ -1579,7 +1579,7 @@ body[data-page="voteEvent"] .app {
   z-index: 1000;
 
   right: 0;
-  bottom: 0;
+  bottom: 90px;
   left: 0;
 
   padding:
@@ -1593,11 +1593,9 @@ body[data-page="voteEvent"] .app {
   pointer-events: none;
 
   transition:
-    transform .55s
-    cubic-bezier(.16,1,.3,1),
+    transform .55s cubic-bezier(.16,1,.3,1),
     opacity .3s ease;
 }
-
 
 .floating-vote.is-visible {
   transform:
@@ -2158,65 +2156,65 @@ body[data-page="voteEvent"] .app {
 
 
 
-  /* ========================================
-     FLOAT
-  ======================================== */
+ /* ========================================
+   FLOAT - 768px
+======================================== */
 
-  .floating-vote {
-    padding:
-      10px
-      12px;
-  }
+.floating-vote {
+  /* 하단 메인바 64px + 여백 10px */
+  bottom: 74px;
 
+  padding:
+    0
+    12px;
 
-  .floating-vote__inner {
-    min-height: 68px;
-
-    padding:
-      8px
-      8px
-      8px
-      13px;
-
-    border-radius: 18px;
-  }
-
-
-  .floating-vote__icon {
-    width: 36px;
-    height: 36px;
-
-    font-size: 18px;
-  }
-
-
-  .floating-vote__text span {
-    font-size: 8px;
-  }
-
-
-  .floating-vote__text strong {
-    font-size: 10px;
-  }
-
-
-  .floating-vote__button {
-    min-width: 105px;
-    height: 50px;
-
-    padding:
-      0
-      14px;
-
-    font-size: 11px;
-  }
-
+  z-index: 900;
 }
 
 
+.floating-vote__inner {
+  min-height: 68px;
+
+  padding:
+    8px
+    8px
+    8px
+    13px;
+
+  border-radius: 18px;
+}
 
 
+.floating-vote__icon {
+  width: 36px;
+  height: 36px;
 
+  font-size: 18px;
+}
+
+
+.floating-vote__text span {
+  font-size: 8px;
+}
+
+
+.floating-vote__text strong {
+  font-size: 10px;
+}
+
+
+.floating-vote__button {
+  min-width: 105px;
+  height: 50px;
+
+  padding:
+    0
+    14px;
+
+  font-size: 11px;
+}
+
+}
 /* ============================================
    IPHONE
    430px 이하 / 390px 기준
@@ -3133,83 +3131,81 @@ body[data-page="voteEvent"] .app {
   ======================================== */
 
   .floating-vote {
-    padding:
-      8px
-      10px
-      calc(
-        8px +
-        env(safe-area-inset-bottom)
-      );
-  }
+  /* 하단 메인바 위로 띄우기 */
+  bottom: 74px;
+
+  padding:
+    0
+    10px;
+
+  z-index: 900;
+}
 
 
-  .floating-vote__inner {
-    width: 100%;
-    min-height: 63px;
+.floating-vote__inner {
+  width: 100%;
+  min-height: 63px;
 
-    padding:
-      7px
-      7px
-      7px
-      11px;
+  padding:
+    7px
+    7px
+    7px
+    11px;
 
-    border-width: 1px;
-    border-radius: 17px;
-  }
-
-
-  .floating-vote__left {
-    min-width: 0;
-
-    gap: 0;
-  }
+  border-width: 1px;
+  border-radius: 17px;
+}
 
 
-  .floating-vote__icon {
-    display: none;
-  }
+.floating-vote__left {
+  min-width: 0;
+
+  gap: 0;
+}
 
 
-  .floating-vote__text {
-    min-width: 0;
-  }
+.floating-vote__icon {
+  display: none;
+}
 
 
-  .floating-vote__text span {
-    font-size: 7px;
-  }
+.floating-vote__text {
+  min-width: 0;
+}
 
 
-  .floating-vote__text strong {
-    display: block;
-
-    max-width: 170px;
-
-    overflow: hidden;
-
-    font-size: 10px;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-  }
+.floating-vote__text span {
+  font-size: 7px;
+}
 
 
-  .floating-vote__button {
-    min-width: 95px;
-    height: 47px;
+.floating-vote__text strong {
+  display: block;
 
-    padding:
-      0
-      12px;
+  max-width: 170px;
 
-    border-radius: 12px;
+  overflow: hidden;
 
-    font-size: 11px;
+  font-size: 10px;
 
-    box-shadow:
-      0 4px 0
-      var(--vote-coral-dark);
-  }
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
+
+.floating-vote__button {
+  min-width: 95px;
+  height: 47px;
+
+  padding:
+    0 12px;
+
+  border-radius: 12px;
+
+  font-size: 11px;
+
+  box-shadow:
+    0 4px 0
+    var(--vote-coral-dark);
+}
 }
