@@ -6,10 +6,15 @@ body:has(#watchingList) .app {
 }
 
 body:has(#watchingList) .page {
+  box-sizing: border-box;
+
   width: min(100%, 768px);
-  margin: auto;
-  padding: 0 30px 110px;
-}
+  margin: 0 auto;
+
+  padding-top: 0;
+  padding-inline: 30px;
+  padding-bottom: 110px;
+
 
 /* 상단 헤더 */
 
@@ -242,10 +247,10 @@ body:has(#watchingList) .page {
 @media (min-width: 769px) {
   body:has(#watchingList) .page {
     width: min(100%, 1280px);
-    padding-right: 48px;
+    padding-inline: 48px;
     padding-bottom: 120px;
-    padding-left: 48px;
   }
+}
 
   .card-row {
     grid-auto-flow: initial;
@@ -329,7 +334,7 @@ body:has(#watchingList) .page {
 @media (max-width: 420px) {
   body:has(#watchingList) .page {
     width: 100%;
-    padding: 0 18px 116px;
+    padding-inline: 18px;
   }
 
   .screen-header {
