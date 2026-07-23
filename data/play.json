@@ -1,0 +1,1030 @@
+[
+  {
+    "contentId": 1,
+    "background": "../images/play/shinchan/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "혼고 미츠루",
+    "cast": [
+      "박영남",
+      "강희선",
+      "여민정",
+      "정유미"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "학교가 끝나면 만나던 추억의 말썽꾸러기"
+    },
+    "recommend": [2, 3, 4, 6],
+    "episodes": []
+  },
+  {
+    "contentId": 2,
+    "background": "../images/play/jadoo/background.jpg",
+    "runningTime": "약 24분",
+    "country": "대한민국",
+    "seasonLabel": "시즌 선택",
+    "director": "손석우, 고세윤",
+    "cast": [
+      "여민정",
+      "양정화",
+      "최준영",
+      "정유미"
+    ],
+    "nostalgia": {
+      "badge": "K-ANIMATION PICK",
+      "text": "우리 가족과 꼭 닮은 자두네의 유쾌한 일상"
+    },
+    "recommend": [1, 3, 4, 5],
+    "episodes": []
+  },
+  {
+    "contentId": 3,
+    "background": "../images/play/atashinchi/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": null,
+    "cast": [
+      "이미자",
+      "이계윤",
+      "홍범기",
+      "손종환"
+    ],
+    "nostalgia": {
+      "badge": "FAMILY CLASSIC",
+      "text": "평범해서 더 재미있는 우리 집 같은 가족 이야기"
+    },
+    "recommend": [1, 2, 4, 6],
+    "episodes": []
+  },
+  {
+    "contentId": 4,
+    "background": "../images/play/maruko/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "스다 유미코",
+    "cast": [
+      "정선혜",
+      "김나연",
+      "김소형",
+      "장승길"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE CLASSIC",
+      "text": "아홉 살의 눈으로 바라본 소소하고 엉뚱한 세상"
+    },
+    "recommend": [2, 3, 6, 8],
+    "episodes": []
+  },
+  {
+    "contentId": 5,
+    "background": "../images/play/kodocha/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "다이치 아키타로",
+    "cast": [
+      "양정화",
+      "김장",
+      "류점희",
+      "여민정"
+    ],
+    "nostalgia": {
+      "badge": "MEMORY PICK",
+      "text": "항상 밝고 씩씩했던 미소와 다시 만나는 시간"
+    },
+    "recommend": [2, 4, 43, 47],
+    "episodes": []
+  },
+  {
+    "contentId": 6,
+    "background": "../images/play/bonobono/background.jpg",
+    "runningTime": "약 5분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "야마구치 히데노리",
+    "cast": [],
+    "nostalgia": {
+      "badge": "HEALING PICK",
+      "text": "느리게 바라볼수록 더 많은 것이 보이는 숲속 이야기"
+    },
+    "recommend": [3, 4, 7, 8],
+    "episodes": []
+  },
+  {
+    "contentId": 7,
+    "background": "../images/play/doraemon/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "쿠스바 고조",
+    "cast": [
+      "문남숙",
+      "김정아",
+      "조현정",
+      "최석필"
+    ],
+    "nostalgia": {
+      "badge": "CHAMP CLASSIC",
+      "text": "서랍 속에서 시작되는 진구와 도라에몽의 특별한 하루"
+    },
+    "recommend": [1, 4, 8, 32],
+    "episodes": []
+  },
+  {
+    "contentId": 8,
+    "background": "../images/play/pingu/background.jpg",
+    "runningTime": "약 5분",
+    "country": "스위스, 영국",
+    "seasonLabel": "시즌 선택",
+    "director": "오트마르 구트만",
+    "cast": [
+      "카를로 보노미"
+    ],
+    "nostalgia": {
+      "badge": "GLOBAL CLASSIC",
+      "text": "말을 몰라도 함께 웃을 수 있었던 꼬마 펭귄의 일상"
+    },
+    "recommend": [4, 6, 7, 12],
+    "episodes": []
+  },
+
+
+  {
+    "contentId": 9,
+    "background": "../images/play/keroro/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "사토 준이치",
+    "cast": [
+      "양정화",
+      "시영준",
+      "김장",
+      "류점희",
+      "이인성"
+    ],
+    "nostalgia": {
+      "badge": "TOONIVERSE CLASSIC",
+      "text": "지구 침략보다 집안일이 더 바빴던 케로로 소대"
+    },
+    "recommend": [1, 11, 16, 17],
+    "episodes": []
+  },
+  {
+    "contentId": 10,
+    "background": "../images/play/greatfamily/background.jpg",
+    "runningTime": "약 7분",
+    "country": "일본",
+    "seasonLabel": "시리즈 선택",
+    "director": null,
+    "cast": [],
+    "nostalgia": {
+      "badge": "COMEDY CLASSIC",
+      "text": "상식을 뛰어넘는 가족과 친구들의 예측 불가능한 하루"
+    },
+    "recommend": [1, 9, 13, 17],
+    "episodes": []
+  },
+  {
+    "contentId": 11,
+    "background": "../images/play/spongebob/background.jpg",
+    "runningTime": "약 22분",
+    "country": "미국",
+    "seasonLabel": "시즌 선택",
+    "director": null,
+    "cast": [
+      "전태열",
+      "이인성",
+      "최한",
+      "우정신"
+    ],
+    "nostalgia": {
+      "badge": "GLOBAL COMEDY",
+      "text": "비키니시티에서 시작되는 엉뚱하고 유쾌한 하루"
+    },
+    "recommend": [9, 12, 15, 16],
+    "episodes": []
+  },
+  {
+    "contentId": 12,
+    "background": "../images/play/larva/background.jpg",
+    "runningTime": "약 2분",
+    "country": "대한민국",
+    "seasonLabel": "시즌 선택",
+    "director": "맹주공",
+    "cast": [
+      "홍범기"
+    ],
+    "nostalgia": {
+      "badge": "K-ANIMATION PICK",
+      "text": "대사가 없어도 누구나 함께 웃을 수 있었던 레드와 옐로우"
+    },
+    "recommend": [8, 11, 16, 3],
+    "episodes": []
+  },
+  {
+    "contentId": 13,
+    "background": "../images/play/zandori/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": null,
+    "cast": [],
+    "nostalgia": {
+      "badge": "MEMORY PICK",
+      "text": "아끼고 또 아끼며 웃음을 만들어낸 짠돌이 가족"
+    },
+    "recommend": [1, 2, 3, 10],
+    "episodes": []
+  },
+  {
+    "contentId": 14,
+    "background": "../images/play/ninjatori/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": null,
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMP CLASSIC",
+      "text": "작은 닌자 토리와 함께했던 유쾌한 수행 이야기"
+    },
+    "recommend": [7, 9, 29, 31],
+    "episodes": []
+  },
+  {
+    "contentId": 15,
+    "background": "../images/play/ikamusume/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "미즈시마 츠토무",
+    "cast": [],
+    "nostalgia": {
+      "badge": "COMEDY PICK",
+      "text": "인류를 침략하려다 해변 식당의 아르바이트생이 된 오징어 소녀"
+    },
+    "recommend": [9, 11, 12, 17],
+    "episodes": []
+  },
+  {
+    "contentId": 16,
+    "background": "../images/play/dooly/background.jpg",
+    "runningTime": "약 24분",
+    "country": "대한민국",
+    "seasonLabel": "시리즈 선택",
+    "director": "김수정",
+    "cast": [
+      "박영남",
+      "이인성"
+    ],
+    "nostalgia": {
+      "badge": "K-ANIMATION CLASSIC",
+      "text": "빙하를 타고 찾아온 대한민국 대표 아기공룡"
+    },
+    "recommend": [2, 7, 11, 12],
+    "episodes": []
+  },
+  {
+    "contentId": 17,
+    "background": "../images/play/gintama/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "타카마츠 신지",
+    "cast": [],
+    "nostalgia": {
+      "badge": "COMEDY LEGEND",
+      "text": "진지함과 황당함을 자유롭게 넘나드는 해결사들의 이야기"
+    },
+    "recommend": [9, 10, 15, 24],
+    "episodes": []
+  },
+
+
+  {
+    "contentId": 18,
+    "background": "../images/play/shinbi/background.jpg",
+    "runningTime": "약 24분",
+    "country": "대한민국",
+    "seasonLabel": "시즌 선택",
+    "director": "김병갑",
+    "cast": [
+      "김영은",
+      "조현정",
+      "김채하",
+      "신용우"
+    ],
+    "nostalgia": {
+      "badge": "TOONIVERSE ORIGINAL",
+      "text": "매주 새로운 귀신을 만나던 투니버스 대표 애니메이션"
+    },
+    "recommend": [19, 20, 22, 54],
+    "episodes": []
+  },
+  {
+    "contentId": 19,
+    "background": "../images/play/ghostrestaurant/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "이케다 요이치",
+    "cast": [],
+    "nostalgia": {
+      "badge": "HORROR CLASSIC",
+      "text": "무서우면서도 끝까지 보게 만들었던 추억의 괴담"
+    },
+    "recommend": [18, 20, 22, 57],
+    "episodes": []
+  },
+  {
+    "contentId": 20,
+    "background": "../images/play/schoolghost/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "아베 노리유키",
+    "cast": [
+      "정미숙",
+      "김승준",
+      "우정신"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE CLASSIC",
+      "text": "학교가 끝나면 가장 무서웠던 방과 후 이야기"
+    },
+    "recommend": [18, 19, 22, 55],
+    "episodes": []
+  },
+  {
+    "contentId": 21,
+    "background": "../images/play/chocolatemagic/background.jpg",
+    "runningTime": "약 12분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": null,
+    "cast": [],
+    "nostalgia": {
+      "badge": "MYSTERY PICK",
+      "text": "달콤한 초콜릿이 만들어낸 기묘한 이야기"
+    },
+    "recommend": [19, 22, 23, 57],
+    "episodes": []
+  },
+  {
+    "contentId": 22,
+    "background": "../images/play/ghosthunt/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "마유미 이토",
+    "cast": [],
+    "nostalgia": {
+      "badge": "OCCULT PICK",
+      "text": "심령 현상을 과학적으로 파헤치는 오컬트 명작"
+    },
+    "recommend": [18, 19, 20, 57],
+    "episodes": []
+  },
+  {
+    "contentId": 23,
+    "background": "../images/play/gggg/background.jpg",
+    "runningTime": "약 25분",
+    "country": "대한민국",
+    "seasonLabel": "시즌 1",
+    "director": null,
+    "cast": [],
+    "nostalgia": {
+      "badge": "WEBTOON ORIGINAL",
+      "text": "웹툰에서 시작된 현실 공포를 애니메이션으로 만나다"
+    },
+    "recommend": [18, 21, 22, 55],
+    "episodes": []
+  },
+
+
+  {
+    "contentId": 24,
+    "background": "../images/play/naruto/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "다테 하야토",
+    "cast": [
+      "류점희",
+      "김장",
+      "이선호"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "최고의 닌자를 꿈꾸며 함께 성장했던 우리의 어린 시절."
+    },
+    "recommend": [25, 26, 27, 33],
+    "episodes": []
+  },
+  {
+    "contentId": 25,
+    "background": "../images/play/onepiece/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "에그헤드 편",
+    "director": "우다 코노스케",
+    "cast": [
+      "강수진",
+      "김소형",
+      "정미숙"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "언젠가 해적왕이 될 거라는 루피의 꿈을 함께 응원했던 작품."
+    },
+    "recommend": [24, 26, 27, 32],
+    "episodes": []
+  },
+  {
+    "contentId": 26,
+    "background": "../images/play/bleach/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "아베 노리유키",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "사신이 되어 싸우던 이치고의 첫 만남을 기억하시나요?"
+    },
+    "recommend": [24, 25, 27, 29],
+    "episodes": []
+  },
+  {
+    "contentId": 27,
+    "background": "../images/play/dragonball/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "드래곤볼 Z",
+    "director": "니시오 다이스케",
+    "cast": [
+      "김환진",
+      "강수진"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "에네르기파를 따라 하며 놀던 그 시절 최고의 액션 애니."
+    },
+    "recommend": [24, 25, 26, 32],
+    "episodes": []
+  },
+  {
+    "contentId": 28,
+    "background": "../images/play/powerranger/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "매직포스",
+    "director": null,
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "변신! 한마디에 가슴이 뛰었던 추억의 히어로."
+    },
+    "recommend": [30, 31, 29, 24],
+    "episodes": []
+  },
+  {
+    "contentId": 29,
+    "background": "../images/play/yugioh/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "듀얼몬스터즈",
+    "director": "스기시마 쿠니히사",
+    "cast": [
+      "김영선",
+      "우정신"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "듀얼! 한마디면 친구들과 카드 배틀이 시작되던 시절."
+    },
+    "recommend": [24, 25, 30, 31],
+    "episodes": []
+  },
+  {
+    "contentId": 30,
+    "background": "../images/play/kamenrider/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "덴오",
+    "director": "타사키 류타",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "시간을 넘나들며 싸우던 가장 인기 있었던 가면라이더."
+    },
+    "recommend": [28, 29, 31, 27],
+    "episodes": []
+  },
+  {
+    "contentId": 31,
+    "background": "../images/play/beyblade/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "카와세 토시후미",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "학교 운동장에서 모두가 팽이를 돌리던 추억."
+    },
+    "recommend": [29, 30, 32, 24],
+    "episodes": []
+  },
+  {
+    "contentId": 32,
+    "background": "../images/play/pokemon/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "유야마 쿠니히코",
+    "cast": [
+      "최덕희",
+      "오인성",
+      "김승준"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "피카츄와 함께 모험을 떠났던 모두의 첫 포켓몬."
+    },
+    "recommend": [25, 27, 31, 33],
+    "episodes": []
+  },
+  {
+    "contentId": 33,
+    "background": "../images/play/digimon/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "어드벤처",
+    "director": "카쿠도 히로유키",
+    "cast": [
+      "정미숙",
+      "김장",
+      "김승준"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "선택받은 아이들과 함께 디지털 월드를 여행했던 여름."
+    },
+    "recommend": [24, 25, 27, 32],
+    "episodes": []
+  },
+
+
+{
+    "contentId": 34,
+    "background": "../images/play/inuyasha/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "이케다 마사시",
+    "cast": [
+      "강수진",
+      "정미숙"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "사혼의 구슬을 찾아 이누야샤와 함께 전국시대를 여행했던 시간"
+    },
+    "recommend": [24, 25, 33, 40],
+    "episodes": []
+  },
+  {
+    "contentId": 35,
+    "background": "../images/play/fushigiboshi/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "사토 준이치, 고모토 쇼고",
+    "cast": [
+      "이지영"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "파인과 레인을 따라 신비한 별의 여러 왕국을 여행했던 추억"
+    },
+    "recommend": [36, 37, 39, 40],
+    "episodes": []
+  },
+  {
+    "contentId": 36,
+    "background": "../images/play/shugochara/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "야스다 켄지",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "수호 캐릭터와 함께 진짜 나다운 모습을 찾아가던 아무의 이야기"
+    },
+    "recommend": [35, 39, 41, 50],
+    "episodes": []
+  },
+  {
+    "contentId": 37,
+    "background": "../images/play/secretjouju/background.jpg",
+    "runningTime": "약 12분",
+    "country": "대한민국",
+    "seasonLabel": "시즌 선택",
+    "director": null,
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "마법과 노래로 꿈을 지켜낸 쥬쥬와 친구들의 반짝이는 모험"
+    },
+    "recommend": [35, 36, 38, 40],
+    "episodes": []
+  },
+  {
+    "contentId": 38,
+    "background": "../images/play/aikatsu/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "키무라 류이치",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "아이돌 카드를 모으며 무대 위의 꿈을 함께 응원했던 작품"
+    },
+    "recommend": [36, 37, 39, 43],
+    "episodes": []
+  },
+  {
+    "contentId": 39,
+    "background": "../images/play/sugarsugarrune/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "마츠시타 유키히로",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "쇼콜라와 바닐라를 따라 알록달록한 하트를 모으던 마법 같은 시간"
+    },
+    "recommend": [35, 36, 40, 42],
+    "episodes": []
+  },
+  {
+    "contentId": 40,
+    "background": "../images/play/sailormoon/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "사토 준이치",
+    "cast": [
+      "최덕희"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "달을 대신해 정의를 지키던 세일러 전사들과 함께한 추억"
+    },
+    "recommend": [34, 36, 39, 41],
+    "episodes": []
+  },
+  {
+    "contentId": 41,
+    "background": "../images/play/gakuenalice/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "오오모리 타카히로",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "특별한 능력을 가진 친구들과 앨리스 학원에서 보낸 신비한 나날"
+    },
+    "recommend": [34, 35, 36, 50],
+    "episodes": []
+  },
+
+
+  {
+    "contentId": 42,
+    "background": "../images/play/fullmoon/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "카토 토시유키",
+    "cast": [
+      "이용신",
+      "김장",
+      "양정화"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "달빛 아래에서 함께 울고 웃었던 최고의 감성 애니메이션."
+    },
+    "recommend": [39, 46, 50, 51],
+    "episodes": []
+  },
+  {
+    "contentId": 43,
+    "background": "../images/play/yumeiro/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "스즈키 이쿠",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "케이크를 보며 모두가 파티시에를 꿈꾸던 그 시절."
+    },
+    "recommend": [42, 45, 46, 48],
+    "episodes": []
+  },
+  {
+    "contentId": 44,
+    "background": "../images/play/marmaladeboy/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "야베 아키오",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "첫사랑의 설렘을 느끼게 해준 추억의 순정 애니메이션."
+    },
+    "recommend": [42, 47, 48, 49],
+    "episodes": []
+  },
+  {
+    "contentId": 45,
+    "background": "../images/play/bebedevil/background.jpg",
+    "runningTime": "약 5분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "카미야 준",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "귀여운 악마 아기와 함께했던 달콤한 이야기."
+    },
+    "recommend": [43, 46, 49, 51],
+    "episodes": []
+  },
+  {
+    "contentId": 46,
+    "background": "../images/play/dadada/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "사쿠라이 히로아키",
+    "cast": [
+      "정미숙",
+      "김승준"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "루우와 완냐를 만나며 함께 성장했던 따뜻한 추억."
+    },
+    "recommend": [42, 43, 45, 51],
+    "episodes": []
+  },
+  {
+    "contentId": 47,
+    "background": "../images/play/karekano/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "안노 히데아키",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "완벽한 줄만 알았던 두 사람의 진짜 청춘 이야기."
+    },
+    "recommend": [44, 48, 49, 50],
+    "episodes": []
+  },
+  {
+    "contentId": 48,
+    "background": "../images/play/kiminitodoke/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "카부라기 히로",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "서툴지만 가장 순수했던 청춘 로맨스를 다시 만나다."
+    },
+    "recommend": [42, 44, 47, 49],
+    "episodes": []
+  },
+  {
+    "contentId": 49,
+    "background": "../images/play/ouran/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "이고라시 타쿠야",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "웃음과 설렘이 가득했던 오란고교 호스트부."
+    },
+    "recommend": [44, 45, 47, 48],
+    "episodes": []
+  },
+  {
+    "contentId": 50,
+    "background": "../images/play/cardcaptor/background.jpg",
+    "runningTime": "약 25분",
+    "country": "일본",
+    "seasonLabel": "클리어 카드 편",
+    "director": "아사카 모리오",
+    "cast": [
+      "문선희",
+      "우정신"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "봉인의 카드를 모으며 함께 성장했던 체리의 모험."
+    },
+    "recommend": [34, 36, 39, 42],
+    "episodes": []
+  },
+  {
+    "contentId": 51,
+    "background": "../images/play/shugochara/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "야스다 켄지",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "수호 캐릭터와 함께 진짜 나를 찾아가던 설레는 시간."
+    },
+    "recommend": [36, 39, 42, 46],
+    "episodes": []
+  },
+  {
+    "contentId": 52,
+    "background": "../images/play/sugarsugarrune/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "마츠시타 유키히로",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "쇼콜라와 바닐라를 따라 하트를 모으던 달콤한 추억."
+    },
+    "recommend": [39, 42, 45, 51],
+    "episodes": []
+  },
+
+
+  {
+    "contentId": 7,
+    "background": "../images/play/doraemon/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "쿠스바 고조",
+    "cast": [
+      "문남숙",
+      "김정아",
+      "조현정",
+      "최석필"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "비밀도구 하나면 평범한 하루도 최고의 모험이 되던 그 시절."
+    },
+    "recommend": [25, 32, 33, 53],
+    "episodes": []
+  },
+  {
+    "contentId": 25,
+    "background": "../images/play/onepiece/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "에그헤드 편",
+    "director": "우다 코노스케",
+    "cast": [
+      "강수진",
+      "김소형",
+      "정미숙"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "언젠가 위대한 항로를 떠나고 싶게 만들었던 최고의 모험."
+    },
+    "recommend": [24, 27, 32, 33],
+    "episodes": []
+  },
+  {
+    "contentId": 33,
+    "background": "../images/play/digimon/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "어드벤처",
+    "director": "카쿠도 히로유키",
+    "cast": [
+      "정미숙",
+      "김장",
+      "김승준"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "선택받은 아이들과 함께 디지털 월드를 여행했던 여름방학."
+    },
+    "recommend": [24, 25, 32, 53],
+    "episodes": []
+  },
+  {
+    "contentId": 53,
+    "background": "../images/play/dinosaurking/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "키무라 료이치",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "공룡과 함께 세계를 여행하며 모험심을 키워준 작품."
+    },
+    "recommend": [7, 25, 32, 33],
+    "episodes": []
+  },
+
+
+  {
+    "contentId": 54,
+    "background": "../images/play/conan/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 선택",
+    "director": "코다마 켄지",
+    "cast": [
+      "김선혜",
+      "강수진",
+      "이정구",
+      "이현진"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "범인은 언제나 하나! 친구들과 함께 범인을 추리하던 그 시절."
+    },
+    "episodes": []
+  },
+  {
+    "contentId": 55,
+    "background": "../images/play/kindaichi/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "니시오 다이스케",
+    "cast": [
+      "김승준",
+      "이선주",
+      "유강진"
+    ],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "밀실 살인과 트릭을 친구들과 함께 추리하던 명작."
+    },
+    "episodes": []
+  },
+  {
+    "contentId": 56,
+    "background": "../images/play/holmes/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "미야자키 하야오",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "셜록 홈즈를 귀여운 캐릭터로 다시 만날 수 있었던 추억의 작품."
+    },
+    "episodes": []
+  },
+  {
+    "contentId": 57,
+    "background": "../images/play/detectiveq/background.jpg",
+    "runningTime": "약 24분",
+    "country": "일본",
+    "seasonLabel": "시즌 1",
+    "director": "아베 노리유키",
+    "cast": [],
+    "nostalgia": {
+      "badge": "CHAMVERSE PICK",
+      "text": "탐정을 꿈꾸던 학생들과 함께 사건을 해결해 나갔던 학원 추리 애니."
+    },
+    "episodes": []
+  }
+]

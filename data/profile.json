@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "로맨스 프로필",
+    "image": "../images/profile/profile01.png",
+    "alt": "로맨스 CHAMVERSE 캐릭터 프로필"
+  },
+  {
+    "id": 2,
+    "name": "모험 프로필",
+    "image": "../images/profile/profile02.png",
+    "alt": "모험 CHAMVERSE 캐릭터 프로필"
+  },
+  {
+    "id": 3,
+    "name": "일상 프로필",
+    "image": "../images/profile/profile03.png",
+    "alt": "일상 CHAMVERSE 캐릭터 프로필"
+  },
+  {
+    "id": 4,
+    "name": "추리 프로필",
+    "image": "../images/profile/profile04.png",
+    "alt": "추리 CHAMVERSE 캐릭터 프로필"
+  },
+  {
+    "id": 5,
+    "name": "판타지 프로필",
+    "image": "../images/profile/profile05.png",
+    "alt": "판타지 CHAMVERSE 캐릭터 프로필"
+  },
+  {
+    "id": 6,
+    "name": "공포 프로필",
+    "image": "../images/profile/profile06.png",
+    "alt": "공포 CHAMVERSE 캐릭터 프로필"
+  },
+  {
+    "id": 7,
+    "name": "앙탈 프로필",
+    "image": "../images/profile/profile07.png",
+    "alt": "앙탈 CHAMVERSE 캐릭터 프로필"
+  },
+  {
+    "id": 8,
+    "name": "액션 프로필",
+    "image": "../images/profile/profile08.png",
+    "alt": "액션 CHAMVERSE 캐릭터 프로필"
+  },
+  {
+    "id": 9,
+    "name": "코미디 프로필",
+    "image": "../images/profile/profile09.png",
+    "alt": "코미디 CHAMVERSE 캐릭터 프로필"
+  }
+
+]
