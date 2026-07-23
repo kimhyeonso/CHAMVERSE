@@ -1,187 +1,447 @@
 ﻿/* myPage.html 전용: 계정 카드와 메뉴 */
+
 body:has(#watchingList) .app {
   min-height: 100vh;
   background: #fff;
 }
+
 body:has(#watchingList) .page {
-  width: min(100%,768px);
+  width: min(100%, 768px);
   margin: auto;
-  padding: 0 30px 45px;
+  padding: 0 30px 110px;
 }
+
+/* 상단 헤더 */
+
 .screen-header {
   position: relative;
   display: flex;
-  height: 72px;
+  height: 70px;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
-  font-weight: 800;
+  color: #07111f;
+  font-size: 21px;
+  font-weight: 850;
+  letter-spacing: -0.04em;
 }
+
 .screen-header .back {
   position: absolute;
   left: 0;
+  color: #07111f;
+  font-size: 28px;
+  line-height: 1;
 }
+
+/* 계정 카드 */
+
 .account-card {
   display: flex;
-  padding: 20px;
+  padding: 18px;
   border: 1px solid #ddc6c6;
   border-radius: 16px;
-  gap: 20px;
+  gap: 16px;
   align-items: center;
 }
+
 .account-card img {
-  width: 95px;
-  height: 95px;
+  width: 88px;
+  height: 88px;
+  flex: 0 0 auto;
   background: #eee;
+  border-radius: 12px;
   object-fit: cover;
 }
+
+.account-card > div {
+  min-width: 0;
+  flex: 1;
+}
+
 .account-card h2 {
-  margin: 0 0 5px;
-  font-size: 22px;
+  margin: 0 0 6px;
+  color: #07111f;
+  font-size: 21px;
+  font-weight: 850;
+  line-height: 1.18;
+  letter-spacing: -0.055em;
 }
+
 .account-card p {
-  margin: 6px 0;
+  max-width: 100%;
+  margin: 7px 0 0;
+  overflow: hidden;
+  color: #07111f;
+  font-size: 14px;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
+
 .account-card .badge {
   display: inline-block;
-  padding: 4px 16px;
+  padding: 4px 13px;
   color: #fff;
   background: var(--coral);
-  border-radius: 6px;
-  font-size: 12px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.1;
 }
+
 .account-card > a {
+  flex: 0 0 auto;
   margin-left: auto;
   color: var(--coral);
   font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
 }
+
+/* 섹션 */
+
 .section {
-  margin-top: 35px;
+  margin-top: 32px;
 }
+
 .section-title {
-  margin: 0 0 18px;
-  font-size: 23px;
+  margin: 0 0 16px;
+  color: #07111f;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.055em;
 }
+
+/* 계속 시청하기 */
+
 .card-row {
   display: grid;
-  min-height: 175px;
+  min-height: 170px;
   grid-auto-flow: column;
-  grid-auto-columns: 130px;
+  grid-auto-columns: 124px;
   gap: 14px;
   overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
 }
-.poster {
-  overflow: hidden;
-  background: #eee;
-  border-radius: 11px;
-  aspect-ratio: .7;
+
+.card-row::-webkit-scrollbar {
+  display: none;
 }
-.poster img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.poster-card h3 {
-  margin: 8px 0 0;
-  font-size: 13px;
-}
-.poster-card p {
-  margin: 4px 0;
-  color: var(--muted);
-  font-size: 11px;
-}
+
+.poster,
 .content-card__poster {
   overflow: hidden;
   background: #eee;
   border-radius: 11px;
   aspect-ratio: 0.7;
 }
+
+.poster img,
 .content-card__poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+.poster-card,
+.content-card {
+  min-width: 0;
+}
+
+.poster-card h3,
 .content-card h3 {
   margin: 8px 0 0;
+  overflow: hidden;
+  color: #07111f;
   font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
+
+.poster-card p,
 .content-card p {
   margin: 4px 0;
   color: var(--muted);
   font-size: 11px;
 }
+
 .content-card__progress {
   height: 4px;
   margin-top: 5px;
+  overflow: hidden;
   background: #ddd;
   border-radius: 4px;
-  overflow: hidden;
 }
+
 .content-card__progress span {
   display: block;
   width: var(--progress);
   height: 100%;
   background: var(--coral);
 }
+
+/* 메뉴 */
+
 .menu-list {
   overflow: hidden;
   border: 1px solid #ddc6c6;
   border-radius: 14px;
 }
+
 .menu-row {
   display: flex;
-  min-height: 54px;
-  padding: 0 20px;
+  min-height: 52px;
+  padding: 0 18px;
+  color: #07111f;
   border-bottom: 1px solid #ddc6c6;
   justify-content: space-between;
   align-items: center;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
 }
+
 .menu-row:last-child {
   border: 0;
 }
+
+.menu-row span {
+  display: inline-flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+}
+
+.menu-row > b {
+  flex: 0 0 auto;
+  font-size: 18px;
+}
+
 .counter {
-  padding: 3px 10px;
+  display: inline-flex;
+  min-width: 34px;
+  height: 21px;
+  padding: 0 8px;
   color: #fff;
   background: var(--coral);
   border-radius: 12px;
-  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
 }
-@media(min-width:769px) {
+
+/* 데스크톱 */
+
+@media (min-width: 769px) {
   body:has(#watchingList) .page {
-    width: min(100%,1280px);
+    width: min(100%, 1280px);
     padding-right: 48px;
+    padding-bottom: 120px;
     padding-left: 48px;
   }
+
   .card-row {
     grid-auto-flow: initial;
-    grid-template-columns: repeat(6,minmax(0,1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     overflow: visible;
   }
 }
-@media(max-width:768px) {
+
+/* 태블릿/모바일 */
+
+@media (max-width: 768px) {
   body:has(#watchingList) .page {
-    padding: 0 19px 35px;
+    width: min(100%, 430px);
+    padding: 0 20px 118px;
   }
+
+  .screen-header {
+    height: 58px;
+    font-size: 0;
+  }
+
+  .screen-header .back {
+    font-size: 24px;
+  }
+
+  .account-card {
+    padding: 15px;
+    gap: 13px;
+    border-radius: 15px;
+  }
+
   .account-card img {
-    width: 82px;
-    height: 82px;
+    width: 72px;
+    height: 72px;
+    border-radius: 11px;
+  }
+
+  .account-card h2 {
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+
+  .account-card .badge {
+    padding: 4px 11px;
+    font-size: 10px;
+  }
+
+  .account-card p {
+    margin-top: 6px;
+    font-size: 13px;
+  }
+
+  .account-card > a {
+    display: none;
+  }
+
+  .section {
+    margin-top: 28px;
+  }
+
+  .section-title {
+    margin-bottom: 14px;
+    font-size: 21px;
+  }
+
+  .card-row {
+    min-height: 160px;
+    grid-auto-columns: 118px;
+    gap: 13px;
+  }
+
+  .menu-row {
+    min-height: 49px;
+    padding: 0 16px;
+    font-size: 14px;
   }
 }
+
+/* 작은 모바일 */
+
+@media (max-width: 420px) {
+  body:has(#watchingList) .page {
+    width: 100%;
+    padding: 0 18px 116px;
+  }
+
+  .screen-header {
+    height: 54px;
+  }
+
+  .account-card {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .account-card img {
+    width: 66px;
+    height: 66px;
+  }
+
+  .account-card h2 {
+    font-size: 17px;
+  }
+
+  .account-card p {
+    font-size: 12px;
+  }
+
+  .section {
+    margin-top: 25px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .card-row {
+    min-height: 150px;
+    grid-auto-columns: 104px;
+    gap: 12px;
+  }
+
+  .poster-card h3,
+  .content-card h3 {
+    font-size: 12px;
+  }
+
+  .poster-card p,
+  .content-card p {
+    font-size: 10px;
+  }
+
+  .menu-row {
+    min-height: 46px;
+    padding: 0 15px;
+    font-size: 13px;
+  }
+
+  .counter {
+    min-width: 30px;
+    height: 19px;
+    padding: 0 7px;
+    font-size: 10px;
+  }
+}
+
+/* 아주 좁은 화면 */
+
+@media (max-width: 360px) {
+  body:has(#watchingList) .page {
+    padding: 0 15px 112px;
+  }
+
+  .account-card img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .account-card h2 {
+    font-size: 16px;
+  }
+
+  .account-card p {
+    font-size: 11px;
+  }
+
+  .card-row {
+    grid-auto-columns: 96px;
+  }
+
+  .menu-row {
+    min-height: 44px;
+    font-size: 12px;
+  }
+}
+
+/* 로딩 */
+
 .loading-state {
   display: grid;
-  min-height: 150px;
+  min-height: 140px;
   place-items: center;
   gap: 10px;
   color: #777;
+  font-size: 13px;
 }
+
 .loading-state span {
   width: 22px;
   height: 22px;
   border: 3px solid #ffe3e2;
   border-top-color: var(--coral, #ff6b6b);
   border-radius: 50%;
-  animation: mypage-spin .7s linear infinite;
+  animation: mypage-spin 0.7s linear infinite;
 }
+
 @keyframes mypage-spin {
   to {
     transform: rotate(360deg);

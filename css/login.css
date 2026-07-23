@@ -1,5 +1,9 @@
 /* login.html 전용: 로그인 폼과 부드러운 인터랙션 */
 
+@view-transition {
+  navigation: auto;
+}
+
 .login-page {
   display: flex;
   min-height: 100vh;
@@ -20,34 +24,154 @@
 .login-page .auth-logo {
   width: min(82%, 400px);
   margin: 0 auto 46px;
-  animation: login-logo-in 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation:
+    login-logo-in 680ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+  view-transition-name: chamverse-logo;
 }
 
 .login-page h1 {
   margin: 0 0 10px;
   font-size: 27px;
   line-height: 1.35;
-  animation: login-rise-in 560ms 80ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation:
+    login-rise-in 560ms 80ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
 }
 
 .login-page .intro-copy {
   margin: 0 0 15px;
   color: #777;
   line-height: 1.6;
-  animation: login-rise-in 560ms 130ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation:
+    login-rise-in 560ms 130ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
 }
 
 .login-page #loginForm {
-  animation: login-rise-in 580ms 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation:
+    login-rise-in 580ms 180ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
 }
 
 .login-page .auth-links {
-  animation: login-rise-in 580ms 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation:
+    login-rise-in 580ms 240ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
 }
 
 .login-page .divider,
 .login-page .safe-area {
-  animation: login-rise-in 580ms 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation:
+    login-rise-in 580ms 300ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+/*
+ * 인트로에서 넘어오면 로그인 로고를 다시 등장시키지 않습니다.
+ * 인트로 로고가 로그인 로고 위치까지 직접 이동합니다.
+ */
+
+html.from-chamverse-intro .login-page .auth-logo,
+html.from-chamverse-intro .login-page h1,
+html.from-chamverse-intro .login-page .intro-copy,
+html.from-chamverse-intro .login-page #loginForm,
+html.from-chamverse-intro .login-page .auth-links,
+html.from-chamverse-intro .login-page .divider,
+html.from-chamverse-intro .login-page .safe-area {
+  animation: none;
+}
+
+/* 화면 전환을 지원하지 않는 브라우저용 대체 애니메이션 */
+
+html.no-cross-page-transition .login-page {
+  --handoff-logo-y: clamp(64px, 11vh, 104px);
+  --handoff-logo-scale: 1;
+}
+
+html.from-chamverse-intro.no-cross-page-transition
+  .login-page
+  .auth-logo {
+  animation:
+    login-logo-handoff-fallback 760ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+html.from-chamverse-intro.no-cross-page-transition
+  .login-page
+  h1 {
+  animation:
+    login-rise-in 560ms 260ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+html.from-chamverse-intro.no-cross-page-transition
+  .login-page
+  .intro-copy {
+  animation:
+    login-rise-in 560ms 310ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+html.from-chamverse-intro.no-cross-page-transition
+  .login-page
+  #loginForm,
+html.from-chamverse-intro.no-cross-page-transition
+  .login-page
+  .auth-links,
+html.from-chamverse-intro.no-cross-page-transition
+  .login-page
+  .divider,
+html.from-chamverse-intro.no-cross-page-transition
+  .login-page
+  .safe-area {
+  animation:
+    login-rise-in 580ms 360ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+/* 인트로에서 로그인으로 이어지는 페이지 전환 */
+
+::view-transition-group(root) {
+  animation-duration: 720ms;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(root) {
+  animation:
+    login-root-out 720ms ease both;
+}
+
+::view-transition-new(root) {
+  animation:
+    login-root-in 720ms ease both;
+}
+
+::view-transition-group(chamverse-logo) {
+  z-index: 100;
+  animation-duration: 900ms;
+  animation-timing-function:
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(chamverse-logo),
+::view-transition-new(chamverse-logo) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(chamverse-logo) {
+  opacity: 0;
 }
 
 /* 로그인 입력 칸 */
@@ -294,7 +418,9 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.8;
-  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    transform 420ms
+    cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .login-page
@@ -303,7 +429,7 @@
   transform: rotate(180deg);
 }
 
-/* 간편 로그인 창: 0fr에서 1fr로 부드럽게 펼쳐짐 */
+/* 간편 로그인 창 */
 
 .login-page .social-login-panel {
   display: grid;
@@ -439,7 +565,7 @@
   transform: translateY(2px) scale(0.992);
 }
 
-/* 카카오톡 버튼 전체 배경 */
+/* 카카오톡 버튼 */
 
 .login-page .social-login.kakao {
   color: #191919;
@@ -461,7 +587,7 @@
     inset 0 2px 5px rgba(83, 72, 0, 0.18);
 }
 
-/* 네이버 버튼 전체 배경 */
+/* 네이버 버튼 */
 
 .login-page .social-login.naver {
   color: #fff;
@@ -483,7 +609,7 @@
     inset 0 2px 5px rgba(0, 69, 31, 0.2);
 }
 
-/* 구글 버튼은 흰색 유지 */
+/* 구글 버튼 */
 
 .login-page .social-login.google {
   color: #444;
@@ -505,7 +631,7 @@
     inset 0 2px 5px rgba(75, 52, 39, 0.1);
 }
 
-/* 간편 로그인 아이콘 공통 */
+/* 간편 로그인 아이콘 */
 
 .login-page .social-login__icon {
   position: absolute;
@@ -629,6 +755,42 @@
   }
 }
 
+@keyframes login-logo-handoff-fallback {
+  from {
+    opacity: 1;
+    transform:
+      translateY(var(--handoff-logo-y))
+      scale(var(--handoff-logo-scale));
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes login-root-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes login-root-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes login-rise-in {
   from {
     opacity: 0;
@@ -656,6 +818,11 @@
 /* 모바일 */
 
 @media (max-width: 560px) {
+  html.no-cross-page-transition .login-page {
+    --handoff-logo-y: 106px;
+    --handoff-logo-scale: 0.92;
+  }
+
   .login-page {
     padding: 54px 28px 42px;
     align-items: flex-start;

@@ -1,42 +1,643 @@
-/* index.html 전용: 인트로 화면 */
+/* index.html 전용: 넷플릭스식 프로필 선택 화면 */
+
+@view-transition {
+  navigation: auto;
+}
+
 .index-page {
   min-height: 100vh;
-  padding: 11vh 24px 40px;
-  background: linear-gradient(135deg, #fffdfa, #fff6ee);
+  min-height: 100svh;
+  color: var(--ink, #222);
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 250, 243, 0.78) 38%,
+      transparent 68%
+    ),
+    linear-gradient(135deg, #fffdfa, #fff6ee);
 }
-.intro-box {
-  width: min(100%, 520px);
-  margin: auto;
+
+html.index-route-checking .index-page {
+  opacity: 0;
+}
+
+.profile-select-page {
+  display: grid;
+  place-items: center;
+}
+
+.profile-select {
+  width: min(100% - 64px, 1120px);
+  margin: 0 auto;
+  padding: 56px 0 48px;
   text-align: center;
 }
-.intro-box .auth-logo {
-  width: min(82%, 400px);
-  margin: 0 auto 58px;
+
+.profile-select h1 {
+  margin: 0 0 38px;
+  color: #202833;
+  font-size: clamp(30px, 4.2vw, 48px);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.055em;
 }
-.intro-box h1 {
-  margin: 0 0 12px;
-  font-size: 29px;
-  line-height: 1.35;
+
+.profile-list {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(18px, 2.5vw, 32px);
 }
-.intro-box p {
-  margin: 0 0 34px;
-  color: #777;
-  line-height: 1.7;
+
+.profile-option {
+  display: grid;
+  width: clamp(106px, 12vw, 148px);
+  padding: 0;
+  color: #5f6469;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  gap: 13px;
+  place-items: center;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
 }
-.intro-cta {
+
+.profile-option:hover,
+.profile-option:focus-visible,
+.profile-option.is-selected {
+  color: #202833;
+  outline: none;
+}
+
+.profile-option:hover {
+  transform: translateY(-4px);
+}
+
+.profile-avatar {
+  position: relative;
   display: grid;
   width: 100%;
-  height: 58px;
-  color: #fff;
-  background: var(--coral);
-  border-radius: 11px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      135deg,
+      #fff4e1,
+      #ffe5cb
+    );
+  border: 3px solid rgba(255, 255, 255, 0.72);
+  border-radius: 10px;
+  aspect-ratio: 1 / 1;
   place-items: center;
-  font-size: 18px;
+  box-shadow:
+    0 9px 20px rgba(105, 76, 54, 0.08);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.profile-avatar::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42);
+}
+
+.profile-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  object-fit: cover;
+}
+
+.profile-avatar--pink {
+  background:
+    linear-gradient(
+      135deg,
+      #ffe6ec,
+      #ffd3de
+    );
+}
+
+.profile-avatar--blue {
+  background:
+    linear-gradient(
+      135deg,
+      #dcecff,
+      #62a8ff
+    );
+}
+
+.profile-avatar--green {
+  background:
+    linear-gradient(
+      135deg,
+      #f1faeb,
+      #d6efcf
+    );
+}
+
+.profile-avatar--purple {
+  background:
+    linear-gradient(
+      135deg,
+      #f2edff,
+      #ddd5f5
+    );
+}
+
+.profile-option:hover .profile-avatar,
+.profile-option:focus-visible .profile-avatar {
+  border-color: var(--coral, #f46e69);
+  box-shadow:
+    0 12px 24px rgba(244, 110, 105, 0.18);
+}
+
+.profile-option.is-selected .profile-avatar {
+  border-color: var(--coral, #f46e69);
+  box-shadow:
+    0 13px 27px rgba(244, 110, 105, 0.22);
+  transform: scale(1.025);
+}
+
+.profile-name {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  color: currentColor;
+  font-size: clamp(15px, 1.8vw, 20px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.profile-avatar--add {
+  color: rgba(133, 101, 82, 0.62);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 253, 250, 0.86),
+      rgba(255, 244, 234, 0.72)
+    );
+  border: 2px dashed rgba(206, 181, 162, 0.88);
+  box-shadow: none;
+}
+
+.profile-avatar--add svg {
+  width: 48%;
+  height: 48%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 2.1;
+}
+
+.profile-option--add:hover .profile-avatar--add,
+.profile-option--add:focus-visible .profile-avatar--add {
+  color: var(--coral, #f46e69);
+  border-color: var(--coral, #f46e69);
+  background:
+    linear-gradient(
+      135deg,
+      #fff9f5,
+      #fff0e8
+    );
+}
+
+.profile-manage {
+  min-width: 148px;
+  min-height: 44px;
+  margin-top: 52px;
+  padding: 0 24px;
+  color: #8a7568;
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(170, 141, 123, 0.42);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 160ms ease;
+}
+
+.profile-manage:hover,
+.profile-manage:focus-visible {
+  color: #5f4b40;
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(139, 105, 82, 0.58);
+  box-shadow:
+    0 8px 18px rgba(119, 86, 63, 0.08);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.profile-manage:active {
+  transform: translateY(1px);
+}
+
+.noscript-message {
+  position: fixed;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  width: min(86%, 360px);
+  padding: 24px;
+  color: #222;
+  background: #fff;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.14);
+  transform: translate(-50%, -50%);
+}
+
+.noscript-message a {
+  color: var(--coral, #f46e69);
   font-weight: 700;
 }
-.text-link {
-  display: inline-block;
-  margin-top: 24px;
-  color: var(--coral);
-  font-weight: 700;
+
+/* intro에서 넘어올 때 화면 전체만 부드럽게 연결 */
+
+::view-transition-group(root) {
+  animation-duration: 640ms;
+  animation-timing-function: ease;
+}
+
+::view-transition-old(root) {
+  animation:
+    profile-root-out 640ms ease both;
+}
+
+::view-transition-new(root) {
+  animation:
+    profile-root-in 640ms ease both;
+}
+
+@keyframes profile-root-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes profile-root-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* 태블릿 이하: 줄바꿈하지 말고 가로 스크롤로 짧게 유지 */
+
+@media (max-width: 860px) {
+  .profile-select {
+    width: 100%;
+    padding: 48px 0 44px;
+  }
+
+  .profile-select h1 {
+    padding: 0 28px;
+    margin-bottom: 34px;
+    font-size: clamp(28px, 6vw, 38px);
+  }
+
+  .profile-list {
+    justify-content: flex-start;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 0 28px 8px;
+    scroll-padding-inline: 28px;
+    scrollbar-width: none;
+  }
+
+  .profile-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .profile-option {
+    width: 112px;
+    flex: 0 0 auto;
+  }
+
+  .profile-manage {
+    margin-top: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-select {
+    padding: 42px 0 40px;
+  }
+
+  .profile-select h1 {
+    margin-bottom: 30px;
+    font-size: 26px;
+  }
+
+  .profile-list {
+    gap: 15px;
+    padding-inline: 24px;
+    scroll-padding-inline: 24px;
+  }
+
+  .profile-option {
+    width: 96px;
+    gap: 10px;
+  }
+
+  .profile-avatar {
+    border-width: 2px;
+    border-radius: 8px;
+  }
+
+  .profile-avatar img {
+    border-radius: 6px;
+  }
+
+  .profile-name {
+    font-size: 14px;
+  }
+
+  .profile-manage {
+    min-width: 128px;
+    min-height: 38px;
+    margin-top: 32px;
+    padding: 0 18px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-select-page *,
+  .profile-select-page *::before,
+  .profile-select-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+/* ================================
+   index.html 모바일 전용 보정 v2
+   - 웹 레이아웃 유지
+   - 모바일에서만 2열 그리드
+   - 카드/글자/간격 전체 축소
+================================ */
+
+@media (max-width: 680px) {
+  .index-page {
+    min-height: 100vh;
+    min-height: 100svh;
+    background:
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(255, 255, 255, 0.96),
+        rgba(255, 251, 245, 0.88) 38%,
+        transparent 68%
+      ),
+      #fffbf5;
+  }
+
+  .profile-select-page {
+    display: block;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow-x: hidden;
+  }
+
+  .profile-select {
+    width: min(100% - 64px, 360px);
+    min-height: 100vh;
+    min-height: 100svh;
+    margin: 0 auto;
+    padding: 58px 0 38px;
+    text-align: center;
+  }
+
+  .profile-select h1 {
+    width: 100%;
+    padding: 0;
+    margin: 0 0 34px;
+    color: #202833;
+    font-size: clamp(25px, 6.6vw, 31px);
+    font-weight: 850;
+    line-height: 1.18;
+    letter-spacing: -0.06em;
+    word-break: keep-all;
+  }
+
+  .profile-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: center;
+    align-items: start;
+    width: min(100%, 318px);
+    padding: 0;
+    margin: 0 auto;
+    overflow: visible;
+    gap: 26px 22px;
+    scrollbar-width: auto;
+  }
+
+  .profile-list::-webkit-scrollbar {
+    display: initial;
+  }
+
+  .profile-option {
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    flex: initial;
+    padding: 0;
+    gap: 8px;
+    place-items: center;
+    color: #222;
+    background: transparent;
+    border: 0;
+  }
+
+  .profile-option:hover {
+    transform: none;
+  }
+
+  .profile-avatar {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: 2px solid transparent;
+    border-radius: 17px;
+    box-shadow:
+      0 7px 15px rgba(105, 76, 54, 0.07);
+  }
+
+  .profile-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+  }
+
+  .profile-option:hover .profile-avatar,
+  .profile-option:focus-visible .profile-avatar {
+    border-color: rgba(244, 110, 105, 0.45);
+    box-shadow:
+      0 9px 18px rgba(244, 110, 105, 0.12);
+  }
+
+  .profile-option.is-selected .profile-avatar {
+    border-color: var(--coral, #f46e69);
+    box-shadow:
+      0 10px 20px rgba(244, 110, 105, 0.18);
+    transform: none;
+  }
+
+  .profile-option.is-selected .profile-avatar::before {
+    position: absolute;
+    z-index: 3;
+    top: -10px;
+    right: -10px;
+    display: grid;
+    width: 33px;
+    height: 33px;
+    color: #fff;
+    background: var(--coral, #f46e69);
+    border-radius: 50%;
+    content: "✓";
+    place-items: center;
+    font-size: 21px;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow:
+      0 7px 14px rgba(244, 110, 105, 0.2);
+  }
+
+  .profile-name {
+    max-width: 100%;
+    color: #222;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .profile-avatar--add {
+    color: #b89b86;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 253, 250, 0.9),
+        rgba(255, 244, 234, 0.72)
+      );
+    border: 2px dashed #e4cdbc;
+    box-shadow: none;
+  }
+
+  .profile-avatar--add svg {
+    width: 40%;
+    height: 40%;
+    stroke-width: 1.8;
+  }
+
+  .profile-option--add:hover .profile-avatar--add,
+  .profile-option--add:focus-visible .profile-avatar--add {
+    color: var(--coral, #f46e69);
+    border-color: rgba(244, 110, 105, 0.65);
+  }
+
+  .profile-manage {
+    min-width: 116px;
+    min-height: 34px;
+    margin-top: 30px;
+    padding: 0 16px;
+    color: #8a7568;
+    background: rgba(255, 255, 255, 0.46);
+    border: 1px solid rgba(170, 141, 123, 0.36);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 650;
+  }
+}
+
+@media (max-width: 420px) {
+  .profile-select {
+    width: min(100% - 56px, 210px);
+    padding-top: 48px;
+  }
+
+  .profile-select h1 {
+    margin-bottom: 30px;
+    font-size: 25px;
+  }
+
+  .profile-list {
+    width: min(100%, 296px);
+    gap: 24px 20px;
+  }
+
+  .profile-name {
+    font-size: 15px;
+  }
+
+  .profile-manage {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 360px) {
+  .profile-select {
+    width: min(100% - 46px, 310px);
+    padding-top: 48px;
+  }
+
+  .profile-select h1 {
+    margin-bottom: 26px;
+    font-size: 23px;
+  }
+
+  .profile-list {
+    width: min(100%, 274px);
+    gap: 20px 18px;
+  }
+
+  .profile-name {
+    font-size: 14px;
+  }
+
+  .profile-option.is-selected .profile-avatar::before {
+    top: -8px;
+    right: -8px;
+    width: 29px;
+    height: 29px;
+    font-size: 18px;
+  }
+
+  .profile-manage {
+    min-height: 32px;
+    margin-top: 24px;
+    font-size: 11px;
+  }
 }

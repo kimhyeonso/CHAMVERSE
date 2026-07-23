@@ -6,6 +6,42 @@
 
     <title>로그인 | CHAMVERSE</title>
 
+    <script>
+      (function markIntroHandoff() {
+        const handoffKey =
+          'chamverse:intro-login-handoff';
+
+        try {
+          const cameFromIntro =
+            sessionStorage.getItem(handoffKey)
+            === 'ready';
+
+          if (!cameFromIntro) return;
+
+          document.documentElement.classList.add(
+            'from-chamverse-intro'
+          );
+
+          const supportsCrossPageTransition =
+            'onpagereveal' in window
+            && window.CSS
+            && CSS.supports(
+              'view-transition-name: chamverse-logo'
+            );
+
+          if (!supportsCrossPageTransition) {
+            document.documentElement.classList.add(
+              'no-cross-page-transition'
+            );
+          }
+
+          sessionStorage.removeItem(handoffKey);
+        } catch {
+          /* 저장 공간을 사용할 수 없어도 로그인은 정상 동작합니다. */
+        }
+      }());
+    </script>
+
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/login.css">
   </head>
