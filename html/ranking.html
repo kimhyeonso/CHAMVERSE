@@ -1,29 +1,245 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>캐릭터 랭킹 | CHAMVERSE</title>
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/ranking.css">
-  </head>
-<body data-page="ranking" data-static-page="true" data-use-common-ui="true">
-    <div class="app">
-      <main class="page">
-        <header class="screen-header compact">
-          <a class="back" href="voteEvent.html">‹</a>
-          <span>CHAMVERSE</span>
-        </header>
-        <div class="tabs">
-          <a class="tab" href="vote.html">투표하기</a>
-          <button class="tab active">현재 랭킹</button>
-        </div>
-        <section id="podium" class="podium"></section>
-        <section id="rankingList" class="rank-list"></section>
-      </main>
+
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>캐릭터 랭킹 | CHAMVERSE</title>
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/ranking.css">
+</head>
+
+
+<body
+  data-page="ranking"
+  data-static-page="true"
+  data-use-common-ui="true"
+>
+
+<div class="app">
+
+  <main class="ranking-page">
+
+
+    <!-- ===============================
+         TOP
+    ================================ -->
+    <div class="ranking-top">
+
+      <a
+        class="ranking-back"
+        href="voteEvent.html"
+        aria-label="이전 페이지"
+      >
+        ‹
+      </a>
+
+
+      <nav class="ranking-tabs">
+
+        <a
+          class="ranking-tab"
+          href="vote.html"
+        >
+          투표하기
+        </a>
+
+        <button
+          type="button"
+          class="ranking-tab is-active"
+        >
+          현재 랭킹
+        </button>
+
+      </nav>
+
     </div>
-  <script src="../js/common.js"></script>
-  <script src="../js/app-utils.js"></script>
-    <script src="../js/ranking.js"></script>
-  </body>
+
+
+
+    <!-- ===============================
+         HERO
+    ================================ -->
+    <section class="ranking-hero">
+
+      <span class="ranking-deco ranking-deco--01">
+        ★
+      </span>
+
+      <span class="ranking-deco ranking-deco--02">
+        ♥
+      </span>
+
+      <span class="ranking-deco ranking-deco--03">
+        ✦
+      </span>
+
+
+      <div class="ranking-hero__inner">
+
+        <div class="ranking-live">
+          <i></i>
+          LIVE RANKING
+        </div>
+
+
+        <p class="ranking-eyebrow">
+          CHAMVERSE CHARACTER RANKING
+        </p>
+
+
+        <h1>
+          지금 가장 사랑받는
+          <br>
+
+          <strong>
+            캐릭터는 누구?
+          </strong>
+        </h1>
+
+
+        <p class="ranking-description">
+          여러분의 투표로 실시간 순위가 바뀌고 있어요.
+          <br>
+          마지막까지 어떤 캐릭터가 1위를 차지할지 지켜봐주세요!
+        </p>
+
+
+        <div class="ranking-meta">
+
+          <span>
+            총 <strong>41,268</strong>표
+          </span>
+
+          <i></i>
+
+          <span>
+            마감까지 <strong>D-5</strong>
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===============================
+         TOP 3 PODIUM
+    ================================ -->
+    <section class="top-ranking">
+
+      <div class="top-ranking__heading">
+
+        <div>
+
+          <h2>
+            현재 TOP 3
+          </h2>
+
+        </div>
+
+
+        <p>
+          2026.07.23 12:00 기준
+        </p>
+
+      </div>
+
+
+      <div
+        id="podium"
+        class="podium"
+      ></div>
+
+    </section>
+
+
+
+    <!-- ===============================
+         RANKING LIST
+    ================================ -->
+    <section class="ranking-board">
+
+      <div class="ranking-board__heading">
+
+        <div>
+          <h2>
+            전체 캐릭터 순위
+          </h2>
+
+        </div>
+
+
+        <span class="ranking-board__update">
+          실시간 집계 중
+        </span>
+
+      </div>
+
+
+      <div
+        id="rankingList"
+        class="rank-list"
+      ></div>
+
+    </section>
+
+
+
+    <!-- ===============================
+         CLOSE BATTLE
+    ================================ -->
+    <section class="rank-battle">
+
+      <div class="rank-battle__icon">
+        !
+      </div>
+
+
+      <div class="rank-battle__text">
+
+        <span>
+          CLOSE BATTLE
+        </span>
+
+        <h2>
+          1위와 2위,
+          <strong>128표</strong> 차이!
+        </h2>
+
+        <p>
+          당신의 한 표가 순위를 뒤집을 수도 있어요.
+        </p>
+
+      </div>
+
+
+      <a
+        href="vote.html"
+        class="rank-battle__button"
+      >
+        내 최애 투표하기
+        <span>→</span>
+      </a>
+
+    </section>
+
+
+  </main>
+
+</div>
+
+
+<script src="../js/common.js"></script>
+<script src="../js/app-utils.js"></script>
+<script src="../js/ranking.js"></script>
+
+</body>
 </html>
