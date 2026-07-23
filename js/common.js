@@ -48,10 +48,25 @@
       });
       document.body.appendChild(toast);
     }
-    toast.textContent = message;
-    toast.style.opacity = '1';
     clearTimeout(window.chamverseToastTimer);
-    window.chamverseToastTimer = setTimeout(() => { toast.style.opacity = '0'; }, 2200);
+    cancelAnimationFrame(window.chamverseToastFrame);
+    toast.getAnimations().forEach((animation) => animation.cancel());
+    toast.style.transition = 'none';
+    toast.textContent = message;
+    toast.style.opacity = '0';
+    toast.classList.remove('is-visible');
+    /* 연속 호출 시에도 시작 위치를 확정해 등장 애니메이션을 다시 재생합니다. */
+    toast.getBoundingClientRect();
+    toast.style.transition = '';
+    toast.getBoundingClientRect();
+    window.chamverseToastFrame = requestAnimationFrame(() => {
+      toast.style.opacity = '1';
+      toast.classList.add('is-visible');
+    });
+    window.chamverseToastTimer = setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.classList.remove('is-visible');
+    }, 2800);
   }
 
   function headerMarkup() {
@@ -81,7 +96,7 @@
     ];
     return `<div class="common-nav__inner">${menus.map((menu) => {
       const active = menu.key === activePage;
-      const icon = `../images/common/${menu.icon}${active ? '-on' : ''}.png`;
+      const icon = `../images/common/${menu.icon}-on.png`;
       return `<a class="common-nav__item ${active ? 'is-active' : ''}" href="${menu.href}"><img src="${icon}" alt="">${menu.label}</a>`;
     }).join('')}</div>`;
   }

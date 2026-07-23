@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const continuing = items.find((item) => item.id === lastWatching?.contentId) || items.find((item) => ChamverseApp.uniqueIds(ChamverseApp.KEY.wish).includes(item.id)) || items[0];
   const banner = document.querySelector('.continue-banner');
   if (banner && continuing) {
-    banner.querySelector('img').src = continuing.thumbnail || continuing.poster;
+    /* thumbnail 데이터 경로가 없을 때도 깨지지 않도록 실제 포스터를 우선 사용합니다. */
+    banner.querySelector('img').src = continuing.poster || continuing.thumbnail;
     banner.querySelector('img').alt = continuing.title;
     banner.querySelector('h3').textContent = continuing.title;
     banner.querySelector('p').textContent = continuing.description;
@@ -28,7 +29,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   render();
   document.querySelectorAll('.tab').forEach((tab) => tab.addEventListener('click', () => {
     category = tab.textContent.trim();
-    document.querySelectorAll('.tab').forEach((item) => item.classList.toggle('active', item === tab));
+    document.querySelectorAll('.tab').forEach((item) => {
+      const isActive = item === tab;
+      item.classList.toggle('active', isActive);
+      item.setAttribute('aria-selected', String(isActive));
+    });
     render();
   }));
   wishList.addEventListener('click', (event) => {

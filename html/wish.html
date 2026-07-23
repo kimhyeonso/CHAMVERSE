@@ -14,8 +14,20 @@
           <a class="back" href="myPage.html">‹</a>
           <span>찜한 콘텐츠 모아보기</span>
         </header>
+        <section class="wish-intro" aria-labelledby="wishPageTitle">
+          <div class="title-with-icon">
+            <h1 id="wishPageTitle">찜한 콘텐츠</h1>
+            <span class="section-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6.5 4.5h11v16l-5.5-3-5.5 3z"></path><path d="M9.5 8h5"></path></svg>
+            </span>
+          </div>
+          <p>마음에 담아둔 작품을 한곳에서 편하게 만나보세요.</p>
+        </section>
         <section class="continue-banner">
-          <img src="../images/contents/id-01.jpg" alt="이어보기">
+          <div class="continue-thumb">
+            <img src="../images/contents/id-01.jpg" alt="이어보기">
+            <span class="thumb-play" aria-hidden="true"><i></i></span>
+          </div>
           <div>
             <strong>찜해둔 작품, 이어보세요!</strong>
             <h3>최근 시청한 콘텐츠</h3>
@@ -23,15 +35,25 @@
             <div class="progress">
               <span style="--value:70%"></span>
             </div>
+            <div class="continue-time"><span>10:45</span><span>24:25</span></div>
           </div>
         </section>
         <section class="section">
-          <div class="tabs">
-            <button class="tab active">전체</button>
-            <button class="tab">시리즈</button>
-            <button class="tab">극장판</button>
+          <div class="section-head">
+            <div>
+              <div class="title-with-icon">
+                <h2 class="section-title">내가 찜한 작품</h2>
+                <span class="section-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M20 8.8c0 5-8 10-8 10s-8-5-8-10a4.3 4.3 0 0 1 7.5-2.9L12 6.5l.5-.6A4.3 4.3 0 0 1 20 8.8z"></path></svg>
+                </span>
+              </div>
+            </div>
+            <div class="tabs" role="tablist" aria-label="찜 콘텐츠 분류">
+              <button type="button" class="tab active" role="tab" aria-selected="true">전체</button>
+              <button type="button" class="tab" role="tab" aria-selected="false">시리즈</button>
+              <button type="button" class="tab" role="tab" aria-selected="false">극장판</button>
+            </div>
           </div>
-          <h2 class="section-title">내가 찜한 작품</h2>
           <div id="wishList" class="wish-grid"></div>
         </section>
       </main>
