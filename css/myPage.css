@@ -14,7 +14,7 @@ body:has(#watchingList) .page {
   padding-top: 0;
   padding-inline: 30px;
   padding-bottom: 110px;
-
+}
 
 /* 상단 헤더 */
 
@@ -42,9 +42,14 @@ body:has(#watchingList) .page {
 
 .account-card {
   display: flex;
+
+  margin-top: 36px;
+
   padding: 18px;
+
   border: 1px solid #ddc6c6;
   border-radius: 16px;
+
   gap: 16px;
   align-items: center;
 }
@@ -63,8 +68,38 @@ body:has(#watchingList) .page {
   flex: 1;
 }
 
+.account-card__info {
+  min-width: 0;
+  flex: 1;
+}
+
+.account-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 6px;
+}
+
+.account-name-row h2 {
+  margin: 0;
+}
+
+.logout-button {
+  color: #999;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  transition: color .2s ease;
+}
+
+.logout-button:hover {
+  color: var(--coral);
+}
+
 .account-card h2 {
-  margin: 0 0 6px;
+  margin: 0;
   color: #07111f;
   font-size: 21px;
   font-weight: 850;
@@ -93,16 +128,6 @@ body:has(#watchingList) .page {
   font-weight: 700;
   line-height: 1.1;
 }
-
-.account-card > a {
-  flex: 0 0 auto;
-  margin-left: auto;
-  color: var(--coral);
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
 /* 섹션 */
 
 .section {
@@ -261,6 +286,7 @@ body:has(#watchingList) .page {
 /* 데스크톱 */
 
 @media (min-width: 769px) {
+
   body:has(#watchingList) .page {
     width: min(100%, 1320px);
     padding-inline: 56px;
@@ -268,6 +294,7 @@ body:has(#watchingList) .page {
   }
 
   .account-card {
+    margin-top: 36px;
     padding: 24px;
     gap: 20px;
     border-radius: 18px;
@@ -280,7 +307,6 @@ body:has(#watchingList) .page {
   }
 
   .account-card h2 {
-    margin-bottom: 8px;
     font-size: 26px;
   }
 
@@ -294,8 +320,8 @@ body:has(#watchingList) .page {
     font-size: 16px;
   }
 
-  .account-card > a {
-    font-size: 14px;
+  .logout-button {
+    font-size: 13px;
   }
 
   .section {
@@ -305,6 +331,12 @@ body:has(#watchingList) .page {
   .section-title {
     margin-bottom: 20px;
     font-size: 28px;
+  }
+
+  .card-row {
+    grid-auto-flow: initial;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    overflow: visible;
   }
 
   .poster-card h3,
@@ -335,13 +367,7 @@ body:has(#watchingList) .page {
     height: 24px;
     font-size: 12px;
   }
-}
 
-  .card-row {
-    grid-auto-flow: initial;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    overflow: visible;
-  }
 }
 
 @media (min-width: 1200px) {
@@ -431,10 +457,7 @@ body:has(#watchingList) .page {
     font-size: 14px;
   }
 
-  .account-card > a {
-    display: none;
-  }
-
+ 
   .section {
     margin-top: 28px;
   }

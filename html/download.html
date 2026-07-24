@@ -1,42 +1,141 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>다운로드 | CHAMVERSE</title>
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/download.css">
-  </head>
-<body data-page="download" data-static-page="true" data-use-common-ui="true">
-    <div class="app">
-      <main class="page">
-        <header class="screen-header compact">
-          <a class="back" href="myPage.html">‹</a>
-          <span>다운로드 콘텐츠</span>
-        </header>
-        <section class="storage">
-          <div class="cloud">⇩</div>
-          <div>
-            <h2>오프라인 저장</h2>
-            <p><span id="storageUsed">0MB</span> / <span id="storageTotal">5GB</span></p>
-            <div class="progress">
-              <span id="storageBar" style="--value:0%"></span>
-            </div>
-          </div>
-        </section>
-        <section class="section">
-          <div class="tabs">
-            <button class="tab active">전체</button>
-            <button class="tab">시리즈</button>
-            <button class="tab">극장판</button>
-          </div>
-          <label class="download-sort">정렬 <select id="downloadSort"><option value="recent">최신 다운로드순</option><option value="title">제목순</option></select></label>
-          <div id="downloadList"></div>
-        </section>
-      </main>
-    </div>
-  <script src="../js/common.js"></script>
-  <script src="../js/app-utils.js"></script>
-    <script src="../js/download.js"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>다운로드 | CHAMVERSE</title>
+
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/download.css">
+</head>
+
+
+<body
+  data-page="download"
+  data-use-common-ui="true"
+>
+
+<div class="app">
+
+  <main class="page">
+
+
+    <!-- ==================================
+         STORAGE
+    =================================== -->
+    <section class="storage">
+
+      <div class="cloud">
+        ⇩
+      </div>
+
+
+      <div>
+
+        <h2>
+          오프라인 저장
+        </h2>
+
+        <p>
+          <span id="storageUsed">
+            0MB
+          </span>
+
+          /
+
+          <span id="storageTotal">
+            5GB
+          </span>
+        </p>
+
+
+        <div class="progress">
+
+          <span
+            id="storageBar"
+            style="--value:0%"
+          ></span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ==================================
+         DOWNLOAD LIST
+    =================================== -->
+    <section class="section">
+
+
+      <div class="tabs">
+
+        <button
+          type="button"
+          class="tab active"
+        >
+          전체
+        </button>
+
+        <button
+          type="button"
+          class="tab"
+        >
+          시리즈
+        </button>
+
+        <button
+          type="button"
+          class="tab"
+        >
+          극장판
+        </button>
+
+      </div>
+
+
+      <label class="download-sort">
+
+        정렬
+
+        <select id="downloadSort">
+
+          <option value="recent">
+            최신 다운로드순
+          </option>
+
+          <option value="title">
+            제목순
+          </option>
+
+        </select>
+
+      </label>
+
+
+      <div id="downloadList"></div>
+
+
+    </section>
+
+
+  </main>
+
+</div>
+
+
+<script src="../js/common.js"></script>
+<script src="../js/app-utils.js"></script>
+<script src="../js/download.js"></script>
+
+</body>
+
 </html>

@@ -1,182 +1,519 @@
-﻿/* download.html 전용: 오프라인 저장 용량과 다운로드 목록 */
+﻿/* =========================================
+   DOWNLOAD PAGE
+========================================= */
+
 body:has(#downloadList) .app {
   min-height: 100vh;
   background: #fff;
 }
+
 body:has(#downloadList) .page {
-  width: min(100%,768px);
+  width: min(100%, 768px);
   margin: auto;
   padding: 0 30px 45px;
 }
-.screen-header {
-  position: relative;
-  display: flex;
-  height: 72px;
-  justify-content: center;
-  align-items: center;
-  font-size: 22px;
-  font-weight: 800;
-}
-.screen-header .back {
-  position: absolute;
-  left: 0;
-}
+
+
+/* =========================================
+   STORAGE
+========================================= */
+
 .storage {
   display: flex;
+
+  /* 공통 헤더와 여백 */
+  margin-top: 36px;
+
   padding: 20px;
+
   border: 1px solid #dfc9c9;
   border-radius: 14px;
+
   gap: 20px;
   align-items: center;
 }
+
 .cloud {
   display: grid;
+
   width: 54px;
   height: 54px;
+
   color: #fff;
   background: var(--coral);
+
   border-radius: 50%;
+
   place-items: center;
+
   font-size: 24px;
 }
+
 .storage h2 {
   margin: 0 0 5px;
   font-size: 16px;
 }
+
 .storage p {
   margin: 0 0 8px;
+
   color: #777;
+
   font-size: 12px;
 }
+
 .progress {
   width: 190px;
   height: 5px;
+
   background: #ddd;
+
   border-radius: 10px;
   overflow: hidden;
 }
+
 .progress span {
   display: block;
+
   width: var(--value);
   height: 100%;
+
   background: var(--coral);
 }
+
+
+/* =========================================
+   DOWNLOAD SECTION
+========================================= */
+
 .section {
   margin-top: 30px;
 }
+
+
+/* tabs */
+
 .tabs {
   display: flex;
+
   gap: 25px;
+
   border-bottom: 1px solid #eee;
 }
+
 .tab {
   padding: 12px 3px;
+
   background: transparent;
+
   font-weight: 700;
 }
+
 .tab.active {
   border-bottom: 2px solid var(--coral);
 }
-#downloadList {
-  display: grid;
-  margin-top: 18px;
-  gap: 12px;
-}
+
+
+/* sort */
+
 .download-sort {
   display: flex;
+
   margin-top: 16px;
+
   color: var(--muted);
+
   justify-content: flex-end;
+  align-items: center;
+
   gap: 8px;
+
   font-size: 12px;
 }
+
 .download-sort select {
   padding: 5px 8px;
+
   background: #fff;
+
   border: 1px solid #ddd;
   border-radius: 7px;
 }
+
+
+/* =========================================
+   DOWNLOAD LIST
+========================================= */
+
+#downloadList {
+  display: grid;
+
+  margin-top: 18px;
+
+  gap: 12px;
+}
+
 .download-item {
   display: grid;
+
   padding: 14px;
+
   background: #f6f6f6;
+
   border-radius: 14px;
-  grid-template-columns: 150px 1fr auto;
+
+  grid-template-columns: 150px 1fr auto auto;
+
   gap: 15px;
   align-items: center;
 }
+
 .download-item:nth-child(even) {
   background: #fff5ed;
 }
+
 .download-item img {
   width: 150px;
+
   border-radius: 6px;
+
   aspect-ratio: 1.6;
   object-fit: cover;
 }
+
 .download-item h3 {
   margin: 0 0 6px;
+
   font-size: 15px;
 }
+
 .download-item p {
   margin: 4px 0;
+
   color: #777;
+
   font-size: 11px;
 }
+
+
+/* play */
+
 .round-play {
   width: 34px;
   height: 34px;
+
   background: #fff;
+
   border: 1px solid #777;
   border-radius: 50%;
 }
+
+
+/* remove */
+
 .download-remove {
   color: #777;
+
   background: transparent;
+
   font-size: 18px;
 }
-@media(min-width:769px) {
-  body:has(#downloadList) .page {
-    width: min(100%,1100px);
-    padding-right: 48px;
-    padding-left: 48px;
-  }
+
+
+/* =========================================
+   EMPTY DOWNLOAD
+========================================= */
+
+.download-empty {
+  display: flex;
+
+  min-height: 420px;
+
+  padding: 70px 20px 60px;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
 }
-@media(max-width:768px) {
-  body:has(#downloadList) .page {
-    padding: 0 19px 35px;
-  }
-  .download-item {
-    grid-template-columns: 98px 1fr auto;
-    gap: 10px;
-  }
-  .download-item img {
-    width: 98px;
-  }
-  .download-item h3 {
-    font-size: 12px;
-  }
-  .download-item p {
-    font-size: 9px;
-  }
+
+
+/* icon */
+
+.download-empty__icon {
+  position: relative;
+
+  display: grid;
+
+  width: 84px;
+  height: 84px;
+
+  margin-bottom: 24px;
+
+  background: #fff3f1;
+
+  border-radius: 50%;
+
+  place-items: center;
 }
+
+.download-empty__icon::before {
+  position: absolute;
+
+  width: 108px;
+  height: 108px;
+
+  border: 1px solid #ffe0dc;
+  border-radius: 50%;
+
+  content: '';
+}
+
+.download-empty__icon span {
+  display: grid;
+
+  width: 48px;
+  height: 48px;
+
+  color: #fff;
+  background: var(--coral);
+
+  border-radius: 50%;
+
+  place-items: center;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+/* label */
+
+.download-empty__label {
+  margin-bottom: 10px;
+
+  color: var(--coral);
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+}
+
+
+/* title */
+
+.download-empty h2 {
+  margin: 0;
+
+  color: #222;
+
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+
+/* description */
+
+.download-empty p {
+  margin: 14px 0 28px;
+
+  color: #999;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* button */
+
+.download-empty__button {
+  display: flex;
+
+  min-width: 190px;
+  height: 50px;
+
+  padding: 0 22px;
+
+  color: #fff;
+  background: var(--coral);
+
+  border-radius: 100px;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    transform .2s ease,
+    opacity .2s ease;
+}
+
+.download-empty__button:hover {
+  transform: translateY(-2px);
+  opacity: .9;
+}
+
+.download-empty__button span {
+  font-size: 18px;
+}
+
+
+/* =========================================
+   CATEGORY EMPTY
+========================================= */
+
+.download-category-empty {
+  display: grid;
+
+  min-height: 260px;
+
+  place-items: center;
+
+  text-align: center;
+}
+
+.download-category-empty p {
+  margin: 0;
+
+  color: #999;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
 .loading-state {
   display: grid;
+
   min-height: 180px;
+
   place-items: center;
+
   gap: 10px;
+
   color: #777;
 }
+
 .loading-state span {
   width: 22px;
   height: 22px;
+
   border: 3px solid #ffe3e2;
   border-top-color: var(--coral, #ff6b6b);
   border-radius: 50%;
+
   animation: download-spin .7s linear infinite;
 }
+
 @keyframes download-spin {
   to {
     transform: rotate(360deg);
   }
+}
+
+
+/* =========================================
+   PC
+========================================= */
+
+@media (min-width: 769px) {
+
+  body:has(#downloadList) .page {
+    width: min(100%, 1100px);
+
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+
+}
+
+
+/* =========================================
+   TABLET / MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  body:has(#downloadList) .page {
+    padding: 0 19px 35px;
+  }
+
+
+  .storage {
+    margin-top: 24px;
+  }
+
+
+  .download-item {
+    grid-template-columns: 98px 1fr auto auto;
+
+    gap: 10px;
+  }
+
+  .download-item img {
+    width: 98px;
+  }
+
+  .download-item h3 {
+    font-size: 12px;
+  }
+
+  .download-item p {
+    font-size: 9px;
+  }
+
+
+  .download-empty {
+    min-height: 380px;
+
+    padding: 60px 15px 50px;
+  }
+
+  .download-empty__icon {
+    width: 74px;
+    height: 74px;
+
+    margin-bottom: 22px;
+  }
+
+  .download-empty__icon::before {
+    width: 96px;
+    height: 96px;
+  }
+
+  .download-empty__icon span {
+    width: 44px;
+    height: 44px;
+
+    font-size: 21px;
+  }
+
+  .download-empty h2 {
+    font-size: 22px;
+  }
+
+  .download-empty p {
+    margin-top: 12px;
+
+    font-size: 13px;
+  }
+
+  .download-empty__button {
+    min-width: 180px;
+    height: 48px;
+
+    font-size: 13px;
+  }
+
 }
