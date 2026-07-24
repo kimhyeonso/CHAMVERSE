@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'patrick',
       name: '뚱이',
       englishName: 'patrick',
-      image: '../images/vote/patrick Star-11.png',
+      image: '../images/vote/Patrick Star-11.png',
       color: '#f7c4dc',
     },
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'Shin_Chan',
       name: '짱구',
       englishName: 'Shin_Chan',
-      image: '../images/vote/Shin_Chan-10.png',
+      image: '../images/vote/Shin_chan-10.png',
       color: '#a9dcda',
     },
   ];
