@@ -1147,6 +1147,50 @@ body[data-page="voteEvent"] .app {
 
 /* ranking link */
 
+.event-ranking-board {
+  width: min(calc(100% - 48px), 1120px);
+  margin: 88px auto 120px;
+  scroll-margin-top: 110px;
+}
+
+.event-ranking-board__eyebrow {
+  margin: 0 0 8px;
+  color: #f46e69;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.event-ranking-board__vote {
+  display: flex;
+  width: fit-content;
+  min-height: 52px;
+  margin: 34px auto 0;
+  padding: 0 26px;
+  color: #fff;
+  background: #f46e69;
+  border-radius: 999px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow: 0 12px 24px rgb(244 110 105 / 25%);
+}
+
+.event-ranking-board__vote:hover {
+  background: #df5753;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .event-ranking-board {
+    width: calc(100% - 30px);
+    margin: 54px auto 84px;
+    scroll-margin-top: 76px;
+  }
+}
+
 .ranking-link {
   display: flex;
 
@@ -1603,12 +1647,14 @@ body[data-page="voteEvent"] .app {
 
   opacity: 1;
 
-  pointer-events: auto;
+  pointer-events: none;
 }
 
 
 .floating-vote__inner {
   display: flex;
+
+  pointer-events: auto;
 
   width:
     min(680px, 100%);
@@ -1637,6 +1683,13 @@ body[data-page="voteEvent"] .app {
 
   backdrop-filter:
     blur(18px);
+}
+
+@media (min-width: 901px) {
+  body:has(.floating-vote.is-visible)
+  .common-top-button {
+    bottom: 260px;
+  }
 }
 
 

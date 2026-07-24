@@ -151,12 +151,12 @@ body:has(#watchingList) .page {
   font-size: 14px;
 }
 
-.poster,
-.content-card__poster {
-  overflow: hidden;
-  background: #eee;
-  border-radius: 11px;
-  aspect-ratio: 0.7;
+  .poster,
+  .content-card__poster {
+    overflow: hidden;
+    background: #eee;
+    border-radius: 13px;
+    aspect-ratio: 2 / 3;
 }
 
 .poster img,
@@ -262,9 +262,78 @@ body:has(#watchingList) .page {
 
 @media (min-width: 769px) {
   body:has(#watchingList) .page {
-    width: min(100%, 1280px);
-    padding-inline: 48px;
+    width: min(100%, 1320px);
+    padding-inline: 56px;
     padding-bottom: 120px;
+  }
+
+  .account-card {
+    padding: 24px;
+    gap: 20px;
+    border-radius: 18px;
+  }
+
+  .account-card img {
+    width: 108px;
+    height: 108px;
+    border-radius: 15px;
+  }
+
+  .account-card h2 {
+    margin-bottom: 8px;
+    font-size: 26px;
+  }
+
+  .account-card .badge {
+    padding: 5px 15px;
+    font-size: 13px;
+  }
+
+  .account-card p {
+    margin-top: 9px;
+    font-size: 16px;
+  }
+
+  .account-card > a {
+    font-size: 14px;
+  }
+
+  .section {
+    margin-top: 46px;
+  }
+
+  .section-title {
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+
+  .poster-card h3,
+  .content-card h3 {
+    margin-top: 11px;
+    font-size: 16px;
+  }
+
+  .poster-card p,
+  .content-card p {
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  .content-card__progress {
+    height: 6px;
+    margin-top: 8px;
+  }
+
+  .menu-row {
+    min-height: 60px;
+    padding: 0 22px;
+    font-size: 17px;
+  }
+
+  .counter {
+    min-width: 40px;
+    height: 24px;
+    font-size: 12px;
   }
 }
 
@@ -275,9 +344,52 @@ body:has(#watchingList) .page {
   }
 }
 
+@media (min-width: 1200px) {
+  body:has(#watchingList) .page {
+    width: min(100%, 1500px);
+    padding-inline: 32px;
+  }
+
+  .account-card {
+    padding: 28px;
+    gap: 24px;
+  }
+
+  .account-card img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .account-card h2 {
+    font-size: 30px;
+  }
+
+  .account-card p {
+    font-size: 17px;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+
+  .poster-card h3,
+  .content-card h3 {
+    font-size: 17px;
+  }
+
+  .menu-row {
+    min-height: 64px;
+    font-size: 18px;
+  }
+}
+
 /* 태블릿/모바일 */
 
 @media (max-width: 768px) {
+  .main-footer {
+    display: none;
+  }
+
   body:has(#watchingList) .page {
     width: min(100%, 430px);
     padding: 0 20px 118px;
@@ -293,30 +405,30 @@ body:has(#watchingList) .page {
   }
 
   .account-card {
-    padding: 15px;
-    gap: 13px;
+    padding: 17px;
+    gap: 15px;
     border-radius: 15px;
   }
 
   .account-card img {
-    width: 72px;
-    height: 72px;
+    width: 80px;
+    height: 80px;
     border-radius: 11px;
   }
 
   .account-card h2 {
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .account-card .badge {
-    padding: 4px 11px;
-    font-size: 10px;
+    padding: 5px 12px;
+    font-size: 11px;
   }
 
   .account-card p {
     margin-top: 6px;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .account-card > a {
@@ -328,20 +440,32 @@ body:has(#watchingList) .page {
   }
 
   .section-title {
-    margin-bottom: 14px;
-    font-size: 21px;
+    margin-bottom: 16px;
+    font-size: 24px;
   }
 
   .card-row {
-    min-height: 160px;
-    grid-auto-columns: 118px;
-    gap: 13px;
+    min-height: 260px;
+    grid-auto-columns: 152px;
+    gap: 16px;
+    padding-bottom: 8px;
+  }
+
+  .poster-card h3,
+  .content-card h3 {
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .poster-card p,
+  .content-card p {
+    font-size: 13px;
   }
 
   .menu-row {
-    min-height: 49px;
-    padding: 0 16px;
-    font-size: 14px;
+    min-height: 54px;
+    padding: 0 18px;
+    font-size: 15px;
   }
 }
 
@@ -358,21 +482,21 @@ body:has(#watchingList) .page {
   }
 
   .account-card {
-    padding: 14px;
-    gap: 12px;
+    padding: 16px;
+    gap: 14px;
   }
 
   .account-card img {
-    width: 66px;
-    height: 66px;
+    width: 76px;
+    height: 76px;
   }
 
   .account-card h2 {
-    font-size: 17px;
+    font-size: 19px;
   }
 
   .account-card p {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .section {
@@ -380,29 +504,29 @@ body:has(#watchingList) .page {
   }
 
   .section-title {
-    font-size: 20px;
+    font-size: 23px;
   }
 
   .card-row {
-    min-height: 150px;
-    grid-auto-columns: 104px;
-    gap: 12px;
+    min-height: 252px;
+    grid-auto-columns: 148px;
+    gap: 14px;
   }
 
   .poster-card h3,
   .content-card h3 {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   .poster-card p,
   .content-card p {
-    font-size: 10px;
+    font-size: 13px;
   }
 
   .menu-row {
-    min-height: 46px;
-    padding: 0 15px;
-    font-size: 13px;
+    min-height: 52px;
+    padding: 0 17px;
+    font-size: 15px;
   }
 
   .counter {
@@ -421,25 +545,26 @@ body:has(#watchingList) .page {
   }
 
   .account-card img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
   }
 
   .account-card h2 {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .account-card p {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .card-row {
-    grid-auto-columns: 96px;
+    min-height: 240px;
+    grid-auto-columns: 140px;
   }
 
   .menu-row {
-    min-height: 44px;
-    font-size: 12px;
+    min-height: 50px;
+    font-size: 14px;
   }
 }
 

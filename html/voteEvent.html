@@ -7,6 +7,7 @@
   <title>캐릭터 투표 | CHAMVERSE</title>
 
   <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/ranking.css?v=20260724-1">
   <link rel="stylesheet" href="../css/voteEvent.css">
 </head>
 
@@ -373,7 +374,7 @@
 
 
         <a
-          href="ranking.html"
+          href="#eventRankingBoard"
           class="ranking-link reveal"
         >
           전체 캐릭터 랭킹 보기
@@ -558,6 +559,25 @@
 
     </section>
 
+    <section
+      id="eventRankingBoard"
+      class="ranking-board event-ranking-board"
+      aria-labelledby="eventRankingTitle"
+    >
+      <div class="ranking-board__heading">
+        <div>
+          <p class="event-ranking-board__eyebrow">LIVE CHARACTER RANKING</p>
+          <h2 id="eventRankingTitle">전체 캐릭터 순위</h2>
+        </div>
+        <span class="ranking-board__update">실시간 집계 중</span>
+      </div>
+      <div id="rankingList" class="rank-list"></div>
+      <a href="vote.html" class="event-ranking-board__vote">
+        내 최애에게 투표하기
+        <span aria-hidden="true">→</span>
+      </a>
+    </section>
+
   </main>
 
 
@@ -616,6 +636,7 @@
 <script src="../js/common.js"></script>
 <script src="../js/app-utils.js"></script>
 <script src="../js/voteEvent.js"></script>
+<script src="../js/ranking.js?v=20260724-1"></script>
 
 </body>
 </html>

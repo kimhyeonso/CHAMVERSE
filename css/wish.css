@@ -87,6 +87,7 @@ body:has(#wishList) .page {
   position: relative;
   overflow: hidden;
   width: 100%;
+  cursor: pointer;
   border-radius: 16px;
   aspect-ratio: 2 / 3;
   cursor: pointer;

@@ -100,6 +100,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     wishPlayButton.click();
   });
 
+  continueThumb.setAttribute('role', 'button');
+  continueThumb.setAttribute('tabindex', '0');
+  continueThumb.setAttribute('aria-label', '짱구는 못말려 영상 재생');
+  continueThumb.addEventListener('click', (event) => {
+    if (event.target.closest('#wishPlayButton, #wishLandscapeCloseButton')) return;
+    if (!continueThumb.classList.contains('has-started')) wishPlayButton.click();
+  });
+  continueThumb.addEventListener('keydown', (event) => {
+    if ((event.key === 'Enter' || event.key === ' ') && !continueThumb.classList.contains('has-started')) {
+      event.preventDefault();
+      wishPlayButton.click();
+    }
+  });
+
   wishLandscapeCloseButton.addEventListener('click', () => {
     resetWishPlayer();
     closeWishFallbackLandscape();

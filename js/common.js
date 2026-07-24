@@ -79,8 +79,6 @@
           <a class="common-header__menu-link common-header__menu-link--home" href="main.html">홈</a>
           <a class="common-header__menu-link common-header__menu-link--live" href="live.html">LIVE <span aria-hidden="true">((•))</span></a>
           <a class="common-header__menu-link common-header__menu-link--wish" href="wish.html">찜한 콘텐츠</a>
-          <a class="common-header__menu-link common-header__menu-link--ranking" href="ranking.html">랭킹</a>
-          <a class="common-header__menu-link" href="main.html">장르</a>
           <a class="common-header__menu-link common-header__menu-link--event" href="voteEvent.html">이벤트</a>
         </nav>
         <div class="common-header__actions">
@@ -120,6 +118,29 @@
     }).join('')}</div>`;
   }
 
+  function footerMarkup() {
+    return `
+      <div class="main-footer__brand">
+        <strong>CHAMVERSE</strong>
+        <p>좋아하는 이야기와 캐릭터를 한곳에서 만나보세요.</p>
+      </div>
+      <nav class="main-footer__links" aria-label="푸터 바로가기">
+        <a href="notice.html">공지사항</a>
+        <a href="price.html">이용권 안내</a>
+        <a href="download.html">앱 다운로드</a>
+        <a href="myPage.html">마이페이지</a>
+      </nav>
+      <div class="main-footer__support">
+        <span>고객 지원</span>
+        <a href="notice.html">서비스 이용에 도움이 필요하신가요? <b>›</b></a>
+      </div>
+      <div class="main-footer__meta">
+        <span>CHAMVERSE 포트폴리오 프로젝트</span>
+        <span>수록된 콘텐츠 정보와 이미지는 소개 목적으로 사용됩니다.</span>
+      </div>
+      <small>ⓒ CHAMVERSE. 본 사이트는 비상업적 목적으로 제작되었습니다.</small>`;
+  }
+
   function mountCommonUi() {
     const { body } = document;
     if (body.dataset.useCommonUi !== 'true') return;
@@ -142,6 +163,16 @@
     navigation.innerHTML = navigationMarkup(body.dataset.page || 'main');
     body.appendChild(navigation);
 
+    let footer = document.querySelector('.main-footer');
+    if (footer) {
+      footer.innerHTML = footerMarkup();
+    } else {
+      footer = document.createElement('footer');
+      footer.className = 'main-footer common-desktop-footer';
+      footer.innerHTML = footerMarkup();
+      app.appendChild(footer);
+    }
+
     const topButton = document.createElement('button');
     topButton.className = 'common-top-button';
     topButton.type = 'button';
@@ -149,8 +180,7 @@
     topButton.innerHTML = `
       <span class="common-top-button__character">
         <img src="../images/main/profile15.png" alt="">
-      </span>
-      <b>TOP</b>`;
+      </span>`;
     body.appendChild(topButton);
 
     const updateTopButton = () => {

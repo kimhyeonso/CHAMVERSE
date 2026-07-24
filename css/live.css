@@ -1507,6 +1507,13 @@ body[data-page="live"] .toast.is-visible {
   translate: 0 0;
 }
 
+@media (min-width: 901px) {
+  body[data-page="live"] .toast {
+    right: 54px;
+    bottom: 258px !important;
+  }
+}
+
 @media (max-width: 768px) {
   body[data-page="live"] .toast {
     right: auto;

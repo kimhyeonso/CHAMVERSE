@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
 
         window.location.href =
-          'ranking.html';
+          'voteEvent.html#eventRankingBoard';
 
       }, 1600);
 
