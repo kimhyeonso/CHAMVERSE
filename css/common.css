@@ -357,31 +357,22 @@ body[data-use-common-ui="true"] .app {
     display: none;
   }
   .common-header__profile {
-    display: grid;
-    overflow: visible;
-    width: 28px;
-    height: 28px;
-    flex-basis: 28px;
-    color: var(--ink);
-    border: 2px solid var(--ink);
-    place-items: center;
-    font-size: 14px;
+    display: block;
+    overflow: hidden;
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+    background: #ffe7ea;
+    border: 2px solid #ffd4d8;
   }
   .common-header__profile img {
-    display: none;
+    display: block;
   }
   .common-header__profile::before {
-    content: "☺";
+    content: none;
   }
   .common-header__profile::after {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    width: 8px;
-    height: 8px;
-    background: var(--red);
-    border-radius: 50%;
-    content: "";
+    content: none;
   }
   body[data-use-common-ui="true"] .app {
     padding-bottom: calc(82px + env(safe-area-inset-bottom));

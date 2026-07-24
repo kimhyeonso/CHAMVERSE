@@ -92,11 +92,20 @@
     return storageKey ? read(storageKey, []) : [];
   }
 
-  function setContinueWatching(contentId, progress = 0.28) {
+  function setContinueWatching(contentId, progress = 0.28, details = {}) {
     const storageKey = continueWatchingStorageKey();
     if (!storageKey) return [];
     const list = read(storageKey, []);
-    const next = [{ contentId: Number(contentId), progress, updatedAt: Date.now() }, ...list.filter((item) => item.contentId !== Number(contentId))].slice(0, 12);
+    const numericContentId = Number(contentId);
+    const previous = list.find((item) => item.contentId === numericContentId) || {};
+    const nextEntry = {
+      ...previous,
+      ...details,
+      contentId: numericContentId,
+      progress,
+      updatedAt: Date.now()
+    };
+    const next = [nextEntry, ...list.filter((item) => item.contentId !== numericContentId)].slice(0, 12);
     return write(storageKey, next);
   }
 
