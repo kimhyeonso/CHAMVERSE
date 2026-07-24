@@ -164,19 +164,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   let continueDragStartX = 0;
   let continueDragStartScroll = 0;
   let isContinueDragging = false;
+  let continueDragMoved = false;
 
   continueList.addEventListener('pointerdown', (event) => {
-    if (event.pointerType === 'touch' || event.target.closest('a')) return;
+    if (event.pointerType === 'touch' || event.button !== 0) return;
     isContinueDragging = true;
+    continueDragMoved = false;
     continueDragStartX = event.clientX;
     continueDragStartScroll = continueList.scrollLeft;
-    continueList.classList.add('is-dragging');
-    continueList.setPointerCapture(event.pointerId);
   });
 
   continueList.addEventListener('pointermove', (event) => {
     if (!isContinueDragging) return;
-    continueList.scrollLeft = continueDragStartScroll - (event.clientX - continueDragStartX);
+    const distance = event.clientX - continueDragStartX;
+    if (Math.abs(distance) < 5) return;
+    continueDragMoved = true;
+    continueList.classList.add('is-dragging');
+    if (!continueList.hasPointerCapture(event.pointerId)) {
+      continueList.setPointerCapture(event.pointerId);
+    }
+    continueList.scrollLeft = continueDragStartScroll - distance;
   });
 
   const finishContinueDrag = (event) => {
@@ -187,15 +194,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   continueList.addEventListener('pointerup', finishContinueDrag);
-  continueList.addEventListener('pointercancel', finishContinueDrag);
+  continueList.addEventListener('pointercancel', (event) => {
+    continueDragMoved = false;
+    finishContinueDrag(event);
+  });
+  continueList.addEventListener('click', (event) => {
+    if (!continueDragMoved) return;
+    event.preventDefault();
+    event.stopPropagation();
+    continueDragMoved = false;
+  }, true);
 
   const watching = ChamverseApp.getContinueWatching();
   const continueItems = watching
     .map((entry) => ({ item: items.find((content) => content.id === Number(entry.contentId)), progress: entry.progress }))
-    .filter((entry) => entry.item && !topItemIds.has(entry.item.id));
+    .filter((entry) => entry.item);
   continueList.classList.toggle('is-empty', !continueItems.length);
   continueList.innerHTML = continueItems.length ? continueItems.slice(0, 6).map(({ item, progress }) => `
-    <a class="continue-card" href="play.html?id=${item.id}">
+    <a class="continue-card" href="play.html?id=${item.id}&autoplay=1">
       <span class="continue-card__image">
         <img src="${item.poster}" alt="${item.title}" loading="lazy">
         <span class="continue-card__play" aria-hidden="true"></span>
@@ -404,7 +420,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     .map((contentId) => items.find((item) => item.id === contentId))
     .filter(Boolean);
   const visibleNewEpisodes = newEpisodeItems.length ? newEpisodeItems : recommended.slice(0, 5);
-  document.getElementById('newEpisodeList').innerHTML = visibleNewEpisodes.map((item) => `
+  const newEpisodeList = document.getElementById('newEpisodeList');
+  newEpisodeList.innerHTML = visibleNewEpisodes.map((item) => `
     <a class="new-episode-card" href="play.html?id=${item.id}">
       <span class="new-episode-card__image">
         <img src="${item.poster}" alt="${item.title}" loading="lazy">
@@ -413,6 +430,49 @@ document.addEventListener('DOMContentLoaded', async () => {
       <h3>${item.title}</h3>
     </a>
   `).join('');
+
+  let newEpisodeDragStartX = 0;
+  let newEpisodeDragStartScroll = 0;
+  let isNewEpisodeDragging = false;
+  let newEpisodeDragMoved = false;
+
+  newEpisodeList.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'touch' || event.button !== 0) return;
+    isNewEpisodeDragging = true;
+    newEpisodeDragMoved = false;
+    newEpisodeDragStartX = event.clientX;
+    newEpisodeDragStartScroll = newEpisodeList.scrollLeft;
+  });
+  newEpisodeList.addEventListener('pointermove', (event) => {
+    if (!isNewEpisodeDragging) return;
+    const distance = event.clientX - newEpisodeDragStartX;
+    if (Math.abs(distance) < 5) return;
+    newEpisodeDragMoved = true;
+    newEpisodeList.classList.add('is-dragging');
+    if (!newEpisodeList.hasPointerCapture(event.pointerId)) {
+      newEpisodeList.setPointerCapture(event.pointerId);
+    }
+    newEpisodeList.scrollLeft = newEpisodeDragStartScroll - distance;
+  });
+  const finishNewEpisodeDrag = (event) => {
+    if (!isNewEpisodeDragging) return;
+    isNewEpisodeDragging = false;
+    newEpisodeList.classList.remove('is-dragging');
+    if (newEpisodeList.hasPointerCapture(event.pointerId)) {
+      newEpisodeList.releasePointerCapture(event.pointerId);
+    }
+  };
+  newEpisodeList.addEventListener('pointerup', finishNewEpisodeDrag);
+  newEpisodeList.addEventListener('pointercancel', (event) => {
+    newEpisodeDragMoved = false;
+    finishNewEpisodeDrag(event);
+  });
+  newEpisodeList.addEventListener('click', (event) => {
+    if (!newEpisodeDragMoved) return;
+    event.preventDefault();
+    event.stopPropagation();
+    newEpisodeDragMoved = false;
+  }, true);
 
   const renderMovies = (genre = '전체') => {
     let source = items.filter((item) => (item.episode || 0) <= 52);

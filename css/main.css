@@ -249,6 +249,9 @@
   scroll-snap-type: none;
   user-select: none;
 }
+.continue-row.is-dragging .continue-card {
+  pointer-events: none;
+}
 .continue-row.is-empty {
   display: block;
   overflow: visible;
@@ -640,7 +643,22 @@
   grid-auto-columns: minmax(0, 136px);
   gap: 14px;
   overflow-x: auto;
+  overflow-y: hidden;
+  cursor: grab;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   scrollbar-width: none;
+  touch-action: auto;
+}
+
+.new-episode-row.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.new-episode-row.is-dragging .new-episode-card {
+  pointer-events: none;
 }
 
 .new-episode-row::-webkit-scrollbar {
@@ -650,6 +668,7 @@
 .new-episode-card {
   display: block;
   min-width: 0;
+  scroll-snap-align: start;
 }
 
 .new-episode-card__image {

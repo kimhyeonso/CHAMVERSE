@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   const [items, playData] = await Promise.all([ChamverseApp.getContents(), ChamverseApp.getPlayData()]);
-  const id = Number(new URLSearchParams(location.search).get('id')) || items[0].id;
+  const queryParams = new URLSearchParams(location.search);
+  const id = Number(queryParams.get('id')) || items[0].id;
+  const shouldAutoPlay = queryParams.get('autoplay') === '1';
   const item = items.find((content) => content.id === id) || items[0];
   const detail = playData.find((content) => content.contentId === item.id) || {};
   const episodeCount = Math.min(5, Math.max(3, Math.ceil((item.episode || 12) / 500)));
@@ -62,15 +64,95 @@ document.addEventListener('DOMContentLoaded', async () => {
     ChamverseApp.showToast(`${seasonSelect.value} 에피소드를 보고 있어요.`);
   });
 
+  let activeEpisode = null;
+  let lastSavedSecond = -1;
+  let activeEpisodeCompleted = false;
+  const getSavedEpisode = () => ChamverseApp.getContinueWatching()
+    .find((entry) => Number(entry.contentId) === item.id);
+  const savePlaybackProgress = ({ completed = activeEpisodeCompleted } = {}) => {
+    if (!activeEpisode) return;
+    const duration = Number.isFinite(episodeVideo.duration) ? episodeVideo.duration : 0;
+    const currentTime = completed ? 0 : Math.max(0, episodeVideo.currentTime || 0);
+    const progress = duration > 0
+      ? Math.min(completed ? 1 : currentTime / duration, 1)
+      : 0;
+    ChamverseApp.setContinueWatching(item.id, progress, {
+      episodeLink: activeEpisode.link,
+      episodeTitle: activeEpisode.title,
+      season: activeEpisode.season,
+      currentTime,
+      completed
+    });
+  };
   const openEpisodePlayer = (episode) => {
-    ChamverseApp.setContinueWatching(item.id, 0);
-    episodePlayerTitle.textContent = episode.querySelector('h3').textContent;
-    episodeVideo.src = episode.dataset.episodeVideo;
+    savePlaybackProgress();
+    activeEpisode = null;
+    episodeVideo.pause();
+    const episodeLink = episode.dataset.episodeVideo;
+    const episodeTitle = episode.querySelector('h3').textContent;
+    const savedEpisode = getSavedEpisode();
+    const resumeTime = savedEpisode?.episodeLink === episodeLink && !savedEpisode.completed
+      ? Number(savedEpisode.currentTime) || 0
+      : 0;
+    activeEpisode = {
+      link: episodeLink,
+      title: episodeTitle,
+      season: seasonSelect.value
+    };
+    lastSavedSecond = -1;
+    activeEpisodeCompleted = false;
+    episodePlayerTitle.textContent = episodeTitle;
+    episodeVideo.addEventListener('loadedmetadata', () => {
+      if (resumeTime > 0 && resumeTime < episodeVideo.duration) {
+        episodeVideo.currentTime = resumeTime;
+        ChamverseApp.showToast(`${Math.floor(resumeTime / 60)}분 ${Math.floor(resumeTime % 60)}초부터 이어서 재생해요.`);
+      }
+    }, { once: true });
+    episodeVideo.src = episodeLink;
     if (typeof episodePlayer.showModal === 'function') episodePlayer.showModal();
     else episodePlayer.setAttribute('open', '');
     episodeVideo.play().catch(() => {});
   };
+  const isEpisodeFullscreen = () => (
+    document.fullscreenElement === episodePlayer
+    || episodePlayer.classList.contains('is-fullscreen')
+  );
+  let requestedOrientation = null;
+  const updateOrientationButton = () => {
+    if (!isEpisodeFullscreen()) {
+      episodeFullscreenButton.textContent = '전체 화면';
+      episodeFullscreenButton.setAttribute('aria-label', '전체 화면으로 보기');
+      return;
+    }
+    const physicalOrientation = window.matchMedia('(orientation: landscape)').matches
+      ? 'landscape'
+      : 'portrait';
+    const activeOrientation = requestedOrientation || physicalOrientation;
+    episodePlayer.classList.toggle(
+      'is-landscape',
+      activeOrientation === 'landscape' && physicalOrientation !== 'landscape'
+    );
+    episodePlayer.classList.toggle(
+      'is-portrait',
+      activeOrientation === 'portrait' && physicalOrientation !== 'portrait'
+    );
+    const isLandscape = activeOrientation === 'landscape';
+    episodeFullscreenButton.textContent = isLandscape ? '세로 보기' : '가로 보기';
+    episodeFullscreenButton.setAttribute('aria-label', isLandscape ? '세로 화면으로 보기' : '가로 화면으로 보기');
+  };
+  const exitEpisodeFullscreen = () => {
+    episodePlayer.classList.remove('is-fullscreen', 'is-landscape', 'is-portrait');
+    requestedOrientation = null;
+    if (document.fullscreenElement === episodePlayer && document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
+    }
+    if (screen.orientation?.unlock) screen.orientation.unlock();
+    updateOrientationButton();
+  };
   const closeEpisodePlayer = () => {
+    exitEpisodeFullscreen();
+    savePlaybackProgress();
+    activeEpisode = null;
     episodeVideo.pause();
     episodeVideo.removeAttribute('src');
     episodeVideo.load();
@@ -88,42 +170,86 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
   episodePlayerClose.addEventListener('click', closeEpisodePlayer);
   episodeFullscreenButton.addEventListener('click', async () => {
-    const requestFullscreen = episodeVideo.requestFullscreen || episodeVideo.webkitRequestFullscreen;
-    try {
-      if (requestFullscreen) await requestFullscreen.call(episodeVideo);
-      else if (episodeVideo.webkitEnterFullscreen) episodeVideo.webkitEnterFullscreen();
-      else throw new Error('Fullscreen is not supported');
-    } catch {
-      ChamverseApp.showToast('이 브라우저에서는 크게 보기를 지원하지 않아요.');
+    if (!isEpisodeFullscreen()) {
+      requestedOrientation = null;
+      episodePlayer.classList.remove('is-landscape', 'is-portrait');
+      const requestFullscreen = episodePlayer.requestFullscreen || episodePlayer.webkitRequestFullscreen;
+      try {
+        if (requestFullscreen) await requestFullscreen.call(episodePlayer);
+        else episodePlayer.classList.add('is-fullscreen');
+      } catch {
+        // iOS 등 표준 전체 화면을 지원하지 않는 환경에서도 X 버튼이 보이는 화면을 제공합니다.
+        episodePlayer.classList.add('is-fullscreen');
+      }
+      updateOrientationButton();
       return;
     }
 
+    const activeOrientation = requestedOrientation || (window.matchMedia('(orientation: landscape)').matches
+      ? 'landscape'
+      : 'portrait');
+    const nextOrientation = activeOrientation === 'landscape'
+      ? 'portrait'
+      : 'landscape';
+    requestedOrientation = nextOrientation;
     try {
-      if (screen.orientation?.lock) await screen.orientation.lock('landscape');
-    } catch {
-      // 일부 브라우저는 전체 화면이어도 화면 방향 잠금을 허용하지 않습니다.
-    }
+      if (!screen.orientation?.lock) throw new Error('Orientation lock is not supported');
+      await screen.orientation.lock(nextOrientation);
+    } catch { /* 화면 내 회전 방식으로 계속 표시합니다. */ }
+    updateOrientationButton();
+    window.setTimeout(updateOrientationButton, 100);
   });
   document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement && screen.orientation?.unlock) screen.orientation.unlock();
+    updateOrientationButton();
   });
+  window.addEventListener('orientationchange', updateOrientationButton);
   episodePlayer.addEventListener('click', (event) => {
     if (event.target === episodePlayer) closeEpisodePlayer();
   });
   episodePlayer.addEventListener('close', () => {
+    exitEpisodeFullscreen();
+    savePlaybackProgress();
+    activeEpisode = null;
     episodeVideo.pause();
     episodeVideo.removeAttribute('src');
     episodeVideo.load();
   });
 
-  document.getElementById('playButton').addEventListener('click', () => {
-    const firstEpisode = document.querySelector('#episodeList [data-episode-video]');
-    if (!firstEpisode) {
+  episodeVideo.addEventListener('timeupdate', () => {
+    const currentSecond = Math.floor(episodeVideo.currentTime || 0);
+    if (currentSecond > 0 && currentSecond - lastSavedSecond >= 5) {
+      lastSavedSecond = currentSecond;
+      savePlaybackProgress();
+    }
+  });
+  episodeVideo.addEventListener('pause', savePlaybackProgress);
+  episodeVideo.addEventListener('ended', () => {
+    activeEpisodeCompleted = true;
+    savePlaybackProgress({ completed: true });
+  });
+  window.addEventListener('pagehide', savePlaybackProgress);
+
+  const playFirstEpisode = () => {
+    const savedEpisode = getSavedEpisode();
+    if (savedEpisode?.season && seasons.includes(savedEpisode.season) && seasonSelect.value !== savedEpisode.season) {
+      seasonSelect.value = savedEpisode.season;
+      document.getElementById('playSeasonTag').textContent = savedEpisode.season;
+      renderEpisodes(savedEpisode.season);
+    }
+    const episodeToPlay = [...document.querySelectorAll('#episodeList [data-episode-video]')]
+      .find((episode) => episode.dataset.episodeVideo === savedEpisode?.episodeLink)
+      || document.querySelector('#episodeList [data-episode-video]');
+    if (!episodeToPlay) {
       ChamverseApp.showToast('재생할 수 있는 에피소드가 아직 없어요.');
       return;
     }
-    openEpisodePlayer(firstEpisode);
+    openEpisodePlayer(episodeToPlay);
+  };
+  document.getElementById('playButton').addEventListener('click', () => {
+    playFirstEpisode();
   });
+  if (shouldAutoPlay) requestAnimationFrame(playFirstEpisode);
   const wishButton = document.getElementById('wishButton');
   const renderWishButton = () => {
     const wished = ChamverseApp.uniqueIds(ChamverseApp.KEY.wish).includes(item.id);
