@@ -442,67 +442,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* =====================================
-     COMPLETE VOTE
-  ====================================== */
+   COMPLETE VOTE
+====================================== */
 
-  modalConfirm.addEventListener(
-    'click',
-    () => {
+modalConfirm.addEventListener(
+  'click',
+  () => {
 
-      if (!selectedCharacter) return;
+    if (!selectedCharacter) return;
 
+    /*
+      실제 서버가 없는 프로토타입이므로
+      localStorage에 투표 정보 저장
+    */
 
-      /*
-        실제 서버가 없는 프로토타입이므로
-        localStorage에 투표 정보 저장
-      */
+    const voteData = {
+      characterId:
+        selectedCharacter.id,
 
-      const voteData = {
-        characterId:
-          selectedCharacter.id,
+      characterName:
+        selectedCharacter.name,
 
-        characterName:
-          selectedCharacter.name,
-
-        votedAt:
-          new Date().toISOString(),
-      };
-
-
-      localStorage.setItem(
-        'chamverseVote',
-        JSON.stringify(voteData)
-      );
+      votedAt:
+        new Date().toISOString(),
+    };
 
 
-      closeModal();
+    localStorage.setItem(
+      'chamverseVote',
+      JSON.stringify(voteData)
+    );
 
 
-      voteFloating.classList.remove(
-        'is-visible'
-      );
+    closeModal();
 
 
-      showVoteComplete();
+    voteFloating.classList.remove(
+      'is-visible'
+    );
 
 
-      /*
-        1.6초 후 랭킹 페이지 이동
+    showVoteComplete();
 
-        바로 이동시키고 싶지 않으면
-        아래 setTimeout 부분 삭제하면 됨.
-      */
 
-      setTimeout(() => {
+    /*
+      1.6초 후 랭킹 페이지 이동
+    */
 
-        window.location.href =
-          'voteEvent.html#eventRankingBoard';
+    setTimeout(() => {
 
-      }, 1600);
+      window.location.href =
+        'ranking.html';
 
-    }
-  );
+    }, 1600);
 
+  }
+);
 
 
   /* =====================================
