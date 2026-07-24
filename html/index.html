@@ -1,138 +1,201 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>프로필 선택 | CHAMVERSE</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script>
-      (function markIndexRouteState() {
-        const handoffKey =
-          'chamverse:intro-index-handoff';
+  <title>프로필 선택 | CHAMVERSE</title>
 
-        try {
-          const cameFromIntro =
-            sessionStorage.getItem(handoffKey) === 'ready';
+  <!--
+    index.html은 이제 입구 역할만 합니다.
+    로그인 여부 판단은 intro.html에서 담당합니다.
+  -->
+ 
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/index.css">
+</head>
 
-          if (cameFromIntro) {
-            document.documentElement.classList.add(
-              'from-chamverse-intro'
-            );
-          } else {
-            document.documentElement.classList.add(
-              'index-route-checking'
-            );
-          }
-        } catch {
-          document.documentElement.classList.add(
-            'index-route-checking'
-          );
-        }
-      }());
-    </script>
 
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/index.css">
-  </head>
+<body
+  class="index-page profile-select-page"
+  data-page="index"
+  data-static-page="true"
+>
 
-  <body
-    class="index-page profile-select-page"
-    data-page="index"
-    data-static-page="true"
-  >
-    <main class="profile-select" aria-labelledby="profileTitle">
-      <h1 id="profileTitle">
-        시청할 프로필을 선택하세요.
-      </h1>
 
-      <section class="profile-list" aria-label="프로필 목록">
-        <button
-          class="profile-option"
-          type="button"
-          data-profile-id="hyunsu"
-          data-profile-name="현수"
-          data-profile-image="../images/profile/profile03.png"
-        >
-          <span class="profile-avatar">
-            <img src="../images/profile/profile03.png" alt="">
-          </span>
-          <span class="profile-name">현수</span>
-        </button>
+<main class="profile-select" aria-labelledby="profileTitle">
 
-        <button
-          class="profile-option"
-          type="button"
-          data-profile-id="hyeonjeong"
-          data-profile-name="현정"
-          data-profile-image="../images/profile/profile10.png"
-        >
-          <span class="profile-avatar profile-avatar--pink">
-            <img src="../images/profile/profile10.png" alt="">
-          </span>
-          <span class="profile-name">현정</span>
-        </button>
 
-        <button
-          class="profile-option"
-          type="button"
-          data-profile-id="jiwoo"
-          data-profile-name="지우"
-          data-profile-image="../images/profile/profile11.png"
-        >
-          <span class="profile-avatar profile-avatar--green">
-            <img src="../images/profile/profile11.png" alt="">
-          </span>
-          <span class="profile-name">지우</span>
-        </button>
+<h1 id="profileTitle">
+  시청할 프로필을 선택하세요.
+</h1>
+
+
+<section class="profile-list" aria-label="프로필 목록">
+
+
+<button
+ class="profile-option"
+ type="button"
+ data-profile-id="hyunsu"
+ data-profile-name="현수"
+ data-profile-image="../images/profile/profile03.png"
+>
+<span class="profile-avatar">
+<img src="../images/profile/profile03.png" alt="">
+</span>
+
+<span class="profile-name">
+현수
+</span>
+
+</button>
 
 
 
-        <button
-          class="profile-option"
-          type="button"
-          data-profile-id="seunggeun"
-          data-profile-name="승근"
-          data-profile-image="../images/profile/profile05.png"
-        >
-          <span class="profile-avatar profile-avatar--purple">
-            <img src="../images/profile/profile05.png" alt="">
-          </span>
-          <span class="profile-name">승근</span>
-        </button>
+<button
+ class="profile-option"
+ type="button"
+ data-profile-id="hyeonjeong"
+ data-profile-name="현정"
+ data-profile-image="../images/profile/profile10.png"
+>
 
-        <button
-          class="profile-option profile-option--add"
-          type="button"
-          data-profile-add="true"
-        >
-          <span class="profile-avatar profile-avatar--add">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 5v14"></path>
-              <path d="M5 12h14"></path>
-            </svg>
-          </span>
-          <span class="profile-name">프로필 추가</span>
-        </button>
-      </section>
 
-      <button
-        class="profile-manage"
-        type="button"
-        id="profileManage"
-      >
-        프로필 관리
-      </button>
-    </main>
+<span class="profile-avatar profile-avatar--pink">
+<img src="../images/profile/profile10.png" alt="">
+</span>
 
-    <noscript>
-      <div class="noscript-message">
-        <p>프로필을 선택하려면 자바스크립트가 필요합니다.</p>
-        <a href="login.html">로그인 화면으로 이동</a>
-      </div>
-    </noscript>
 
-    <script src="../js/common.js"></script>
-    <script src="../js/app-utils.js"></script>
-    <script src="../js/index.js"></script>
-  </body>
+<span class="profile-name">
+현정
+</span>
+
+
+</button>
+
+
+
+<button
+ class="profile-option"
+ type="button"
+ data-profile-id="jiwoo"
+ data-profile-name="지우"
+ data-profile-image="../images/profile/profile11.png"
+>
+
+
+<span class="profile-avatar profile-avatar--green">
+<img src="../images/profile/profile11.png" alt="">
+</span>
+
+
+<span class="profile-name">
+지우
+</span>
+
+
+</button>
+
+
+
+<button
+ class="profile-option"
+ type="button"
+ data-profile-id="seunggeun"
+ data-profile-name="승근"
+ data-profile-image="../images/profile/profile05.png"
+>
+
+
+<span class="profile-avatar profile-avatar--purple">
+<img src="../images/profile/profile05.png" alt="">
+</span>
+
+
+<span class="profile-name">
+승근
+</span>
+
+
+</button>
+
+
+
+
+<button
+ class="profile-option profile-option--add"
+ type="button"
+ data-profile-add="true"
+>
+
+
+<span class="profile-avatar profile-avatar--add">
+
+
+<svg viewBox="0 0 24 24">
+
+<path d="M12 5v14"></path>
+
+<path d="M5 12h14"></path>
+
+</svg>
+
+
+</span>
+
+
+<span class="profile-name">
+프로필 추가
+</span>
+
+
+</button>
+
+
+</section>
+
+
+
+<button
+class="profile-manage"
+type="button"
+id="profileManage"
+>
+프로필 관리
+</button>
+
+
+
+</main>
+
+
+
+<noscript>
+
+<div class="noscript-message">
+
+<p>
+프로필을 선택하려면 자바스크립트가 필요합니다.
+</p>
+
+
+<a href="login.html">
+로그인 화면으로 이동
+</a>
+
+
+</div>
+
+
+</noscript>
+
+
+
+<script src="../js/common.js"></script>
+<script src="../js/app-utils.js"></script>
+<script src="../js/index.js"></script>
+
+
+</body>
 </html>
