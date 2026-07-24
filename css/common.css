@@ -307,6 +307,10 @@ body[data-use-common-ui="true"] .app {
   display: none;
 }
 
+.common-desktop-footer {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .common-header {
     position: sticky;
@@ -427,15 +431,98 @@ body[data-use-common-ui="true"] .app {
     display: none;
   }
 
+  body[data-use-common-ui="true"] .main-footer {
+    display: grid;
+    width: 100%;
+    max-width: none;
+    margin: 38px 0 0;
+    padding: 38px 32px 54px;
+    background: #f4f4f4;
+    gap: 22px;
+  }
+
+  body[data-use-common-ui="true"] .main-footer__brand strong {
+    color: #44a7ec;
+    font-size: 22px;
+    letter-spacing: -.02em;
+  }
+
+  body[data-use-common-ui="true"] .main-footer__brand p {
+    margin: 7px 0 0;
+    color: #666;
+    font-size: 13px;
+  }
+
+  body[data-use-common-ui="true"] .main-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+  }
+
+  body[data-use-common-ui="true"] .main-footer__links a {
+    display: inline;
+    color: #3f3f3f;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  body[data-use-common-ui="true"] .main-footer__support {
+    display: grid;
+    padding: 18px 0;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    gap: 7px;
+  }
+
+  body[data-use-common-ui="true"] .main-footer__support > span {
+    color: #777;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  body[data-use-common-ui="true"] .main-footer__support a {
+    display: flex;
+    color: #292929;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 750;
+  }
+
+  body[data-use-common-ui="true"] .main-footer__support b {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  body[data-use-common-ui="true"] .main-footer__meta {
+    display: flex;
+    color: #777;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  body[data-use-common-ui="true"] .main-footer small {
+    margin-top: 2px;
+    color: #555;
+    font-size: 10px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
   .common-top-button {
     position: fixed;
-    z-index: 90;
-    right: 34px;
-    bottom: 34px;
+    /* Keep the floating control above page sections and sticky widgets.
+       Dialogs/overlays use 500+, so they still correctly cover this button. */
+    z-index: 400;
+    right: 74px;
+    bottom: 74px;
     display: flex;
-    width: 154px;
-    height: 184px;
-    padding: 4px;
+    overflow: visible;
+    width: 160px;
+    height: 160px;
+    padding: 0;
     color: var(--coral);
     background: transparent;
     border: 0;
@@ -448,7 +535,8 @@ body[data-use-common-ui="true"] .app {
     opacity: 0;
     pointer-events: none;
     transform: translateY(14px);
-    transition: opacity .25s ease, transform .25s ease, box-shadow .2s ease;
+    transition: opacity .25s ease, transform .25s ease, box-shadow .2s ease,
+      bottom .3s ease;
   }
 
   .common-top-button.is-visible {
@@ -459,33 +547,34 @@ body[data-use-common-ui="true"] .app {
 
   .common-top-button:hover {
     box-shadow: none;
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.03);
+  }
+
+  .common-top-button:focus-visible {
+    outline: 3px solid rgba(244, 110, 105, .3);
+    outline-offset: 4px;
+  }
+
+  .common-top-button::after {
+    content: none;
   }
 
   .common-top-button__character {
     display: grid;
-    width: 140px;
-    height: 146px;
+    overflow: visible;
+    width: 148px;
+    height: 148px;
+    background: transparent;
+    border-radius: 0;
     place-items: center;
   }
 
   .common-top-button__character img {
-    width: 140px;
-    height: 146px;
+    width: 220px;
+    max-width: none;
+    height: 220px;
     object-fit: contain;
-  }
-
-  .common-top-button b {
-    margin-top: -10px;
-    padding: 0;
-    color: var(--coral);
-    background: transparent;
-    border-radius: 0;
-    font-size: 26px;
-    font-weight: 850;
-    line-height: 1;
-    letter-spacing: .1em;
-    text-shadow: 0 2px 8px rgba(244, 110, 105, .18);
+    transform: translateY(18px);
   }
 
   .common-top-button.is-visible .common-top-button__character {
