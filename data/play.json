@@ -158,31 +158,31 @@
       "1기": [
         {
           "episode": 1,
-          "thumbnail": "../images/play/id-02-1",
+            "thumbnail": "../images/play/id-02-1.PNG",
           "runningTime": "10분",
           "link" : "../images/play/hello jadoo01-01.mp4"
         },
         {
           "episode": 2,
-          "thumbnail": "../images/play/id-02-1",
+            "thumbnail": "../images/play/id-02-1.PNG",
           "runningTime": "12분",
           "link" : "../images/play/hello jadoo01-02.mp4"
         },
         {
           "episode": 3,
-          "thumbnail": "../images/play/id-02-1",
+            "thumbnail": "../images/play/id-02-1.PNG",
           "runningTime": "11분",
           "link" : "../images/play/hello jadoo01-03.mp4"
         },
         {
           "episode": 4,
-          "thumbnail": "../images/play/id-02-1",
+            "thumbnail": "../images/play/id-02-1.PNG",
           "runningTime": "10분",
           "link" : "../images/play/hello jadoo01-04.mp4"
         },
         {
           "episode": 5,
-          "thumbnail": "../images/play/id-02-1",
+            "thumbnail": "../images/play/id-02-1.PNG",
           "runningTime": "24분",
           "link" : "../images/play/hello jadoo01-05.mp4"
         }
@@ -1436,19 +1436,19 @@
       "사랑은 콩다콩": [
         {
           "episode": 1,
-          "thumbnail": "../images/play/id-44-1",
+            "thumbnail": "../images/play/id-44-1.PNG",
           "runningTime": "10분",
           "link" : "../images/play/Azuki-chan-01-01.mp4"
         },
         {
           "episode": 2,
-          "thumbnail": "../images/play/id-44-1",
+            "thumbnail": "../images/play/id-44-1.PNG",
           "runningTime": "12분",
           "link" : "../images/play/Azuki-chan-01-02.mp4"
         },
         {
           "episode": 3,
-          "thumbnail": "../images/play/id-44-1",
+            "thumbnail": "../images/play/id-44-1.PNG",
           "runningTime": "11분",
           "link" : "../images/play/Azuki-chan-01-03.mp4"
         }
@@ -1534,7 +1534,7 @@
   },
   {
     "contentId": 49,
-    "background": "../images/contents/id-49.jpg",
+    "background": "../images/contents/id-49.jpg?v=20260724",
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
