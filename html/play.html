@@ -51,6 +51,16 @@
         </section>
       </main>
     </div>
+    <dialog id="episodePlayer" class="episode-player" aria-labelledby="episodePlayerTitle">
+      <div class="episode-player__header">
+        <h2 id="episodePlayerTitle">에피소드 재생</h2>
+        <div class="episode-player__actions">
+          <button id="episodeFullscreenButton" class="episode-player__fullscreen" type="button">전체 화면</button>
+          <button id="episodePlayerClose" type="button" aria-label="영상 닫기">×</button>
+        </div>
+      </div>
+      <video id="episodeVideo" controls playsinline></video>
+    </dialog>
   <script src="../js/common.js"></script>
   <script src="../js/app-utils.js"></script>
     <script src="../js/play.js"></script>

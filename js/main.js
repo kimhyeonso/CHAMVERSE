@@ -170,15 +170,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   continueList.addEventListener('pointerup', finishContinueDrag);
   continueList.addEventListener('pointercancel', finishContinueDrag);
 
-  const watching = ChamverseApp.read(ChamverseApp.KEY.continueWatching, []);
+  const watching = ChamverseApp.getContinueWatching();
   const continueItems = watching
     .map((entry) => ({ item: items.find((content) => content.id === Number(entry.contentId)), progress: entry.progress }))
     .filter((entry) => entry.item && !topItemIds.has(entry.item.id));
-  const fallbackContinue = shuffleItems(recommended.filter((item) => !topItemIds.has(item.id)))
-    .slice(0, 6)
-    .map((item, index) => ({ item, progress: 0.25 + index * 0.05 }));
-  const visibleContinue = continueItems.length ? shuffleItems(continueItems).slice(0, 6) : fallbackContinue;
-  continueList.innerHTML = visibleContinue.map(({ item, progress }) => `
+  continueList.classList.toggle('is-empty', !continueItems.length);
+  continueList.innerHTML = continueItems.length ? continueItems.slice(0, 6).map(({ item, progress }) => `
     <a class="continue-card" href="play.html?id=${item.id}">
       <span class="continue-card__image">
         <img src="${item.poster}" alt="${item.title}" loading="lazy">
@@ -187,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       </span>
       <h3>${item.title}</h3>
       <p>${Math.max(1, Math.round((item.episode || 12) / 50))}화</p>
-    </a>`).join('');
+    </a>`).join('') : '<p class="continue-empty">아직 시청한 작품이 없어요.</p>';
 
   const continueBannerSlider = document.getElementById('continueBannerSlider');
   const bannerTrack = continueBannerSlider.querySelector('.banner-slider__track');
