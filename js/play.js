@@ -11,6 +11,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   const id = Number(new URLSearchParams(location.search).get('id')) || items[0].id;
   const item = items.find((content) => content.id === id) || items[0];
   const detail = playData.find((content) => content.contentId === item.id) || {};
+  const detailVideoOverlay = document.getElementById('detailVideoOverlay');
+  const detailVideoPlayer = document.getElementById('detailVideoPlayer');
+  const detailVideoClose = document.getElementById('detailVideoClose');
+  const videoSources = {
+    1: '../videos/crayon-shin-chan.mp4',
+    2: '../videos/Hello%20Jadoo.mp4',
+    3: '../videos/atashinchi.mp4'
+  };
   const episodeCount = Math.min(5, Math.max(3, Math.ceil((item.episode || 12) / 500)));
   const seasons = Array.isArray(detail.seasons) && detail.seasons.length
     ? detail.seasons
@@ -62,9 +70,57 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (episode) window.open(episode.dataset.episodeLink, '_blank', 'noopener');
   });
 
+  let detailVideoRequestedFullscreen = false;
+
+  const closeDetailVideo = () => {
+    detailVideoPlayer.pause();
+    detailVideoPlayer.removeAttribute('src');
+    detailVideoPlayer.load();
+    detailVideoOverlay.hidden = true;
+    document.body.classList.remove('detail-video-open');
+    detailVideoRequestedFullscreen = false;
+  };
+
+  const openDetailVideo = () => {
+    const source = videoSources[item.id];
+    if (!source) {
+      ChamverseApp.showToast('재생 가능한 영상이 준비 중이에요.');
+      return;
+    }
+
+    detailVideoPlayer.src = source;
+    detailVideoOverlay.hidden = false;
+    document.body.classList.add('detail-video-open');
+    detailVideoPlayer.play().catch(() => {});
+
+    if (detailVideoPlayer.requestFullscreen) {
+      detailVideoRequestedFullscreen = true;
+      detailVideoPlayer.requestFullscreen().catch(() => {
+        detailVideoRequestedFullscreen = false;
+      });
+    } else if (detailVideoPlayer.webkitEnterFullscreen) {
+      detailVideoRequestedFullscreen = true;
+      detailVideoPlayer.webkitEnterFullscreen();
+    }
+  };
+
+  detailVideoClose.addEventListener('click', closeDetailVideo);
+  detailVideoPlayer.addEventListener('ended', closeDetailVideo);
+  detailVideoPlayer.addEventListener('webkitendfullscreen', closeDetailVideo);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !detailVideoOverlay.hidden && !document.fullscreenElement) {
+      closeDetailVideo();
+    }
+  });
+  document.addEventListener('fullscreenchange', () => {
+    if (detailVideoRequestedFullscreen && !document.fullscreenElement && !detailVideoOverlay.hidden) {
+      closeDetailVideo();
+    }
+  });
+
   document.getElementById('playButton').addEventListener('click', () => {
     ChamverseApp.setContinueWatching(item.id, 0.32);
-    ChamverseApp.showToast('재생 위치를 저장했어요.');
+    openDetailVideo();
   });
   const wishButton = document.getElementById('wishButton');
   const renderWishButton = () => {

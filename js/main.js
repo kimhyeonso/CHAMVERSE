@@ -117,19 +117,26 @@ document.addEventListener('DOMContentLoaded', async () => {
   let dragStartX = 0;
   let dragStartScroll = 0;
   let isDragging = false;
+  let topTenDragMoved = false;
 
   topTenList.addEventListener('pointerdown', (event) => {
-    if (event.pointerType === 'touch' || event.target.closest('a')) return;
+    if (event.pointerType === 'touch' || event.button !== 0) return;
     isDragging = true;
+    topTenDragMoved = false;
     dragStartX = event.clientX;
     dragStartScroll = topTenList.scrollLeft;
-    topTenList.classList.add('is-dragging');
-    topTenList.setPointerCapture(event.pointerId);
   });
 
   topTenList.addEventListener('pointermove', (event) => {
     if (!isDragging) return;
-    topTenList.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+    const distance = event.clientX - dragStartX;
+    if (Math.abs(distance) < 5) return;
+    topTenDragMoved = true;
+    topTenList.classList.add('is-dragging');
+    if (!topTenList.hasPointerCapture(event.pointerId)) {
+      topTenList.setPointerCapture(event.pointerId);
+    }
+    topTenList.scrollLeft = dragStartScroll - distance;
   });
 
   const finishTopTenDrag = (event) => {
@@ -140,7 +147,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   topTenList.addEventListener('pointerup', finishTopTenDrag);
-  topTenList.addEventListener('pointercancel', finishTopTenDrag);
+  topTenList.addEventListener('pointercancel', (event) => {
+    topTenDragMoved = false;
+    finishTopTenDrag(event);
+  });
+  topTenList.addEventListener('click', (event) => {
+    if (!topTenDragMoved) return;
+    event.preventDefault();
+    event.stopPropagation();
+    topTenDragMoved = false;
+  }, true);
 
   let continueDragStartX = 0;
   let continueDragStartScroll = 0;
@@ -171,13 +187,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   continueList.addEventListener('pointercancel', finishContinueDrag);
 
   const watching = ChamverseApp.read(ChamverseApp.KEY.continueWatching, []);
+  const atashinchiItem = items.find((item) => item.id === 3);
+  const helloJadooItem = items.find((item) => item.id === 2);
   const continueItems = watching
     .map((entry) => ({ item: items.find((content) => content.id === Number(entry.contentId)), progress: entry.progress }))
-    .filter((entry) => entry.item && !topItemIds.has(entry.item.id));
-  const fallbackContinue = shuffleItems(recommended.filter((item) => !topItemIds.has(item.id)))
+    .map((entry) => entry.item?.id === 20 && atashinchiItem
+      ? { item: atashinchiItem, progress: entry.progress }
+      : entry)
+    .filter((entry) => entry.item && entry.item.id !== 20 && !topItemIds.has(entry.item.id));
+  const fallbackContinue = shuffleItems(recommended.filter((item) => item.id !== 20 && !topItemIds.has(item.id)))
     .slice(0, 6)
     .map((item, index) => ({ item, progress: 0.25 + index * 0.05 }));
-  const visibleContinue = continueItems.length ? shuffleItems(continueItems).slice(0, 6) : fallbackContinue;
+  const continueSource = continueItems.length ? shuffleItems(continueItems) : fallbackContinue;
+  const visibleContinue = [
+    ...(atashinchiItem ? [{ item: atashinchiItem, progress: 0.32 }] : []),
+    ...(helloJadooItem ? [{ item: helloJadooItem, progress: 0.27 }] : []),
+    ...continueSource.filter(({ item }) => item.id !== 2 && item.id !== 3 && item.id !== 20)
+  ].slice(0, 6);
   continueList.innerHTML = visibleContinue.map(({ item, progress }) => `
     <a class="continue-card" href="play.html?id=${item.id}">
       <span class="continue-card__image">
@@ -287,12 +313,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     const genreCharacters = {
       일상: '../images/main/profile03.png',
       코미디: '../images/main/profile01.png',
-      액션: '../images/main/profile02.png',
+      액션: '../images/main/profile08.png',
       판타지: '../images/main/profile05.png',
       모험: '../images/main/profile02.png',
-      로맨스: '../images/main/profile05.png',
+      로맨스: '../images/main/profile07.png',
       추리: '../images/main/profile04.png',
       공포: '../images/main/profile06.png'
+    };
+    const desktopGenreCharacters = {
+      일상: '../images/main/cutouts/profile03-cutout.png',
+      코미디: '../images/main/cutouts/profile01-cutout.png',
+      액션: '../images/main/cutouts/profile08-cutout.png',
+      판타지: '../images/main/cutouts/profile05-cutout.png',
+      모험: '../images/main/cutouts/profile02-cutout.png',
+      로맨스: '../images/main/cutouts/profile07-cutout.png',
+      추리: '../images/main/cutouts/profile04-cutout.png',
+      공포: '../images/main/cutouts/profile06-cutout.png'
     };
     const genreOrder = ['일상', '코미디', '액션', '판타지', '모험', '로맨스', '추리', '공포'];
     const usedVisibleGenreItemIds = new Set();
@@ -313,9 +349,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (!genreItems.length) return '';
       firstVisibleItems.forEach((item) => usedVisibleGenreItemIds.add(item.id));
       return `<article class="genre-row" data-genre-row="${genre}">
-        <a class="genre-lead" href="play.html?id=${genreItems[0].id}"><img src="${genreCharacters[genre] || '../images/main/profile03.png'}" alt="${genre} 캐릭터" loading="lazy"></a>
+        <a class="genre-lead" href="play.html?id=${genreItems[0].id}">
+          <picture>
+            <source media="(min-width: 769px)" srcset="${desktopGenreCharacters[genre] || '../images/main/cutouts/profile03-cutout.png'}">
+            <img src="${genreCharacters[genre] || '../images/main/profile03.png'}" alt="${genre} 캐릭터" loading="lazy">
+          </picture>
+        </a>
         <div class="genre-card-row" aria-label="${genre} 콘텐츠 목록">
-          ${genreItems.map((item) => `<a class="genre-card" href="play.html?id=${item.id}"><img src="${item.poster}" alt="${item.title}" loading="lazy"></a>`).join('')}
+          ${genreItems.map((item) => `<a class="genre-card" href="play.html?id=${item.id}"><img src="${item.poster}" alt="${item.title}" loading="lazy"><span class="genre-card__title">${item.title}</span></a>`).join('')}
         </div>
       </article>`;
     }).join('');
@@ -326,19 +367,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     let startX = 0;
     let startScroll = 0;
     let isDragging = false;
+    let dragMoved = false;
 
     cardRow.addEventListener('pointerdown', (event) => {
-      if (event.pointerType === 'touch' || event.target.closest('a')) return;
+      if (event.pointerType === 'touch' || event.button !== 0) return;
       isDragging = true;
+      dragMoved = false;
       startX = event.clientX;
       startScroll = cardRow.scrollLeft;
-      cardRow.classList.add('is-dragging');
-      cardRow.setPointerCapture(event.pointerId);
     });
 
     cardRow.addEventListener('pointermove', (event) => {
       if (!isDragging) return;
-      cardRow.scrollLeft = startScroll - (event.clientX - startX);
+      const distance = event.clientX - startX;
+      if (Math.abs(distance) < 5) return;
+      dragMoved = true;
+      cardRow.classList.add('is-dragging');
+      if (!cardRow.hasPointerCapture(event.pointerId)) {
+        cardRow.setPointerCapture(event.pointerId);
+      }
+      cardRow.scrollLeft = startScroll - distance;
     });
 
     const finishDrag = (event) => {
@@ -349,7 +397,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
     cardRow.addEventListener('pointerup', finishDrag);
-    cardRow.addEventListener('pointercancel', finishDrag);
+    cardRow.addEventListener('pointercancel', (event) => {
+      dragMoved = false;
+      finishDrag(event);
+    });
+    cardRow.addEventListener('click', (event) => {
+      if (!dragMoved) return;
+      event.preventDefault();
+      event.stopPropagation();
+      dragMoved = false;
+    }, true);
   });
 
   const newEpisodeIds = [1, 7, 25, 54, 18];

@@ -156,6 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const renderPodium = () => {
 
+    if (!podium) return;
+
     const topThree =
       sortedRanking.slice(0, 3);
 
@@ -422,6 +424,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderPodium();
 
-  renderRankingList();
+  if (rankingList) renderRankingList();
 
 });
