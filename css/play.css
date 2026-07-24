@@ -223,11 +223,16 @@ body:has(#playHero) .screen-header {
   justify-content: space-between;
 }
 .episode-player__header h2 {
+  min-width: 0;
   margin: 0;
+  overflow: hidden;
   font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .episode-player__actions {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: 4px;
 }
@@ -243,9 +248,11 @@ body:has(#playHero) .screen-header {
   line-height: 1;
 }
 .episode-player__header .episode-player__fullscreen {
+  flex: 0 0 auto;
   width: auto;
   padding: 0 10px;
   font-size: 13px;
+  white-space: nowrap;
 }
 .episode-player__header button:hover,
 .episode-player__header button:focus-visible {
@@ -268,6 +275,9 @@ body:has(#playHero) .screen-header {
     width: min(100%, 1200px);
     padding-right: 48px;
     padding-left: 48px;
+  }
+  .play-back-button {
+    right: 66px;
   }
   #playHero {
     min-height: 460px;
