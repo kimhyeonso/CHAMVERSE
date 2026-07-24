@@ -249,6 +249,21 @@
   scroll-snap-type: none;
   user-select: none;
 }
+.continue-row.is-empty {
+  display: block;
+  overflow: visible;
+}
+.continue-empty {
+  display: grid;
+  min-height: 164px;
+  margin: 0;
+  color: #777;
+  background: #fff8f7;
+  border: 1px solid #f2dddd;
+  border-radius: 12px;
+  place-items: center;
+  font-size: 14px;
+}
 
 .rank-row .rank-card {
   scroll-snap-align: start;

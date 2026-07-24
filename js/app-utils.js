@@ -79,10 +79,25 @@
     return write(KEY.recentSearches, read(KEY.recentSearches, []).filter((item) => item !== keyword));
   }
 
+  function continueWatchingStorageKey() {
+    const user = read(KEY.user, null);
+    const identifier = user?.email || user?.phone;
+    return identifier
+      ? `${KEY.continueWatching}:${encodeURIComponent(String(identifier).toLowerCase())}`
+      : null;
+  }
+
+  function getContinueWatching() {
+    const storageKey = continueWatchingStorageKey();
+    return storageKey ? read(storageKey, []) : [];
+  }
+
   function setContinueWatching(contentId, progress = 0.28) {
-    const list = read(KEY.continueWatching, []);
+    const storageKey = continueWatchingStorageKey();
+    if (!storageKey) return [];
+    const list = read(storageKey, []);
     const next = [{ contentId: Number(contentId), progress, updatedAt: Date.now() }, ...list.filter((item) => item.contentId !== Number(contentId))].slice(0, 12);
-    return write(KEY.continueWatching, next);
+    return write(storageKey, next);
   }
 
   function createCard(content, options = {}) {
@@ -158,6 +173,7 @@
     toggleId,
     addRecentSearch,
     removeRecentSearch,
+    getContinueWatching,
     setContinueWatching,
     createCard,
     createEmptyState,

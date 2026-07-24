@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     closeWishFallbackLandscape();
   });
 
-  const lastWatching = ChamverseApp.read(ChamverseApp.KEY.continueWatching, [])[0];
+  const lastWatching = ChamverseApp.getContinueWatching()[0];
   const continuing = items.find((item) => item.id === lastWatching?.contentId) || items.find((item) => ChamverseApp.uniqueIds(ChamverseApp.KEY.wish).includes(item.id)) || items[0];
   let bannerContentId = continuing?.id ?? null;
   const banner = document.querySelector('.continue-banner');

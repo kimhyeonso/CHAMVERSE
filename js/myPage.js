@@ -89,10 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  const watching = ChamverseApp.read(
-    ChamverseApp.KEY.continueWatching,
-    []
-  );
+  const watching = ChamverseApp.getContinueWatching();
 
   const list = watching
     .map((entry) => ({
@@ -103,15 +100,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }))
     .filter((entry) => entry.item);
 
-  watchingList.innerHTML = (
-    list.length
-      ? list
-      : items.slice(0, 5).map((item) => ({
-          item,
-          progress: 0.25
-        }))
-  )
-    .map((entry) => (
+  watchingList.classList.toggle('is-empty', !list.length);
+  watchingList.innerHTML = list.length
+    ? list.map((entry) => (
       ChamverseApp.createCard(
         entry.item,
         {
@@ -119,7 +110,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       )
     ))
-    .join('');
+    .join('')
+    : '<p class="watching-empty">아직 시청한 작품이 없어요.</p>';
 
   ChamverseApp.finishLoading(watchingList);
 

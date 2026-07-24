@@ -111,6 +111,11 @@ body:has(#playHero) .screen-header {
   background: #fff;
   border: 1px solid #e7cfcf;
 }
+.secondary-btn.is-active {
+  color: #fff;
+  background: var(--coral);
+  border-color: var(--coral);
+}
 .wish-icon {
   display: inline-block;
   margin-right: 4px;
@@ -120,6 +125,9 @@ body:has(#playHero) .screen-header {
 }
 .wish-icon.is-filled {
   color: var(--coral);
+}
+.secondary-btn.is-active .wish-icon.is-filled {
+  color: #fff;
 }
 .feature-actions {
   display: grid;
@@ -172,6 +180,13 @@ body:has(#playHero) .screen-header {
   gap: 14px;
   align-items: center;
 }
+.episode[data-episode-video] {
+  cursor: pointer;
+}
+.episode[data-episode-video]:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: -3px;
+}
 .episode img {
   width: 100%;
   border-radius: 9px;
@@ -186,6 +201,67 @@ body:has(#playHero) .screen-header {
   margin: 2px 0;
   color: #777;
   font-size: 11px;
+}
+.episode-player {
+  width: min(92vw, 960px);
+  padding: 0;
+  color: #222;
+  background: #111;
+  border: 0;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.episode-player::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+.episode-player__header {
+  display: flex;
+  min-height: 52px;
+  padding: 0 12px 0 18px;
+  color: #fff;
+  align-items: center;
+  justify-content: space-between;
+}
+.episode-player__header h2 {
+  margin: 0;
+  font-size: 16px;
+}
+.episode-player__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.episode-player__header button {
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+}
+.episode-player__header .episode-player__fullscreen {
+  width: auto;
+  padding: 0 10px;
+  font-size: 13px;
+}
+.episode-player__header button:hover,
+.episode-player__header button:focus-visible {
+  background: rgba(255, 255, 255, 0.16);
+}
+.episode-player video {
+  display: block;
+  width: 100%;
+  max-height: calc(92vh - 52px);
+  background: #000;
+}
+.episode-player video:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-height: none;
+  object-fit: contain;
 }
 @media (min-width: 769px) {
   body:has(#playHero) .page {
