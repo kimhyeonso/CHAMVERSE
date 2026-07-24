@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'ATAMAmMA',
       name: '아따맘마',
       englishName: 'ATAMAmMA',
-      image: '/images/vote/ATAMAmMA-05.png',
+      image: '../images/vote/ATAMAmMA-05.png',
       color: '#ffd86f',
     },
 
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'Dooly',
       name: '둘리',
       englishName: 'Dooly',
-      image: '/images/vote/Dooly-02.png',
+      image: '../images/vote/Dooly-02.png',
       color: '#b9dfb2',
     },
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'Doraemon',
       name: '도라에몽',
       englishName: 'Doraemon',
-      image: '/images/vote/Doraemon-03.png',
+      image: '../images/vote/Doraemon-03.png',
       color: '#9ed9ef',
     },
 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'patrick',
       name: '뚱이',
       englishName: 'patrick',
-      image: '/images/vote/patrick Star-11.png',
+      image: '../images/vote/patrick Star-11.png',
       color: '#f7c4dc',
     },
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'Keroro',
       name: '케로로',
       englishName: 'Keroro',
-      image: '/images/vote/Keroro-07.png',
+      image: '../images/vote/Keroro-07.png',
       color: '#f49a8f',
     },
 
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'loopy',
       name: '루피',
       englishName: 'loopy',
-      image: '/images/vote/loopy-08.png',
+      image: '../images/vote/loopy-08.png',
       color: '#cab1ea',
     },
 
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'jadoo',
       name: '자두',
       englishName: 'jadoo',
-      image: '/images/vote/jadoo-06.png',
+      image: '../images/vote/jadoo-06.png',
       color: '#f8b6c4',
       
     },
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'Shin_Chan',
       name: '짱구',
       englishName: 'Shin_Chan',
-      image: '/images/vote/Shin_Chan-10.png',
+      image: '../images/vote/Shin_Chan-10.png',
       color: '#a9dcda',
     },
   ];
