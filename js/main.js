@@ -107,7 +107,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     </a>`;
 
   const shuffleItems = (source) => [...source].sort(() => Math.random() - 0.5);
-  const topItems = shuffleItems(items.filter((item) => item.isTop10)).slice(0, 10);
+  const topContentIds = [1, 2, 5, 18, 24, 25, 26, 38, 39, 49];
+  const topItems = topContentIds
+    .map((contentId) => items.find((item) => item.id === contentId))
+    .filter(Boolean);
   const topItemIds = new Set(topItems.map((item) => item.id));
   topTenList.innerHTML = topItems.map((item, index) => `
     <a class="rank-card" href="play.html?id=${item.id}" data-rank="${index + 1}" aria-label="${index + 1}위 ${item.title}">
@@ -396,7 +399,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }, true);
   });
 
-  const newEpisodeIds = [1, 7, 25, 54, 18];
+  const newEpisodeIds = [1, 7, 25, 54, 18, 33];
   const newEpisodeItems = newEpisodeIds
     .map((contentId) => items.find((item) => item.id === contentId))
     .filter(Boolean);

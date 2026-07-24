@@ -227,7 +227,7 @@
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  touch-action: pan-x;
+  touch-action: auto;
 }
 
 .rank-row.is-dragging {
@@ -241,7 +241,7 @@
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  touch-action: pan-x;
+  touch-action: auto;
 }
 
 .continue-row.is-dragging {
@@ -582,7 +582,7 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
-  touch-action: pan-x;
+  touch-action: auto;
 }
 
 .genre-card-row.is-dragging {
@@ -1058,7 +1058,8 @@
 
   .genre-card-row {
     z-index: 5;
-    grid-auto-columns: calc((100% - 44px) / 5);
+    /* 카드 5장과 다음 카드의 약 30%를 함께 보여 가로 스크롤을 안내합니다. */
+    grid-auto-columns: calc(18.8679% - 10.3774px);
     margin-left: 0;
     padding-top: 8px;
     padding-bottom: 14px;
@@ -1117,7 +1118,8 @@
   }
 
   .new-episode-row {
-    grid-auto-columns: 172px;
+    /* 카드 5장과 다음 카드의 약 30%를 함께 보여 가로 스크롤을 안내합니다. */
+    grid-auto-columns: calc(18.8679% - 16.9811px);
     gap: 18px;
   }
 
@@ -1219,7 +1221,7 @@
   }
 
   .new-episode-row {
-    grid-auto-columns: 190px;
+    grid-auto-columns: calc(18.8679% - 16.9811px);
   }
 
   .genre-row {
@@ -1437,7 +1439,8 @@
   }
 
   .genre-card-row {
-    grid-auto-columns: calc((100% - 8px) / 2);
+    /* 카드 2장과 다음 카드의 약 30%를 함께 보여 가로 스크롤을 안내합니다. */
+    grid-auto-columns: calc(43.4783% - 6.9565px);
     gap: 8px;
   }
 
@@ -1486,7 +1489,8 @@
   }
 
   .new-episode-row {
-    grid-auto-columns: calc((100% - 16px) / 3);
+    /* 카드 2장과 다음 카드의 약 30%를 함께 보여 가로 스크롤을 안내합니다. */
+    grid-auto-columns: calc(43.4783% - 6.9565px);
     gap: 8px;
   }
 

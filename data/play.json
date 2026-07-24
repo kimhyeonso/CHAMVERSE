@@ -375,7 +375,25 @@
       "text": "말을 몰라도 함께 웃을 수 있었던 꼬마 펭귄의 일상"
     },
     "recommend": [4, 6, 7, 12],
-    "episodes": []
+    "episodes": {
+      "시즌 1": [
+        {
+          "episode": 1,
+          "runningTime": "3분",
+          "link" : "../images/play/pinggu-01-01.mp4"
+        },
+        {
+          "episode": 2,
+          "runningTime": "3분",
+          "link" : "../images/play/pinggu-01-02.mp4"
+        },
+        {
+          "episode": 3,
+          "runningTime": "3분",
+          "link" : "../images/play/pinggu-01-03.mp4"
+        }
+      ]
+    }
   },
 
 
@@ -470,7 +488,7 @@
   {
     "contentId": 12,
     "background": "../images/contents/id-12.jpg",
-    "runningTime": "약 2분",
+    "runningTime": "약 3분",
     "country": "대한민국",
     "seasonLabel": "시즌 선택",
      "seasons": [
@@ -490,7 +508,25 @@
       "text": "대사가 없어도 누구나 함께 웃을 수 있었던 레드와 옐로우"
     },
     "recommend": [8, 11, 16, 3],
-    "episodes": []
+    "episodes": {
+      "라바 시즌 1": [
+        {
+          "episode": 1,
+          "runningTime": "3분",
+          "link" : "../images/play/laba-01-01.mp4"
+        },
+        {
+          "episode": 2,
+          "runningTime": "3분",
+          "link" : "../images/play/laba-01-02.mp4"
+        },
+        {
+          "episode": 3,
+          "runningTime": "3분",
+          "link" : "../images/play/laba-01-03.mp4"
+        }
+      ]
+    }
   },
   {
     "contentId": 13,
@@ -575,7 +611,25 @@
       "text": "빙하를 타고 찾아온 대한민국 대표 아기공룡"
     },
     "recommend": [2, 7, 11, 12],
-    "episodes": []
+    "episodes": {
+      "아기공룡 둘리 1987": [
+        {
+          "episode": 1,
+          "runningTime": "18분",
+          "link" : "../images/play/Dooly-01-01.mp4"
+        },
+        {
+          "episode": 2,
+          "runningTime": "19분",
+          "link" : "../images/play/Dooly-01-02.mp4"
+        },
+        {
+          "episode": 3,
+          "runningTime": "20분",
+          "link" : "../images/play/Dooly-01-03.mp4"
+        }
+      ]
+    }
   },
   {
     "contentId": 17,
@@ -632,7 +686,25 @@
       "text": "매주 새로운 귀신을 만나던 투니버스 대표 애니메이션"
     },
     "recommend": [19, 20, 22, 54],
-    "episodes": []
+    "episodes": {
+      "1기": [
+        {
+          "episode": 1,
+          "runningTime": "18분",
+          "link" : "../images/play/The Haunted House01.mp4"
+        },
+        {
+          "episode": 2,
+          "runningTime": "19분",
+          "link" : "../images/play/The Haunted House02.mp4"
+        },
+        {
+          "episode": 3,
+          "runningTime": "20분",
+          "link" : "../images/play/The Haunted House03.mp4"
+        }
+      ]
+    }
   },
   {
     "contentId": 19,
@@ -641,7 +713,7 @@
     "country": "일본",
     "seasonLabel": "시즌 1",
      "seasons": [
-      "학교괴담"
+      "괴담 레스토랑"
     ],
     "director": "이케다 요이치",
     "cast": [],
@@ -659,9 +731,7 @@
     "country": "일본",
     "seasonLabel": "시즌 선택",
     "seasons": [
-      "지옥선생 누베",
-      "지옥선생 누베 OVA",
-      "지옥선생 누베 2025"
+      "학교괴담"
     ],
     "director": "아베 노리유키",
     "cast": [
@@ -683,7 +753,7 @@
     "country": "일본",
     "seasonLabel": "시즌 1",
      "seasons": [
-      "초코초코 대작전"
+      "쇼콜라의 마법"
     ],
     "director": null,
     "cast": [],
@@ -754,7 +824,25 @@
       "text": "최고의 닌자를 꿈꾸며 함께 성장했던 우리의 어린 시절."
     },
     "recommend": [25, 26, 27, 33],
-    "episodes": []
+    "episodes": {
+      "나루토": [
+        {
+          "episode": 1,
+          "runningTime": "18분",
+          "link" : "../images/play/Naruto01.mp4"
+        },
+        {
+          "episode": 2,
+          "runningTime": "19분",
+          "link" : "../images/play/Naruto02.mp4"
+        },
+        {
+          "episode": 3,
+          "runningTime": "20분",
+          "link" : "../images/play/Naruto03.mp4"
+        }
+      ]
+    }
   },
   {
     "contentId": 25,
@@ -793,7 +881,25 @@
       "text": "언젠가 해적왕이 될 거라는 루피의 꿈을 함께 응원했던 작품."
     },
     "recommend": [24, 26, 27, 32],
-    "episodes": []
+    "episodes": {
+      "이스트 블루 편": [
+        {
+          "episode": 1,
+          "runningTime": "18분",
+          "link" : "../images/play/One Piece01.mp4"
+        },
+        {
+          "episode": 2,
+          "runningTime": "19분",
+          "link" : "../images/play/One Piece02.mp4"
+        },
+        {
+          "episode": 3,
+          "runningTime": "20분",
+          "link" : "../images/play/One Piece03.mp4"
+        }
+      ]
+    }
   },
   {
     "contentId": 26,
@@ -815,7 +921,25 @@
       "text": "사신이 되어 싸우던 이치고의 첫 만남을 기억하시나요?"
     },
     "recommend": [24, 25, 27, 29],
-    "episodes": []
+    "episodes": {
+      "블리치": [
+        {
+          "episode": 1,
+          "runningTime": "18분",
+          "link" : "../images/play/Bleach01.mp4"
+        },
+        {
+          "episode": 2,
+          "runningTime": "19분",
+          "link" : "../images/play/Bleach02.mp4"
+        },
+        {
+          "episode": 3,
+          "runningTime": "20분",
+          "link" : "../images/play/Bleach03.mp4"
+        }
+      ]
+    }
   },
   {
     "contentId": 27,
@@ -1074,8 +1198,8 @@
     "country": "일본",
     "seasonLabel": "시즌 선택",
      "seasons": [
-      "쌍둥이공주",
-      "쌍둥이공주 꼬옥! 2기"
+      "신비한 별의 쌍둥이 공주",
+      "신비한 별의 쌍둥이 공주 꼬옥! 2기"
     ],
     "director": "사토 준이치, 고모토 쇼고",
     "cast": [
@@ -1115,8 +1239,8 @@
     "country": "대한민국",
     "seasonLabel": "시즌 선택",
     "seasons": [
-      "쥬쥬 시즌 1",
-      "쥬쥬 시즌 2"
+      "시크릿 쥬쥬 시즌 1",
+      "시크릿 쥬쥬 시즌 2"
     ],
     "director": null,
     "cast": [],
@@ -1148,7 +1272,25 @@
       "text": "아이돌 카드를 모으며 무대 위의 꿈을 함께 응원했던 작품"
     },
     "recommend": [36, 37, 39, 43],
-    "episodes": []
+    "episodes": {
+      "아이엠스타!": [
+        {
+          "episode": 1,
+          "runningTime": "18분",
+          "link" : "../images/play/I am a star01.mp4"
+        },
+        {
+          "episode": 2,
+          "runningTime": "19분",
+          "link" : "../images/play/I am a star02.mp4"
+        },
+        {
+          "episode": 3,
+          "runningTime": "20분",
+          "link" : "../images/play/I am a star03.mp4"
+        }
+      ]
+    }
   },
   {
     "contentId": 39,
@@ -1166,7 +1308,25 @@
       "text": "쇼콜라와 바닐라를 따라 알록달록한 하트를 모으던 마법 같은 시간"
     },
     "recommend": [35, 36, 40, 42],
-    "episodes": []
+    "episodes": {
+      "슈가슈가룬": [
+        {
+          "episode": 1,
+          "runningTime": "18분",
+          "link" : "../images/play/Sugar Sugar Rune01.mp4"
+        },
+        {
+          "episode": 2,
+          "runningTime": "19분",
+          "link" : "../images/play/Sugar Sugar Rune02.mp4"
+        },
+        {
+          "episode": 3,
+          "runningTime": "20분",
+          "link" : "../images/play/Sugar Sugar Rune03.mp4"
+        }
+      ]
+    }
   },
   {
     "contentId": 40,
@@ -1175,14 +1335,14 @@
     "country": "일본",
     "seasonLabel": "시즌 선택",
     "seasons": [
-      "세일러문",
-      "세일러문 R",
-      "세일러문 S",
-      "세일러문 SuperS",
-      "세일러문 Sailor Stars",
-      "세일러문 Crystal",
-      "세일러문 Eternal",
-      "세일러문 Cosmos"
+      "미소녀 전사 세일러문",
+      "미소녀 전사 세일러문 R",
+      "미소녀 전사 세일러문 S",
+      "미소녀 전사 세일러문 SuperS",
+      "미소녀 전사 세일러문 Sailor Stars",
+      "미소녀 전사 세일러문 Crystal",
+      "미소녀 전사 세일러문 Eternal",
+      "미소녀 전사 세일러문 Cosmos"
     ],
     "director": "사토 준이치",
     "cast": [
@@ -1201,6 +1361,9 @@
     "runningTime": "약 24분",
     "country": "일본",
     "seasonLabel": "시즌 1",
+    "seasons": [
+      "학원 앨리스"
+    ],
     "director": "오오모리 타카히로",
     "cast": [],
     "nostalgia": {
@@ -1260,9 +1423,7 @@
     "country": "일본",
     "seasonLabel": "시즌 선택",
     "seasons": [
-      "너에게 닿기를",
-      "너에게 닿기를 2ND SEASON",
-      "너에게 닿기를 3RD SEASON"
+      "사랑은 콩다콩"
     ],
     "director": "야베 아키오",
     "cast": [],
@@ -1271,7 +1432,28 @@
       "text": "첫사랑의 설렘을 느끼게 해준 추억의 순정 애니메이션."
     },
     "recommend": [42, 47, 48, 49],
-    "episodes": []
+      "episodes": {
+      "사랑은 콩다콩": [
+        {
+          "episode": 1,
+          "thumbnail": "../images/play/id-44-1",
+          "runningTime": "10분",
+          "link" : "../images/play/Azuki-chan-01-01.mp4"
+        },
+        {
+          "episode": 2,
+          "thumbnail": "../images/play/id-44-1",
+          "runningTime": "12분",
+          "link" : "../images/play/Azuki-chan-01-02.mp4"
+        },
+        {
+          "episode": 3,
+          "thumbnail": "../images/play/id-44-1",
+          "runningTime": "11분",
+          "link" : "../images/play/Azuki-chan-01-03.mp4"
+        }
+      ]
+    }
   },
   {
     "contentId": 45,
@@ -1280,7 +1462,7 @@
     "country": "일본",
     "seasonLabel": "시즌 1",
     "seasons": [
-      "꼬마마법사 레미 비바체!"
+      "베베데빌"
     ],
     "director": "카미야 준",
     "cast": [],
@@ -1298,8 +1480,7 @@
     "country": "일본",
     "seasonLabel": "시즌 선택",
      "seasons": [
-      "슈퍼갤즈!",
-      "슈퍼갤즈! 시즌2"
+      "다! 다! 다!"
     ],
     "director": "사쿠라이 히로아키",
     "cast": [
@@ -1320,7 +1501,7 @@
     "country": "일본",
     "seasonLabel": "시즌 1",
      "seasons": [
-      "그 남자 그 여자의 사정"
+      "그 남자! 그 여자!"
     ],
     "director": "안노 히데아키",
     "cast": [],
@@ -1338,9 +1519,9 @@
     "country": "일본",
     "seasonLabel": "시즌 선택",
      "seasons": [
-      "오늘부터 신령님",
-      "오늘부터 신령님 ◎",
-      "오늘부터 신령님 OVA"
+      "너에게 닿기를",
+      "너에게 닿기를 2ND SEASON",
+      "너에게 닿기를 3RD SEASON"
     ],
     "director": "카부라기 히로",
     "cast": [],
@@ -1358,7 +1539,7 @@
     "country": "일본",
     "seasonLabel": "시즌 1",
     "seasons": [
-      "오란고교 호스트부"
+      "오란고교 사교클럽"
     ],
     "director": "이고라시 타쿠야",
     "cast": [],
@@ -1367,7 +1548,25 @@
       "text": "웃음과 설렘이 가득했던 오란고교 호스트부."
     },
     "recommend": [44, 45, 47, 48],
-    "episodes": []
+    "episodes": {
+      "오란고교 사교클럽": [
+        {
+          "episode": 1,
+          "runningTime": "18분",
+          "link" : "../images/play/Ouran High School Host Club01.mp4"
+        },
+        {
+          "episode": 2,
+          "runningTime": "19분",
+          "link" : "../images/play/Ouran High School Host Club02.mp4"
+        },
+        {
+          "episode": 3,
+          "runningTime": "20분",
+          "link" : "../images/play/Ouran High School Host Club03.mp4"
+        }
+      ]
+    }
   },
   {
     "contentId": 50,
@@ -1391,103 +1590,6 @@
       "text": "봉인의 카드를 모으며 함께 성장했던 체리의 모험."
     },
     "recommend": [34, 36, 39, 42],
-    "episodes": []
-  },
-  {
-    "contentId": 51,
-    "background": "../images/contents/id-01.jpg",
-    "runningTime": "약 24분",
-    "country": "일본",
-    "seasonLabel": "시즌 선택",
-     "seasons": [
-      "캐릭캐릭 체인지!",
-      "캐릭캐릭 체인지!! 두근",
-      "캐릭캐릭 체인지 파티!"
-    ],
-    "director": "야스다 켄지",
-    "cast": [],
-    "nostalgia": {
-      "badge": "CHAMVERSE PICK",
-      "text": "수호 캐릭터와 함께 진짜 나를 찾아가던 설레는 시간."
-    },
-    "recommend": [36, 39, 42, 46],
-    "episodes": []
-  },
-  {
-    "contentId": 52,
-    "background": "../images/contents/id-01.jpg",
-    "runningTime": "약 24분",
-    "country": "일본",
-    "seasonLabel": "시즌 1","seasons": [
-      "슈가슈가룬"
-    ],
-    "director": "마츠시타 유키히로",
-    "cast": [],
-    "nostalgia": {
-      "badge": "CHAMVERSE PICK",
-      "text": "쇼콜라와 바닐라를 따라 하트를 모으던 달콤한 추억."
-    },
-    "recommend": [39, 42, 45, 51],
-    "episodes": []
-  },
-
-
-  {
-    "contentId": 7,
-    "background": "../images/contents/id-07.jpg",
-    "runningTime": "약 24분",
-    "country": "일본",
-    "seasonLabel": "시즌 선택",
-    "director": "쿠스바 고조",
-    "cast": [
-      "문남숙",
-      "김정아",
-      "조현정",
-      "최석필"
-    ],
-    "nostalgia": {
-      "badge": "CHAMVERSE PICK",
-      "text": "비밀도구 하나면 평범한 하루도 최고의 모험이 되던 그 시절."
-    },
-    "recommend": [25, 32, 33, 53],
-    "episodes": []
-  },
-  {
-    "contentId": 25,
-    "background": "../images/contents/id-25.jpg",
-    "runningTime": "약 24분",
-    "country": "일본",
-    "seasonLabel": "에그헤드 편",
-    "director": "우다 코노스케",
-    "cast": [
-      "강수진",
-      "김소형",
-      "정미숙"
-    ],
-    "nostalgia": {
-      "badge": "CHAMVERSE PICK",
-      "text": "언젠가 위대한 항로를 떠나고 싶게 만들었던 최고의 모험."
-    },
-    "recommend": [24, 27, 32, 33],
-    "episodes": []
-  },
-  {
-    "contentId": 33,
-    "background": "../images/contents/id-33.jpg",
-    "runningTime": "약 24분",
-    "country": "일본",
-    "seasonLabel": "어드벤처",
-    "director": "카쿠도 히로유키",
-    "cast": [
-      "정미숙",
-      "김장",
-      "김승준"
-    ],
-    "nostalgia": {
-      "badge": "CHAMVERSE PICK",
-      "text": "선택받은 아이들과 함께 디지털 월드를 여행했던 여름방학."
-    },
-    "recommend": [24, 25, 32, 53],
     "episodes": []
   },
   {
@@ -1563,9 +1665,7 @@
     "country": "일본",
     "seasonLabel": "시즌 선택",
     "seasons": [
-      "소년탐정 김전일",
-      "소년탐정 김전일 R",
-      "김전일 37세의 사건부"
+      "소년탐정 김도일"
     ],
     "director": "니시오 다이스케",
     "cast": [
