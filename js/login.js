@@ -49,9 +49,22 @@
       ...sessionUser
     } = user;
 
+    // 실제 로그인 사용자 정보 저장
     ChamverseApp.write(
       ChamverseApp.KEY.user,
       sessionUser
+    );
+
+    // 기존 코드와 호환용 로그인 표시
+    localStorage.setItem(
+      'chamverseLoggedIn',
+      'true'
+    );
+
+    // index.js에게 "로그인 후 프로필 선택 화면으로 들어가도 된다" 전달
+    sessionStorage.setItem(
+      'chamverse:intro-index-handoff',
+      'ready'
     );
 
     clearMessage();
@@ -231,8 +244,7 @@
     (event) => {
       if (
         event.key === 'Escape'
-        && socialToggle?.getAttribute('aria-expanded')
-        === 'true'
+        && socialToggle?.getAttribute('aria-expanded') === 'true'
       ) {
         setSocialPanel(false);
       }

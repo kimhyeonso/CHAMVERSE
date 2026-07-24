@@ -109,21 +109,22 @@
     }
   }
 
-  const activeUser = readActiveUser();
-  const isIntroComplete = cameFromIntro();
+const activeUser = readActiveUser();
+const isIntroComplete = cameFromIntro();
 
-  if (!activeUser) {
-    location.replace(LOGIN_PAGE);
-    return;
-  }
+if (!isIntroComplete) {
+  location.replace(INTRO_PAGE);
+  return;
+}
 
-  if (!isIntroComplete) {
-    location.replace(INTRO_PAGE);
-    return;
-  }
-
+if (!activeUser) {
   clearIntroHandoff();
-  revealPage();
+  location.replace(LOGIN_PAGE);
+  return;
+}
+
+clearIntroHandoff();
+revealPage();
 
   function selectProfile(button) {
     profileButtons.forEach((profileButton) => {
